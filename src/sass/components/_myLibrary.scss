@@ -1,0 +1,53 @@
+.library-item{
+    width: 280px;
+    height: 438px;
+    
+    // background-color: rgb(240, 226, 209);
+
+}
+.library-item:not(:last-child){
+    margin-bottom: 20px;
+}
+.library-picture{
+    width: 100%;
+    height: 398px;
+    border-radius: 5px;
+    
+    background-color: rgb(213, 235, 227);
+}
+.library-info{
+    padding-top: 8px;
+    background-color: rgb(240, 226, 209);;
+}
+.library-title{
+    
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.14;
+    color: var(--color-title);
+    text-transform: uppercase;
+}
+.library-text{
+    display: flex;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.14;
+    color: var( --accent);
+}
+.library-line{
+    margin-right: 4px;
+    margin-left: 4px;
+
+}
+.library-rating{
+    width: 36px;
+    height: 16px;
+    border-radius: 5px;
+    background-color: var( --accent);
+    color: var(--header-color-text);
+    @include text(500, 12px, 14px);
+    margin-left: 10px;
+   @include flexCenter;
+    
+
+}
