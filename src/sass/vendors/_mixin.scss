@@ -1,0 +1,29 @@
+@mixin text($fw, $fs, $c) {
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: calc($c / $fs);
+}
+
+@mixin flexCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin mobile {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 744px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1256px) {
+    @content;
+  }
+}
