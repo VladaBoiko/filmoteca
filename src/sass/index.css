@@ -85,12 +85,12 @@ html {
   padding: 0 20px;
   margin: 0 auto;
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .container {
     width: 744px;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .container {
     width: 1256px;
   }
@@ -122,13 +122,13 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .header {
     padding: 45px 60px 20px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-background-tablet@2x.jpg);
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .header {
     padding-top: 40px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-background-desktop@2x.jpg);
@@ -145,12 +145,12 @@ html {
   justify-content: center;
   margin-bottom: 37px;
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .navigation__container {
     margin-bottom: 45px;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .navigation__container {
     padding: 0;
   }
@@ -166,17 +166,17 @@ html {
 .logo:visited {
   color: var(--header-color-text);
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .logo {
     margin-right: 112px;
   }
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .logo {
     margin-right: 303px;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .logo {
     margin-right: 564px;
   }
@@ -201,7 +201,7 @@ html {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .logo__svg {
     margin-right: 10px;
   }
@@ -221,12 +221,12 @@ html {
     display: none;
   }
 }
-@media screen and (min-width: 744px) {
+@media screen and (min-width: 768px) {
   .logo__text {
     display: block;
   }
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .logo__text {
     display: block;
   }
@@ -295,7 +295,7 @@ html {
 .search__input:hover, .search__input:focus {
   border-bottom: 0.5px solid #ff6b01;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .search__input {
     width: 336px;
   }
@@ -467,7 +467,7 @@ body.dark-theme .footer-link:hover {
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1280px) {
   .header__library {
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-desktop@2x.jpg);
   }
