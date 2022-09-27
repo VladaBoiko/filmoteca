@@ -90,7 +90,7 @@ html {
     width: 744px;
   }
 }
-@media screen and (min-width: 1256px) {
+@media screen and (min-width: 1024px) {
   .container {
     width: 1256px;
   }
@@ -122,7 +122,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (min-width: 768px) and (max-width: 1024px) {
+@media screen and (min-width: 744px) {
   .header {
     padding: 45px 60px 20px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-background-tablet@2x.jpg);
@@ -145,7 +145,7 @@ html {
   justify-content: center;
   margin-bottom: 37px;
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 744px) {
   .navigation__container {
     margin-bottom: 45px;
   }
@@ -166,12 +166,12 @@ html {
 .logo:visited {
   color: var(--header-color-text);
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 744px) {
   .logo {
     margin-right: 112px;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
+@media screen and (min-width: 744px) {
   .logo {
     margin-right: 303px;
   }
@@ -201,11 +201,6 @@ html {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .logo__svg {
-    margin-right: 10px;
-  }
-}
 @media screen and (min-width: 1024px) {
   .logo__svg {
     margin-right: 10px;
@@ -221,9 +216,19 @@ html {
   font-weight: 500;
   color: var(--header-color-text);
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 320px) {
   .logo__text {
     display: none;
+  }
+}
+@media screen and (min-width: 744px) {
+  .logo__text {
+    display: block;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .logo__text {
+    display: block;
   }
 }
 
@@ -289,11 +294,6 @@ html {
 }
 .search__input:hover, .search__input:focus {
   border-bottom: 0.5px solid #ff6b01;
-}
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .search__input {
-    width: 336px;
-  }
 }
 @media screen and (min-width: 1024px) {
   .search__input {
@@ -462,19 +462,14 @@ body.dark-theme .footer-link:hover {
 
 .header__library {
   background-color: #000000;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(./images/header-library-background-mobile@2x.jpg);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-mobile@2x.jpg);
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
 }
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-  .header__library {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(./images/header-library-background-desktop@2x.jpg);
-  }
-}
 @media screen and (min-width: 1024px) {
   .header__library {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(./images/header-library-background-desktop@2x.jpg);
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-desktop@2x.jpg);
   }
 }
 .header__library .current::after {

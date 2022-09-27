@@ -19,7 +19,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+  @include tablet {
     padding: 45px 60px 20px;
     background-image: linear-gradient(
         to right,
@@ -29,7 +29,7 @@
       url(../images/header-background-tablet@2x.jpg);
   }
 
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     padding-top: 40px;
     background-image: linear-gradient(
         to right,
@@ -50,14 +50,10 @@
   justify-content: center;
   margin-bottom: 37px;
 
-  @media screen and (max-width: $to-tablet) {
+  @include tablet {
     margin-bottom: 45px;
   }
-
-  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
-  }
-
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     padding: 0;
   }
 }
@@ -74,15 +70,15 @@
     color: var(--header-color-text);
   }
 
-  @media screen and (max-width: $to-tablet) {
+  @include tablet {
     margin-right: 112px;
   }
 
-  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+  @include tablet {
     margin-right: 303px;
   }
 
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     margin-right: 564px;
   }
 }
@@ -107,11 +103,7 @@
   align-self: center;
   stroke: var(--icon-film-color);
 
-  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
-    margin-right: 10px;
-  }
-
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     margin-right: 10px;
   }
 
@@ -132,8 +124,14 @@
   font-weight: 500;
   color: var(--header-color-text);
 
-  @media screen and (max-width: $to-tablet) {
+  @include mobile {
     display: none;
+  }
+  @include tablet {
+    display: block;
+  }
+  @include desktop {
+    display: block;
   }
 }
 
@@ -206,11 +204,7 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
-    width: 336px;
-  }
-
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     width: 336px;
   }
 }
