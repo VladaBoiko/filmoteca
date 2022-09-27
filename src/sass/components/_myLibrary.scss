@@ -1,38 +1,80 @@
+.library{
+    padding-top: 20px;
+    padding-bottom: 40px;
+    @include tablet{
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+.library-list{
+    width: 100%;
+    @include tablet{
+        display: flex;
+        flex-wrap: wrap;
+
+        // flex-direction: row;
+        margin-right: -32px;
+        margin-top: -32px;
+    }
+}
 .library-item{
+    // width: 60%;
+    margin: 0 auto;
     width: 280px;
     height: 438px;
+    @include tablet{
+        width: 336px;
+        // flex-basis: 336px;
+        height: 495px;
+        margin-right: 32px;
+        margin-top: 32px;
+    }
+    @include desktop{
+        width: 395px;
+        height: 634px;
+    }
     
-    // background-color: rgb(240, 226, 209);
-
 }
-.library-item:not(:last-child){
-    margin-bottom: 20px;
+.library-item:nth-child(-n + 3) {
+    @media screen and (max-width: 743px){
+        margin-bottom: 20px;
+    }
 }
 .library-picture{
     width: 100%;
     height: 398px;
     border-radius: 5px;
-    
+    @include tablet{
+        height: 455px;
+    }
+    @include desktop{
+        height: 574px;
+    }
     background-color: rgb(213, 235, 227);
 }
 .library-info{
     padding-top: 8px;
+    @include desktop{
+        padding-top: 12px;
+    }
+
     background-color: rgb(240, 226, 209);;
 }
 .library-title{
-    
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.14;
+    @include text(500, 12px, 16px);
     color: var(--color-title);
     text-transform: uppercase;
+    @include desktop{
+        @include text(500, 20px, 24px);
+    }
 }
 .library-text{
     display: flex;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.14;
+    @include text(500, 12px, 16px);
     color: var( --accent);
+    @include desktop{
+        @include text(500, 20px, 24px);
+    }
 }
 .library-line{
     margin-right: 4px;
@@ -46,8 +88,23 @@
     background-color: var( --accent);
     color: var(--header-color-text);
     @include text(500, 12px, 14px);
-    margin-left: 10px;
+    margin-left: 8px;
    @include flexCenter;
+   @include desktop{
+    width: 40px;
+    height: 20px;
+
+   }
     
 
+}
+.library-second{
+    @media screen and (max-width: 743px){
+        display: none;
+    }
+}
+.library-last{
+    @media screen and ( min-width: 744px) and (max-width: 1255px){
+        display: none;
+    }
 }
