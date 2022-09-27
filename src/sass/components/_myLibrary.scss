@@ -3,7 +3,8 @@
     padding-bottom: 40px;
     @include tablet{
         padding-top: 60px;
-        padding-bottom: 60px;
+        padding-bottom: 28px;
+     
     }
 }
 .library-list{
@@ -11,10 +12,8 @@
     @include tablet{
         display: flex;
         flex-wrap: wrap;
-
-        // flex-direction: row;
-        margin-right: -32px;
-        margin-top: -32px;
+        flex-direction: row;
+  
     }
 }
 .library-item{
@@ -22,19 +21,26 @@
     margin: 0 auto;
     width: 280px;
     height: 438px;
-    @include tablet{
-        width: 336px;
-        // flex-basis: 336px;
+    @media screen and ( min-width: 744px) and (max-width: 1255px){
+    // @include tablet{
+        // width: 336px;
+        flex-basis: 336px;
         height: 495px;
-        margin-right: 32px;
-        margin-top: 32px;
+        margin-bottom: 32px;
+        &:nth-child(2n + 1){
+            margin-right: 32px;
+        }
+     
     }
     @include desktop{
         width: 395px;
         height: 634px;
+        margin-bottom: 32px;
+
     }
-    
+   
 }
+
 .library-item:nth-child(-n + 3) {
     @media screen and (max-width: 743px){
         margin-bottom: 20px;
