@@ -17,37 +17,47 @@
             </ul>
         </nav>
     </div>
-
     <form id="search-form" action="" class="search">
-        <input class="search__input" type="text" placeholder="Movie search" />
-        <button class="search__button" type="submit" title="Go!">
-            <svg class="search__button-icon icon-search width="12" height="12">
-                <use href="./images/icons/sprite.svg#search"></use>
-            </svg>
-        </button>
-    </form>
+    <input class="search__input" type="text" placeholder="Movie search" />
+    <button class="search__button" type="submit" title="Go!">
+      <svg class="search__button-icon icon-search" width="12" height="12">
+        <use href="./images/icons/sprite.svg#search"></use>
+      </svg>
+    </button>
+  </form>
 
-    <div class="toolbar container">
-        <!-- Разметка переключателя темы -->
-        <div class="theme-switch">
-            <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-                <use href="./images/icons/sprite.svg#sun"></use>
-            </svg>
+  <div class="toolbar container">
+    <!-- Разметка переключателя темы -->
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
+        <use href="./images/icons/sprite.svg#sun"></use>
+      </svg>
 
-            <div class="theme-switch__control">
-                <input class="theme-switch__toggle" type="checkbox" name="theme" id="theme-switch-toggle"
-                    aria-label="Switch between dark and light themes" />
-                <label aria-hidden="true" class="theme-switch__track" for="theme-switch-toggle">
-                </label>
-                <div aria-hidden="true" class="theme-switch__marker"></div>
-            </div>
+      <div class="theme-switch__control">
+        <input
+          class="theme-switch__toggle"
+          type="checkbox"
+          name="theme"
+          id="theme-switch-toggle"
+          aria-label="Switch between dark and light themes"
+        />
+        <label
+          aria-hidden="true"
+          class="theme-switch__track"
+          for="theme-switch-toggle"
+        >
+        </label>
+        <div aria-hidden="true" class="theme-switch__marker"></div>
+      </div>
 
-            <svg class="theme-switch__icon" aria-label="Moon icon">
-                <use href="./images/icons/sprite.svg#moon"></use>
-            </svg>
-        </div>
+      <svg class="theme-switch__icon" aria-label="Moon icon">
+        <use href="./images/icons/sprite.svg#moon"></use>
+      </svg>
     </div>
+  </div>
 
-    <!-- Уведомление об ошибке -->
-    <p class="warning-notification">Search result not successful. Enter the correct movie name and</p>
+  <!-- Уведомление об ошибке -->
+  <p class="warning-notification">
+    Search result not successful. Enter the correct movie name and
+  </p>
 </header>
