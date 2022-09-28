@@ -28,7 +28,7 @@ async function renderFilmCards(data) {
         src="https://image.tmdb.org/t/p/original/${poster_path}"
         alt=""
     />
-    </a>
+    
     <h2 class="card__title">${title}</h2>
     <div class="card__text">
         <p class="card__info">${genresList} | ${release_date
@@ -36,6 +36,8 @@ async function renderFilmCards(data) {
         .join('')}</p>
         <div class="card__rating">${vote_average}</div>
     </div>
+    </a>
+
 </li>`;
     }
   );
