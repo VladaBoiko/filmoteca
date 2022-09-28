@@ -1,5 +1,4 @@
-import { dataMovieList } from './API/api';
-import { dataGenre } from './API/api';
+import { dataMovieList, dataGenre } from './API/api';
 const galleryListEl = document.querySelector('#gallery-list');
 async function getAllGenres(lang = 'en-US') {
   return await dataGenre((language = lang));
