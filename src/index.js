@@ -6,6 +6,12 @@ dataMovieList().then(data => {
   console.log(data);
   const filmList = data.results.map(
     ({ title, vote_average, genre_ids, release_date, poster_path }) => {
+      // genreDecoder(genre_ids);
+      // async function genres() {
+      //   const genre = await genreDecoder(genre_ids);
+      //   return genre;
+      // }
+      // console.log(genres);
       return `<li class="card__item">
     <a class="card__link" href = "">
         <img class="card__img"
@@ -19,15 +25,20 @@ dataMovieList().then(data => {
         .split('', 4)
         .join('')}</p>
         <div class="card__rating">${vote_average}</div>
-    </div>  
+    </div>
 </li>`;
     }
   );
   galleryListEl.insertAdjacentHTML('beforeend', filmList.join(''));
 });
-const allGenres = [];
+// genreDecoder();
 async function genreDecoder(genre_ids) {
+  const allGenres = [];
+  // const temp = await dataGenre((language = 'en-US'));
+  // console.log(temp);
+  // return temp;
   const genresData = await dataGenre((language = 'en-US')).then(data => {
+    // console.log(data);
     const allDataGenres = data.genres;
     allDataGenres.map(genre => {
       if (genre_ids.includes(genre.id)) {
@@ -37,6 +48,8 @@ async function genreDecoder(genre_ids) {
     console.log(allGenres.join(', '));
     return allGenres.join(', ');
   });
+  // console.log(genresData);
+  return genresData;
   // const arrayOfgenres = array.map(a => {
   //   switch (a) {
   //     case 28:
@@ -100,3 +113,33 @@ async function genreDecoder(genre_ids) {
   // });
   // return arrayOfgenres.join(', ');
 }
+// dataMovieList().then(data => {
+//   // console.log(data);
+//   const filmList = data.results.map(
+//     ({ title, vote_average, genre_ids, release_date, poster_path }) => {
+//       // (x) => {
+//       // genreDecoder(genre_ids);
+//       const genres = genreDecoder(genre_ids).then(allGenres => {
+//         return `<li class="card__item">
+//     <a class="card__link" href = "">
+//         <img class="card__img"
+//         src="https://image.tmdb.org/t/p/original/${poster_path}"
+//         alt=""
+//     />
+//     </a>
+//     <h2 class="card__title">${title}</h2>
+//     <div class="card__text">
+//         <p class="card__info">${allGenres} | ${release_date
+//           .split('', 4)
+//           .join('')}</p>
+//         <div class="card__rating">${vote_average}</div>
+//     </div>
+// </li>`;
+//       });
+//       return genres;
+//     }
+//   );
+//   // console.log(genres);
+//   console.log(filmList);
+//   galleryListEl.insertAdjacentHTML('beforeend', filmList.join(''));
+// });
