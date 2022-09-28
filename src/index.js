@@ -1,4 +1,4 @@
-// import './js/render';
+import './js/render';
 // import { dataMovieList } from './js/API/api';
 // import { dataGenre } from './js/API/api';
 // const galleryListEl = document.querySelector('#gallery-list');
