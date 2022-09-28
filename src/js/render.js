@@ -1,17 +1,18 @@
 import { dataMovieList, dataGenre } from './API/api';
 const galleryListEl = document.querySelector('#gallery-list');
-async function getAllGenres(lang = 'en-US') {
-  return await dataGenre((language = lang));
-}
 const page = 1;
 const language = 'en-US';
+async function getAllGenres(language) {
+  return await dataGenre(language);
+}
+
 async function request() {
   const data = await dataMovieList(page, language);
   renderFilmCards(data);
 }
 
 async function renderFilmCards(data) {
-  const genresData = (await getAllGenres('en-US')).genres;
+  const genresData = (await getAllGenres(language)).genres;
   const filmList = data.results.map(
     ({ title, vote_average, genre_ids, release_date, poster_path }) => {
       const genresList = genre_ids
