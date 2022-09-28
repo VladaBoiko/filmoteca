@@ -30,12 +30,12 @@
     }
     }
       @include tablet{
-        min-width: 336px;
+        width: 336px;
         // flex-basis: calc((100% - 2 * 32px) / 2);
          
     }
     @include desktop{
-        min-width: 395px;
+        width: 395px;
     //    flex-basis: calc((100% - 3 * 16px) / 3);
 
     }
