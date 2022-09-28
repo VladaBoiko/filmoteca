@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header__library">
     <div class="navigation__container">
         <a href="./" class="logo">
             <svg class="logo__svg icon-film">
@@ -9,7 +9,7 @@
         <nav class="navigation">
             <ul class="menu list">
                 <li class="menu__item">
-                    <a href="" class="link  menu__link menu__link-home">Home</a>
+                    <a href="./index.html" class="link  menu__link menu__link-home">Home</a>
                 </li>
                 <li class="menu__item">
                     <a href="./library.html" class="link current menu__link menu__link-library">My library</a>
@@ -39,3 +39,29 @@
             </svg>
         </div>
     </div>
+<form>
+    <div role="group">
+        <ul class="storage js-choice-storage">
+            <li class="storage__item">
+                <label class="storage__label">
+                    <input type="radio" name="storage-btn" value="Watched" class="storage__input visuallyhidden"
+                        checked />
+                    <span class="storage__btn" id="js-WatchedButton">Watched</span>
+                </label>
+            </li>
+            <li class="storage__item">
+                <label class="storage__label">
+                    <input type="radio" name="storage-btn" value="Queue" class="storage__input visuallyhidden" />
+                    <span class="storage__btn" id="js-QueueButton">Queue</span>
+                </label>
+            </li>
+        </ul>
+</form>
+</div>
+<div class="js-warning header-warning"></div>
+<div class="js-search-results header-warning"></div>
+</div>
+
+</div>
+
+</header>

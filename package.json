@@ -2,20 +2,20 @@
   "name": "filmoteka-team-project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://VladaBoiko.github.io/filmoteca_team-proj",
+  "homepage": "https://VladaBoiko.github.io/filmoteca",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /filmoteca_team-proj/"
+    "build": "parcel build src/*.html --public-url /filmoteca/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VladaBoiko/filmoteca_team-proj.git"
+    "url": "git+https://github.com/VladaBoiko/filmoteca.git"
   },
   "keywords": [],
   "author": "Boiko Vladyslava <bermezha@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VladaBoiko/filmoteca_team-proj/issues"
+    "url": "https://github.com/VladaBoiko/filmoteca/issues"
   },
   "dependencies": {
     "axios": "^0.27.2",

@@ -103,6 +103,14 @@
   align-self: center;
   stroke: var(--icon-film-color);
 
+  @include mobile {
+    margin-right: 113px;
+  }
+
+  @include tablet {
+    margin-right: 10px;
+  }
+
   @include desktop {
     margin-right: 10px;
   }
@@ -247,10 +255,3 @@
   font-weight: 400;
   color: var(--error);
 }
-
-// // Breakpoints
-// $mobile: 320px;
-// $to-tablet: 767px;
-// $tablet: 768px;
-// $to-desktop: 1023px;
-// $desktop: 1024px;
