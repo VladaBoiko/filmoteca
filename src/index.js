@@ -4,11 +4,11 @@ const galleryListEl = document.querySelector('#gallery-list');
 dataMovieList().then(data => {
   console.log(data);
   const filmList = data.results.map(
-    ({ title, vote_average, genre_ids, release_date, backdrop_path }) => {
+    ({ title, vote_average, genre_ids, release_date, poster_path }) => {
       return `<li class="card__item">
     <a class="card__link" href = "">
         <img class="card__img"
-        src="https://image.tmdb.org/t/p/original/${backdrop_path}"
+        src="https://image.tmdb.org/t/p/original/${poster_path}"
         alt=""
     />
     </a>
@@ -23,7 +23,6 @@ dataMovieList().then(data => {
     }
   );
   galleryListEl.insertAdjacentHTML('beforeend', filmList.join(''));
-  console.log(filmList);
 });
 
 function genreDecoder(array) {
@@ -85,6 +84,9 @@ function genreDecoder(array) {
         break;
       case 10752:
         return `War`;
+        break;
+      default:
+        return 'new genre';
         break;
     }
   });
