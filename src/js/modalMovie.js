@@ -8,6 +8,7 @@ export const movieModal = () => {
   const toggleMovieModal = () => {
     backDropMovie.classList.toggle('is-hidden');
     body.classList.toggle('noscroll');
+    console.log('click');
   };
   const onEscKeyPress = evt => {
     if (evt.code === 'Escape') {

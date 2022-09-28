@@ -5,35 +5,39 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.17);
-  &.is-hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
+  z-index: 2;
+  transition: opacity var(--transition), visibility var(--transition);
 }
 
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 48px 20px; // 40-36 /40-12
-  transform: translate(-50%, -50%);
+  padding: 48px 20px;
+  transform: translate(-50%, -50%) scale(1);
   width: 280px;
-  @media screen and (max-width: $to-tablet) {
+  @include to-tablet {
     max-height: 90vh;
     overflow-y: auto;
   }
   background-color: var(--modal-background-color);
 
-  @media screen and (min-width: $tablet) {
+  @include tablet {
     width: 704px;
     padding: 40px 36px;
   }
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     width: 856px;
     padding: 40px 12px;
   }
 
-  // .modal__close-btn
+  transition: transform var(--transition);
+
+  .backdrop.is-hidden & {
+    transform: translate(-50%, -50%) scale(1.3);
+    transition: transform var(--transition);
+  }
+
   &__close-btn {
     position: absolute;
     right: 8px;
@@ -47,12 +51,12 @@
     &:after {
       content: '';
       position: absolute;
-      // left: 14px;
       left: 8px;
       top: 50%;
       width: 14px;
       height: 1px;
       background-color: #000;
+      transition: background-color var(--transition);
     }
     &:before {
       transform: rotate(45deg);
@@ -60,117 +64,118 @@
     &:after {
       transform: rotate(-45deg);
     }
+    &:hover,
+    &:focus {
+      &:before,
+      &:after {
+        height: 2px;
+        background-color: var(--accent);
+      }
+    }
   }
 }
 .movie {
-  @media screen and (min-width: $tablet) {
+  @include tablet {
     display: flex;
     gap: 68px;
   }
-  @media screen and (min-width: $desktop) {
+  @include desktop {
     gap: 16px;
   }
-  // .movie__tumb
+
   &__tumb {
     & img {
       border-radius: 5px;
     }
-    @media screen and (max-width: $to-tablet) {
+    @mixin to-tablet {
       margin-bottom: 20px;
     }
-    @media screen and (min-width: $tablet) {
+    @include tablet {
       width: 42%;
       flex-shrink: 0;
     }
-    @media screen and (min-width: $desktop) {
+    @include desktop {
       width: 45%;
     }
   }
-  // .movie__content
-  &__content {
-  }
-  // .movie__title
+
   &__title {
     @include text(500, 20px, 23px);
     text-transform: uppercase;
     margin-bottom: 20px;
-    @media screen and (min-width: $desktop) {
+    @include desktop {
       @include text(null, 30px, 35px);
     }
   }
-  // .card__stats
+
   &__stats {
     margin-bottom: 20px;
   }
-  // .movie__sub-title
+
   &__sub-title {
     margin-bottom: 8px;
     @include text(500, 12px, 16px);
   }
-  &__discription {
+  &__description {
     margin-bottom: 20px;
     @include text(500, 12px, 20px);
   }
-  // .movie__button
+
   &__actions {
     display: flex;
     gap: 20px;
-    @media screen and (min-width: $tablet) {
+    @include tablet {
       gap: 15px;
     }
   }
+
   &__button {
     padding: 5px 12px;
-    width: 110px;
-    @media screen and (min-width: $tablet) {
-      width: 125px;
+    min-width: 110px;
+    @include tablet {
+      min-width: 125px;
     }
-    @media screen and (min-width: $desktop) {
-      width: 136px;
+    @include desktop {
+      min-width: 136px;
     }
-    height: 44px;
+    min-height: 44px;
     border-radius: 5px;
-    transition: background-color 250ms ease, border-color 250ms ease;
+    background-color: transparent;
+    border: 1px solid var(--border-button-color);
+    transition: background-color var(--transition),
+      border-color var(--transition), color var(--transition);
     @include text(500, 12px, 16px);
     text-transform: uppercase;
 
-    &--colored {
+    &:hover,
+    &:focus {
       color: var(--text-revers-color-button);
       background-color: var(--accent);
-      &:hover,
-      &:focus {
-        background-color: #ba4e06;
-      }
-    }
-    &--transparent {
-      background-color: transparent;
-      border: 1px solid var(--border-button-color);
-      &:hover,
-      &:focus {
-        background-color: rgb(142, 142, 142);
-        border-color: rgb(142, 142, 142);
-      }
+      border-color: transparent;
     }
   }
 }
+
 .stats {
   @include text(500, 12px, 16px);
+
   & span {
     display: inline-block;
   }
+
   &__name {
     font-style: italic;
     width: 110px;
   }
+
   &__row:not(:last-child) {
     margin-bottom: 8px;
   }
-  // .stat__name
+
   &__name {
     color: var(--params-name);
   }
 
-  // .stat__value
   &__value {
     line-height: 1.7;
     color: #000000;
@@ -178,21 +183,17 @@
       text-transform: uppercase;
     }
   }
-  // .card__vote
+
   &__vote {
     padding: 1px 10px;
     color: var(--text-revers-color-button);
     background-color: var(--accent);
     border-radius: 5px;
   }
-  // .card__votes
+
   &__votes {
     padding: 1px 4px;
     background-color: #f7f7f7;
     border-radius: 5px;
   }
-}
-
-.noscroll {
-  overflow: hidden;
 }
