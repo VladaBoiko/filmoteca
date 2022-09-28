@@ -8,5 +8,7 @@ export const refs = {
   // movie
   // footer
   // modalMovie
+  openModalMovie: document.querySelector('[data-movie-modal-open]'),
+  closeModalMovie: document.querySelector('[data-movie-modal-close]'),
   // modalTeam
 };
