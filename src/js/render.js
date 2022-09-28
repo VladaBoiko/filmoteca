@@ -3,8 +3,9 @@ const galleryListEl = document.querySelector('#gallery-list');
 async function getAllGenres(lang = 'en-US') {
   return await dataGenre((language = lang));
 }
+const page = 1;
 async function request() {
-  const data = await dataMovieList((page = 1), (language = 'en-US'));
+  const data = await dataMovieList(page, (language = 'en-US'));
   renderFilmCards(data);
 }
 
