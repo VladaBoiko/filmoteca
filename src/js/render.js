@@ -4,8 +4,9 @@ async function getAllGenres(lang = 'en-US') {
   return await dataGenre((language = lang));
 }
 const page = 1;
+const language = 'en-US';
 async function request() {
-  const data = await dataMovieList(page, (language = 'en-US'));
+  const data = await dataMovieList(page, language);
   renderFilmCards(data);
 }
 
