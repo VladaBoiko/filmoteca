@@ -201,6 +201,16 @@ html {
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+@media screen and (min-width: 320px) {
+  .logo__svg {
+    margin-right: 113px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .logo__svg {
+    margin-right: 10px;
+  }
+}
 @media screen and (min-width: 1280px) {
   .logo__svg {
     margin-right: 10px;
@@ -461,17 +471,74 @@ body.dark-theme .footer-link:hover {
 }
 
 .header__library {
-  background-color: #000000;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 45px 20px;
+  height: 230px;
+  font-weight: 500;
+  color: var(--header-color-text);
+  background-color: #2a2a2a;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-mobile@2x.jpg);
-  background-position: 50%;
+  background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
 }
+@media screen and (min-width: 768px) {
+  .header__library {
+    padding: 45px 60px 20px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-tablet@2x.jpg);
+  }
+}
 @media screen and (min-width: 1280px) {
   .header__library {
+    padding-top: 40px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), url(../images/header-library-background-desktop@2x.jpg);
   }
 }
 .header__library .current::after {
   width: 69px;
+}
+
+.storage {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+  .storage {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .storage__item:first-child {
+    margin-right: 15px;
+  }
+}
+
+.storage__btn {
+  display: block;
+  padding-top: 14px;
+  padding-bottom: 12px;
+  min-width: 130px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--header-color-text);
+  cursor: pointer;
+  border: 1px solid var(--header-color-text);
+  border-radius: 5px;
+}
+@media screen and (min-width: 768px) {
+  .storage__btn {
+    min-width: 136px;
+  }
+}
+
+.storage__input:checked ~ .storage__btn {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--header-color-text);
 }/*# sourceMappingURL=index.css.map */
