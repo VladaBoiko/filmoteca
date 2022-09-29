@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.17);
+  background-color: rgba(0, 0, 0, 0.33);
   z-index: 2;
   transition: opacity var(--transition);
 }
@@ -85,7 +85,7 @@
     & img {
       border-radius: 5px;
     }
-    @mixin to-tablet {
+    @include to-tablet {
       margin-bottom: 20px;
     }
     @include tablet {
