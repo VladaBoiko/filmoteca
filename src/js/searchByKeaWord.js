@@ -1,7 +1,7 @@
 import { refs } from './refs';
 import { dataSearch, dataGenre } from './API/api';
 import Notiflix from 'notiflix';
-// import { renderFilmCards } from './render';
+
 const page = 1;
 const language = 'en-US';
 refs.searchForm.addEventListener('submit', onSearch);
@@ -17,19 +17,26 @@ async function onSearch(evt) {
   console.log(searchQuery);
   const data = await dataSearch(searchQuery);
   console.log(data);
-  renderFilmCards(data);
-  // renderBySearch(data);
+    renderFilmCards(data);
+    refs.searchForm.reset();
   if (!searchQuery) {
     Notiflix.Notify.failure(`Oops, the search is empty`);
     return;
-  }
-  // galleryBySearch.innerHTML = '';
+    }
+    
+    if (data.total_results > 0) {
+        Notiflix.Notify.success(`Success! We've found ${data.total_results}`)
+    }
+
+    if (data.total_results === 0) {
+        Notiflix.Notify.warning('Sorry! The search has no results');
+    }
 }
 
 async function renderFilmCards(data) {
   const genresData = (await getAllGenres(language)).genres;
   const filmList = data.results.map(
-    ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
+    ({ id, title, vote_average, genre_ids, release_date = "un", poster_path }) => {
       const allGenres = [];
       genresData
         .map(genre => {
@@ -38,20 +45,6 @@ async function renderFilmCards(data) {
           }
         })
         .join(', ');
-      //   const genresList = genre_ids
-      // .map(idNum => {
-      //   //   for (const obj of genresData) {
-      //   //     if (idNum === obj.id) {
-      //   //       return (id = obj.name);
-      //   //     }
-      //   //   }
-      //   for (const obj of genresData) {
-      //     if (idNum === obj.id) {
-      //       return (id = obj.name);
-      //     }
-      //   }
-      // })
-      // .join(', ');
       return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
         <img class="card__img"
@@ -74,36 +67,5 @@ async function renderFilmCards(data) {
 </li>`;
     }
   );
-  // galleryListEl.insertAdjacentHTML('beforeend', filmList.join(''));
   galleryBySearch.innerHTML = filmList.join('');
 }
-
-// function renderBySearch(data) {
-//   const filmsBySearchMarkUp = data.results
-//     .map(
-//       ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
-//         return `<li data-movie-id="${id}" class="card__item">
-//     <a class="card__link" href = "">
-//         <img class="card__img"
-//         src="https://image.tmdb.org/t/p/original/${poster_path}"
-//         alt=""
-//     />
-
-//     <h2 class="card__title">${title}</h2>
-//     <div class="card__text">
-//         <p class="card__info">${genre_ids} | ${release_date
-//           .split('', 4)
-//           .join('')}</p>
-//         <div class="card__rating">${vote_average
-//           .toString()
-//           .split('', 3)
-//           .join('')}</div>
-//     </div>
-//     </a>
-
-// </li>`;
-//       }
-//     )
-//     .join('');
-//   galleryBySearch.insertAdjacentHTML('beforeend', filmsBySearchMarkUp.join(''));
-// }
