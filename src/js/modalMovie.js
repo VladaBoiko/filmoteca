@@ -67,7 +67,8 @@ const movieDataMarkup = movie => {
 
 movieList.addEventListener('click', async event => {
   event.preventDefault();
-  const movie = await dataMovie(30150);
+  const id = event.target.closest('.card__item').dataset.movieId;
+  const movie = await dataMovie(id);
   movieDetail.innerHTML = movieDataMarkup(movie);
   modalHandle('movie');
 });
