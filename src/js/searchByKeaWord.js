@@ -1,5 +1,5 @@
-import { refs } from '../new/refs';
-import { dataSearch } from '../API/api';
+import { refs } from './refs';
+import { dataSearch } from './API/api';
 
 refs.searchForm.addEventListener('submit', onSearch);
 

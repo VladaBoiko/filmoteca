@@ -1,7 +1,7 @@
 export const refs = {
   // preLoader
   // header
-  // search
+  searchForm: document.querySelector('#search-form'),
   // myLibrary
   // interface
   // genere
