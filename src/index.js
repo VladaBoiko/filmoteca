@@ -1,7 +1,5 @@
+import './js/modalMovie';
 
-import { movieModal } from './js/modalMovie';
-
-movieModal();
 import './js/render';
 // import { dataMovieList } from './js/API/api';
 // import { dataGenre } from './js/API/api';
