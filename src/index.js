@@ -1,6 +1,7 @@
 import './js/modalMovie';
 
 import './js/render';
+import './js/new/searchByKeaWord';
 // import { dataMovieList } from './js/API/api';
 // import { dataGenre } from './js/API/api';
 // const galleryListEl = document.querySelector('#gallery-list');
