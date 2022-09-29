@@ -42,22 +42,19 @@
 .card__link{
     display:block;
     width: 100%;
-    position: relative;
-    top: 0;
-    left: 0;
     transition: border-radius 250ms cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-                top 250ms cubic-bezier(0.4, 0, 0.2, 1),
-                left 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                text-align 250ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
    &:hover,
    &:focus{
-    box-shadow: 0 14px 28px rgba(204, 200, 200, 0.25), 0 15px 18px 0px rgba(0,0,0,0.35);
+    box-shadow: 0px 0px 20px 4px #4d545e;
     border-radius: 10px;
-    top: -5px;
-    left: -5px;
-   
+    transform: scale(0.97);
+    text-align: center;
    }
 }
+
 .card__title{
     margin-top: 10px;
     @include text(500, 12px, 16px);
@@ -76,6 +73,9 @@
         @include text(500, 20px, 24px);
     }
 }
+.card__info{
+    transition: margin 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 .card__rating{
     width: 36px;
     height: 16px;
@@ -88,10 +88,18 @@
    @include desktop{
     width: 40px;
     height: 20px;
-
+    transition: margin-right 250ms cubic-bezier(0.4, 0, 0.2, 1);
    }
   
 
+}
+.card__link:hover .card__info,
+.card__link:focus .card__info{
+    margin: 0 auto 5px;
+}
+.card__link:hover .card__rating,
+.card__link:focus .card__rating{
+    margin-right: 5px;
 }
 
 .card__img{
