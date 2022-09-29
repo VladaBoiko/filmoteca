@@ -31,14 +31,18 @@ const movieDataMarkup = movie => {
           <li class="stats__row">
             <span class="stats__name">Vote / Votes</span>
             <span class="statss__value">
-              <span class="stats__vote">${vote_average}</span>
+              <span class="stats__vote">${
+                Math.round(vote_average * 10) / 10
+              }</span>
               /
               <span class="stats__votes">${vote_count}</span>
             </span>
           </li>
           <li class="stats__row">
             <span class="stats__name">Popularity</span>
-            <span class="stats__value">${popularity}</span>
+            <span class="stats__value">${
+              Math.round(popularity * 10) / 10
+            }</span>
           </li>
           <li class="stats__row">
             <span class="stats__name">Original Title</span>
