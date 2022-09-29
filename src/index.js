@@ -16,12 +16,12 @@ async function renderFilmCards(data) {
   console.log(data);
   const genresData = (await getAllGenres('en-US')).genres;
   const filmList = data.results.map(
-    ({ title, vote_average, genre_ids, release_date, poster_path, id }) => {
+    ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
       const genresList = genre_ids
         .map(idNum => {
           for (const obj of genresData) {
             if (idNum === obj.id) {
-              return (id = obj.name);
+              return obj.name;
             }
           }
         })
