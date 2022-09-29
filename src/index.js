@@ -1,6 +1,7 @@
+import './js/render';
+
 import './js/modalMovie';
 
-import './js/render';
 import './js/searchByKeaWord';
 // import { dataMovieList } from './js/API/api';
 // import { dataGenre } from './js/API/api';

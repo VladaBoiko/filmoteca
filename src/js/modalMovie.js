@@ -28,7 +28,8 @@ const movieDataMarkup = movie => {
         />
       </div>
       <div class="movie__content">
-        <h2 class="movie__title">${title}</h2>
+      <div class="movie__body">
+      <h2 class="movie__title">${title}</h2>
         <ul class="movie__stats stats">
           <li class="stats__row">
             <span class="stats__name">Vote / Votes</span>
@@ -63,7 +64,8 @@ const movieDataMarkup = movie => {
         <p class="movie__description">
           ${overview}
         </p>
-        <button class="movie__button trailer" data-movie-tailer-id="${id}">Trailer</button>
+        <button class="movie__button-trailer" data-movie-tailer-id="${id}"></button>
+        </div>  
         <div class="movie__actions">
           <button type="button" class="movie__button">Add to watched</button>
           <button type="button" class="movie__button">Add to Queue</button>
@@ -72,21 +74,27 @@ const movieDataMarkup = movie => {
   `;
 };
 
-// const movieTrailerMarkup = trailer => {
-//   return
-// }
+const movieTrailerMarkup = trailer => {
+  return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${trailer.results[0].key}?autoplay=1" title="${trailer.results[0].name}" frameborder="0" allow="accelerometer"; autoplay; clipboard-write; encrypted-media; allowfullscreen></iframe>`;
+};
+
+const renderMarkup = (container, markup) => {
+  container.innerHTML = markup;
+};
 
 movieList.addEventListener('click', async event => {
   event.preventDefault();
   const id = event.target.closest('.card__item').dataset.movieId;
   const movie = await dataMovie(id);
   const trailer = await dataTrailer(id);
-  console.log(trailer);
-  movieDetail.innerHTML = movieDataMarkup(movie);
-  modalHandle('movie');
+
+  renderMarkup(movieDetail, movieDataMarkup(movie));
+  modalHandle('movie', movieDetail);
 
   const trailerBtn = document.querySelector('[data-movie-tailer-id]');
+
   trailerBtn.addEventListener('click', () => {
-    // modalHandle('movie-trailer');
+    renderMarkup(movieTrailer, movieTrailerMarkup(trailer));
+    modalHandle('movie-trailer', movieTrailer);
   });
 });
