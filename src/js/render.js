@@ -61,4 +61,5 @@ async function renderFilmCards(data) {
   );
   galleryListEl.insertAdjacentHTML('beforeend', filmList.join(''));
 }
+
 request();
