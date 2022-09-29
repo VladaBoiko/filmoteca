@@ -1,7 +1,7 @@
 export const modalHandle = modalName => {
   const body = document.querySelector('body');
-  const backdrop = document.querySelector('.backdrop');
   const modal = document.querySelector(`[data-modal="${modalName}"]`);
+  const backdrop = modal.closest('.backdrop');
   const closeModalBtn = document.querySelector(
     `[data-modal-close="${modalName}"]`
   );
@@ -10,7 +10,7 @@ export const modalHandle = modalName => {
     backdrop.classList.toggle('is-hidden');
     modal.classList.toggle('is-hidden');
     body.classList.toggle('noscroll');
-    closeModalBtn.removeEventListener('click', toggleModal);
+    closeModalBtn && closeModalBtn.removeEventListener('click', toggleModal);
   };
 
   const onEscKeyPress = evt => {
@@ -30,5 +30,5 @@ export const modalHandle = modalName => {
   toggleModal();
   window.addEventListener('keydown', onEscKeyPress);
   backdrop.addEventListener('click', onBackdropClick);
-  closeModalBtn.addEventListener('click', toggleModal);
+  closeModalBtn && closeModalBtn.addEventListener('click', toggleModal);
 };

@@ -1,9 +1,10 @@
-import { dataMovie, IMG_URL } from './API/api';
+import { dataMovie, dataTrailer, IMG_URL } from './API/api';
 
 import { modalHandle } from './modalHandle';
 
 const movieList = document.getElementById('gallery-list');
 const movieDetail = document.getElementById('modal-movie-detail');
+const movieTrailer = document.getElementById('modal-movie-trailer');
 
 const movieDataMarkup = movie => {
   const {
@@ -15,6 +16,7 @@ const movieDataMarkup = movie => {
     original_title,
     genres,
     overview,
+    id,
   } = movie;
   return `
         <div class="movie__tumb">
@@ -61,6 +63,7 @@ const movieDataMarkup = movie => {
         <p class="movie__description">
           ${overview}
         </p>
+        <button class="movie__button trailer" data-movie-tailer-id="${id}">Trailer</button>
         <div class="movie__actions">
           <button type="button" class="movie__button">Add to watched</button>
           <button type="button" class="movie__button">Add to Queue</button>
@@ -69,10 +72,21 @@ const movieDataMarkup = movie => {
   `;
 };
 
+// const movieTrailerMarkup = trailer => {
+//   return
+// }
+
 movieList.addEventListener('click', async event => {
   event.preventDefault();
   const id = event.target.closest('.card__item').dataset.movieId;
   const movie = await dataMovie(id);
+  const trailer = await dataTrailer(id);
+  console.log(trailer);
   movieDetail.innerHTML = movieDataMarkup(movie);
   modalHandle('movie');
+
+  const trailerBtn = document.querySelector('[data-movie-tailer-id]');
+  trailerBtn.addEventListener('click', () => {
+    // modalHandle('movie-trailer');
+  });
 });
