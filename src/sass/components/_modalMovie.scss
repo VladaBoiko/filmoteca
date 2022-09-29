@@ -6,6 +6,9 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.33);
   z-index: 2;
+  opacity: 1;
+  &.is-hidden {
+  }
   transition: opacity var(--transition);
 }
 
@@ -20,6 +23,9 @@
   &.is-hidden {
     transform: translate(-50%, -100%) scale(0.3);
   }
+  transition: transform var(--transition), opacity var(--transition),
+    visibility var(--transition);
+
   @include to-tablet {
     max-height: 90vh;
     overflow-y: auto;
@@ -34,7 +40,6 @@
     width: 856px;
     padding: 40px 12px;
   }
-  transition: transform 500ms ease-out;
 
   &__close-btn {
     position: absolute;
