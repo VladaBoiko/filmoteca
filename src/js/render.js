@@ -14,7 +14,7 @@ async function request() {
 async function renderFilmCards(data) {
   const genresData = (await getAllGenres(language)).genres;
   const filmList = data.results.map(
-    ({ title, vote_average, genre_ids, release_date, poster_path }) => {
+    ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
       const allGenres = [];
       genresData
         .map(genre => {
@@ -37,7 +37,7 @@ async function renderFilmCards(data) {
       //   }
       // })
       // .join(', ');
-      return `<li class="card__item">
+      return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
         <img class="card__img"
         src="https://image.tmdb.org/t/p/original/${poster_path}"
@@ -49,7 +49,10 @@ async function renderFilmCards(data) {
         <p class="card__info">${allGenres} | ${release_date
         .split('', 4)
         .join('')}</p>
-        <div class="card__rating">${vote_average}</div>
+        <div class="card__rating">${vote_average
+          .toString()
+          .split('', 3)
+          .join('')}</div>
     </div>
     </a>
 
