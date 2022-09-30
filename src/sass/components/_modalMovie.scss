@@ -167,6 +167,11 @@
     @include desktop {
       min-width: 136px;
     }
+
+    &--hidden {
+      display: none;
+    }
+
     min-height: 44px;
     border-radius: 5px;
     background-color: transparent;
