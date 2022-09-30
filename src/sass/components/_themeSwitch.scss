@@ -34,20 +34,21 @@ body.dark-theme {
 }
 
 .toolbar {
+ 
   display: flex;
   justify-content: flex-end;
-  padding: 16px 24px;
-  // position: absolute;
-  // right: 0;
-  // top: 180px;
+ 
 }
 .theme-switch {
+ 
   display: flex;
   align-items: center;
+  
+ 
 }
 
 .theme-switch__icon {
-  color: currentColor;
+  color: lightgrey;
   height: 15px;
   width: 15px;
   margin-right: 8px;
@@ -108,7 +109,7 @@ body.dark-theme {
   background-color: var(--accent);
 }
 
-.theme-switch__toggle:checked ~ .theme-switch__marker {
+.theme-switch__toggle:checked ~ .theme__marker {
   transform: translateX(17px);
 }
 
