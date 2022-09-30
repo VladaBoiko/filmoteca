@@ -32,7 +32,7 @@ function notification(data, searchQuery) {
       'Sorry! The search has no results, change your serch word, please!'
     );
   }
-  if (!searchQuery) {
+  if (searchQuery === '') {
     errorSearch.style.display = 'block';
     Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
     return;
