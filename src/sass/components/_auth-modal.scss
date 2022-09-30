@@ -1,0 +1,112 @@
+.reg-modal,
+.singIn-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 400px;
+  height: 450px;
+  @include flexCenter;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background-color: var(--modal-background-color);
+  padding: 20px 10px;
+  border-radius: 5px;
+  transition: transform 500ms ease-out;
+  z-index: 300;
+  box-shadow: 0 0 3px 2px rgba(255, 107, 1, 0.371);
+}
+
+.reg-modal-title,
+.singIn-modal-title {
+  // color: var(--color-title);
+  color: var(--accent);
+  @include text(700, 24px, 24px);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.reg-modal-form,
+.singIn-modal-form {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// .reg-modal-form input {
+.reg-modal-username,
+.reg-modal-email,
+.reg-modal-password,
+.singIn-modal-email,
+.singIn-modal-password {
+  width: 80%;
+  height: 50px;
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px solid var(--border-button-color);
+  outline: none;
+  padding: 15px;
+  border-radius: 5px;
+
+  &:hover,
+  &:focus {
+    border: 1px solid var(--accent);
+    outline: 1px solid var(--accent);
+  }
+}
+
+.reg-modal-username,
+.reg-modal-email,
+.singIn-modal-email {
+  margin-bottom: 20px;
+}
+
+.reg-modal-btn-singUp,
+.singIn-modal-btn {
+  display: block;
+  width: 136px;
+  height: 44px;
+  background-color: var(--text-revers-color-button);
+  border: 1px solid var(--border-button-color);
+  color: var(--text-color-button);
+  margin-top: 30px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 30px;
+  border-radius: 5px;
+  @include text(500, 16px, 18px);
+  @include flexCenter;
+  text-transform: uppercase;
+
+  &:hover,
+  &:focus {
+    color: var(--text-revers-color-button);
+    background-color: var(--accent);
+    border: transparent;
+  }
+}
+
+.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.noscroll {
+  overflow: hidden;
+}
+
+// SING IN
+
+.modal-btn-singIn {
+  background-color: transparent;
+  color: var(--accent);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
