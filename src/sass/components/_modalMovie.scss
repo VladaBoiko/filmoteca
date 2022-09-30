@@ -44,16 +44,18 @@
   transition: transform var(--transition), opacity var(--transition),
     visibility var(--transition);
 
-  @include to-tablet {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
   background-color: var(--modal-background-color);
 
   @include tablet {
     width: 704px;
     padding: 40px 36px;
   }
+
+  @include to-desktop {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
   @include desktop {
     width: 856px;
     padding: 40px 12px;
