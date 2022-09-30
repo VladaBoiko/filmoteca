@@ -136,17 +136,37 @@ movieList.addEventListener('click', async event => {
     }
   }
 
+  function onWatchedBtnAddClick() {
+    watchedBtnAdd.classList.toggle('movie__button--hidden');
+    watchedBtnRemove.classList.toggle('movie__button--hidden');
+    watched.push(movie);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+
+  function onWatchedBtnRemoveClick() {
+    watchedBtnAdd.classList.toggle('movie__button--hidden');
+    watchedBtnRemove.classList.toggle('movie__button--hidden');
+    watched.splice(watched.indexOf(movie), 1);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+
+  function onQueueBtnAddClick() {
+    queueBtnAdd.classList.toggle('movie__button--hidden');
+    queueBtnRemove.classList.toggle('movie__button--hidden');
+    queue.push(movie);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+
+  function onQueueBtnRemoveClick() {
+    queueBtnAdd.classList.toggle('movie__button--hidden');
+    queueBtnRemove.classList.toggle('movie__button--hidden');
+    queue.splice(queue.indexOf(movie), 1);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+
   watchedBtnAdd.addEventListener('click', onWatchedBtnAddClick);
+  watchedBtnRemove.addEventListener('click', onWatchedBtnRemoveClick);
   queueBtnAdd.addEventListener('click', onQueueBtnAddClick);
+  queueBtnRemove.addEventListener('click', onQueueBtnRemoveClick);
   modalHandle('movie');
 });
-
-function onWatchedBtnAddClick(evt) {
-  watched.push(movie);
-  localStorage.setItem('watched', JSON.stringify(watched));
-}
-
-function onQueueBtnAddClick(evt) {
-  queue.push(movie);
-  localStorage.setItem('queue', JSON.stringify(queue));
-}
