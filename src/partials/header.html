@@ -21,19 +21,27 @@
       </ul>
     </nav>
   </div>
-  <form id="search-form" action="" class="search">
-    <input
-      class="search__input"
-      type="text"
-      placeholder="Movie search"
-      name="query"
-    />
-    <button class="search__button" type="submit" title="Go!">
-      <svg class="search__button-icon icon-search" width="12" height="12">
-        <use href="./images/icons/sprite.svg#search"></use>
-      </svg>
-    </button>
-  </form>
+  <div class="wrapper-header">
+    <form id="search-form" action="" class="search">
+      <input
+        class="search__input"
+        type="text"
+        placeholder="Movie search"
+        name="query"
+      />
+
+      <button class="search__button" type="submit" title="Go!">
+        <svg class="search__button-icon icon-search" width="12" height="12">
+          <use href="./images/icons/sprite.svg#search"></use>
+        </svg>
+      </button>
+    </form>
+    <div class="search-choice">
+      <span class="chose-type">Search by:</span>
+      <button class="search-choice-btn name">name</button>
+      <button class="search-choice-btn genre">genre</button>
+    </div>
+  </div>
 
   <div class="toolbar container">
     <!-- Разметка переключателя темы -->
@@ -67,6 +75,7 @@
 
   <!-- Уведомление об ошибке -->
   <p class="warning-notification">
-    Search result not successful. Enter the correct movie name and
+    Search result not successful. Enter the correct movie name and try again,
+    please
   </p>
 </header>
