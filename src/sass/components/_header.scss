@@ -116,6 +116,11 @@
   }
 }
 
+.navigation {
+  display: flex;
+  justify-content: end;
+}
+
 .menu__link {
   &:visited {
     color: var(--header-color-text);
@@ -349,4 +354,50 @@
     margin-left: 10px;
     margin-right: 10px;
   }
+}
+
+// блок реєстрації користувача
+.regs-btns {
+  display: flex;
+  margin-left: 40px;
+}
+
+.reg-btn-singUp,
+.logout-btn {
+  padding: 5px 0px;
+  width: 70px;
+  font-size: 12px;
+  line-height: 1.16;
+  color: var(--header-color-text);
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  text-transform: none;
+
+  border-radius: 5px;
+  @include flexCenter;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:not([disabled]):hover,
+  &:not([disabled]):focus {
+    background-color: var(--accent);
+    color: var(--text-color-button);
+  }
+
+  &:disabled,
+  &:disabled {
+    border: none;
+    color: var(--accent);
+    // background-color: var(--accent);
+    // color: var(--text-color-button);
+  }
+}
+
+.reg-btn-singUp {
+  margin-right: 10px;
+}
+
+.menu {
+  @include flexCenter;
 }

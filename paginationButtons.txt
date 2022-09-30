@@ -1,0 +1,9 @@
+      <div class="pagination">
+        <button class="pagination_previousBtn">prev</button>
+        <button class="pagination_firstPage">1</button>
+        <span class="pagination_points">...</span>
+        <button class="pagination_currentPage">current</button>
+        <span class="pagination_points">...</span>
+        <button class="pagination_lastPage">n</button>
+        <button class="pagination_nextBtn">next</button>
+      </div>

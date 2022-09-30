@@ -15,8 +15,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: 140px;
+  width: 90%;
+  height: 280px;
 
   @include tablet {
     width: 650px;
@@ -30,16 +30,18 @@
 
   transform: translate(-50%, -50%) scale(1);
 }
+
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   padding: 48px 20px;
-  width: 280px;
+  min-width: 280px;
+  width: 90%;
   transform: translate(-50%, -50%) scale(1);
 
   &.is-hidden {
-    transform: translate(-50%, -50%) scale(0.5);
+    transform: translate(-50%, -100%) scale(0.3);
   }
   transition: transform var(--transition), opacity var(--transition),
     visibility var(--transition);
@@ -53,6 +55,7 @@
 
   @include to-desktop {
     max-height: 90vh;
+
     overflow-y: auto;
   }
 
@@ -121,13 +124,13 @@
       width: 45%;
     }
   }
-  &__content {
-    display: flex;
-    flex-direction: column;
-  }
-  &__body {
-    flex-grow: 1;
-  }
+  // &__content {
+  //   // display: flex;
+  //   // flex-direction: column;
+  // }
+  // &__body {
+  //   // flex-grow: 1;
+  // }
   &__title {
     @include text(500, 20px, 23px);
     text-transform: uppercase;
@@ -152,6 +155,7 @@
 
   &__actions {
     display: flex;
+    justify-content: center;
     gap: 20px;
     @include tablet {
       gap: 15px;
@@ -167,6 +171,11 @@
     @include desktop {
       min-width: 136px;
     }
+
+    &--hidden {
+      display: none;
+    }
+
     min-height: 44px;
     border-radius: 5px;
     background-color: transparent;
@@ -185,22 +194,32 @@
   }
 
   &__button-trailer {
-    display: block;
     margin-left: auto;
     margin-right: auto;
+    display: block;
     margin-bottom: 20px;
-    width: 60px;
-    height: 60px;
-    background: url(../images/icons/icon-trailer.png) center/contain no-repeat;
+    padding: 15px 15px 15px 60px;
+    background: url(../images/icons/icon-trailer.png) 5px / contain no-repeat;
+    border-radius: 5px;
+    background-color: transparent;
+    @include text(500, 18px, 20px);
+
+    transition: background-color var(--transition), color var(--transition);
+
+    &:hover,
+    &:focus {
+      color: var(--text-revers-color-button);
+      background-color: var(--accent);
+    }
   }
 }
 
 .stats {
   @include text(500, 12px, 16px);
 
-  & span {
-    // display: inline-block;
-  }
+  // & span {
+  //   // display: inline-block;
+  // }
 
   &__name {
     font-style: italic;
@@ -211,6 +230,7 @@
 
   &__row {
     display: flex;
+    align-items: baseline;
     gap: 5px;
   }
   &__row:not(:last-child) {
