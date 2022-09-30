@@ -13,6 +13,7 @@ async function onSearch(evt) {
   evt.preventDefault();
   const searchQuery = evt.currentTarget.query.value.trim();
   if (searchQuery !== '') {
+    errorSearch.style.display = 'none';
     const data = await dataSearch(searchQuery, language, page);
     renderFilmCards(data);
     notification(data);
