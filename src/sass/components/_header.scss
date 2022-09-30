@@ -14,7 +14,7 @@
       rgba(0, 0, 0, 0.56),
       rgba(0, 0, 0, 0.56)
     ),
-    url(../images/header-background-mobile-2x.jpg);
+    url(../images/header-background-mobile-2x.jpeg);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
@@ -26,7 +26,7 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-background-tablet@2x.jpg);
+      url(../images/header-background-tablet@2x.jpeg);
   }
 
   @include desktop {
@@ -36,7 +36,7 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-background-desktop@2x.jpg);
+      url(../images/header-background-desktop@2x.jpeg);
   }
 }
 
@@ -47,7 +47,7 @@
 .navigation__container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   margin-bottom: 37px;
 
   @include tablet {
@@ -81,6 +81,11 @@
   @include desktop {
     margin-right: 564px;
   }
+}
+
+.navigation {
+  display: flex;
+  justify-content: end;
 }
 
 .menu__link {
@@ -176,9 +181,16 @@
   position: relative;
 
   width: 280px;
-  margin: 0 auto 22px;
+  margin: 0 auto 5px;
 
   justify-content: center;
+  @include tablet {
+    width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
+  }
 }
 
 .search__input {
@@ -212,8 +224,12 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @include desktop {
+  @include tablet {
     width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
   }
 }
 
@@ -254,4 +270,101 @@
   line-height: 1.17;
   font-weight: 400;
   color: var(--error);
+  display: none;
+  position: absolute;
+  top: 194px;
+  left: 20%;
+  @include tablet {
+    width: 336px;
+    left: 29.5%;
+  }
+
+  @include desktop {
+    width: 394px;
+    top: 194px;
+    left: 35.5%;
+  }
+}
+// то Влада
+.wrapper-header {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  @include tablet {
+    width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
+  }
+}
+.search-choice {
+  color: #929597;
+  font-size: 15px;
+}
+.search-choice-btn {
+  border: none;
+  background-color: transparent;
+  color: #929597;
+  font-size: 15px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    text-decoration-line: underline;
+  }
+  &:active {
+    text-decoration-line: underline;
+  }
+  &.name {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+// блок реєстрації користувача
+.regs-btns {
+  display: flex;
+  margin-left: 40px;
+}
+
+.reg-btn-singUp,
+.logout-btn {
+  padding: 5px 0px;
+  width: 70px;
+  font-size: 12px;
+  line-height: 1.16;
+  color: var(--header-color-text);
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  text-transform: none;
+
+  border-radius: 5px;
+  @include flexCenter;
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:not([disabled]):hover,
+  &:not([disabled]):focus {
+    background-color: var(--accent);
+    color: var(--text-color-button);
+  }
+
+  &:disabled,
+  &:disabled {
+    border: none;
+    color: var(--accent);
+    // background-color: var(--accent);
+    // color: var(--text-color-button);
+  }
+}
+
+.reg-btn-singUp {
+  margin-right: 10px;
+}
+
+.menu {
+  @include flexCenter;
 }

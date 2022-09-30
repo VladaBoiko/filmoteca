@@ -4,38 +4,61 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.17);
+  background-color: rgba(0, 0, 0, 0.33);
   z-index: 2;
-  transition: opacity var(--transition), visibility var(--transition);
+  opacity: 1;
+
+  transition: opacity var(--transition);
 }
 
+.modal-trailer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 280px;
+  height: 140px;
+
+  @include tablet {
+    width: 650px;
+    height: 370px;
+  }
+
+  @include desktop {
+    width: 720px;
+    height: 450px;
+  }
+
+  transform: translate(-50%, -50%) scale(1);
+}
 .modal {
   position: absolute;
   top: 50%;
   left: 50%;
   padding: 48px 20px;
-  transform: translate(-50%, -50%) scale(1);
   width: 280px;
-  @include to-tablet {
-    max-height: 90vh;
-    overflow-y: auto;
+  transform: translate(-50%, -50%) scale(1);
+
+  &.is-hidden {
+    transform: translate(-50%, -50%) scale(0.5);
   }
+  transition: transform var(--transition), opacity var(--transition),
+    visibility var(--transition);
+
   background-color: var(--modal-background-color);
 
   @include tablet {
     width: 704px;
     padding: 40px 36px;
   }
+
+  @include to-desktop {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
   @include desktop {
     width: 856px;
     padding: 40px 12px;
-  }
-
-  transition: transform var(--transition);
-
-  .backdrop.is-hidden & {
-    transform: translate(-50%, -50%) scale(1.3);
-    transition: transform var(--transition);
   }
 
   &__close-btn {
@@ -87,7 +110,7 @@
     & img {
       border-radius: 5px;
     }
-    @mixin to-tablet {
+    @include to-tablet {
       margin-bottom: 20px;
     }
     @include tablet {
@@ -98,7 +121,13 @@
       width: 45%;
     }
   }
-
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+  &__body {
+    flex-grow: 1;
+  }
   &__title {
     @include text(500, 20px, 23px);
     text-transform: uppercase;
@@ -154,26 +183,38 @@
       border-color: transparent;
     }
   }
+
+  &__button-trailer {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 60px;
+    height: 60px;
+    background: url(../images/icons/icon-trailer.png) center/contain no-repeat;
+  }
 }
 
 .stats {
   @include text(500, 12px, 16px);
 
   & span {
-    display: inline-block;
+    // display: inline-block;
   }
 
   &__name {
     font-style: italic;
     width: 110px;
+    flex-shrink: 0;
+    color: var(--params-name);
   }
 
+  &__row {
+    display: flex;
+    gap: 5px;
+  }
   &__row:not(:last-child) {
     margin-bottom: 8px;
-  }
-
-  &__name {
-    color: var(--params-name);
   }
 
   &__value {
