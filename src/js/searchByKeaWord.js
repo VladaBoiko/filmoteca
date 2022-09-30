@@ -16,9 +16,12 @@ async function onSearch(evt) {
   console.log(refs.searchForm);
   const searchQuery = evt.currentTarget.query.value.trim();
   console.log(searchQuery);
-  const data = await dataSearch(searchQuery, language, page);
-  console.log(data);
-  renderFilmCards(data);
+  if (searchQuery !== '') {
+    const data = await dataSearch(searchQuery, language, page);
+    console.log(data);
+    renderFilmCards(data);
+  }
+
   refs.searchForm.reset();
   if (!searchQuery) {
     errorSearch.style.display = 'block';
