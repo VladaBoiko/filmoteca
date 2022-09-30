@@ -1,9 +1,10 @@
-import { dataMovie, IMG_URL } from './API/api';
+import { dataMovie, dataTrailer, IMG_URL } from './API/api';
 
 import { modalHandle } from './modalHandle';
 
 const movieList = document.getElementById('gallery-list');
 const movieDetail = document.getElementById('modal-movie-detail');
+const movieTrailer = document.getElementById('modal-movie-trailer');
 
 const movieDataMarkup = movie => {
   const {
@@ -15,6 +16,7 @@ const movieDataMarkup = movie => {
     original_title,
     genres,
     overview,
+    id,
   } = movie;
   return `
         <div class="movie__tumb">
@@ -26,7 +28,8 @@ const movieDataMarkup = movie => {
         />
       </div>
       <div class="movie__content">
-        <h2 class="movie__title">${title}</h2>
+      <div class="movie__body">
+      <h2 class="movie__title">${title}</h2>
         <ul class="movie__stats stats">
           <li class="stats__row">
             <span class="stats__name">Vote / Votes</span>
@@ -61,6 +64,8 @@ const movieDataMarkup = movie => {
         <p class="movie__description">
           ${overview}
         </p>
+        <button class="movie__button-trailer" data-movie-tailer-id="${id}"></button>
+        </div>  
         <div class="movie__actions">
           <button type="button" class="movie__button">Add to watched</button>
           <button type="button" class="movie__button">Add to Queue</button>
@@ -69,10 +74,27 @@ const movieDataMarkup = movie => {
   `;
 };
 
+const movieTrailerMarkup = trailer => {
+  return `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${trailer.results[0].key}?autoplay=1" title="${trailer.results[0].name}" frameborder="0" allow="accelerometer"; autoplay; clipboard-write; encrypted-media; allowfullscreen></iframe>`;
+};
+
+const renderMarkup = (container, markup) => {
+  container.innerHTML = markup;
+};
+
 movieList.addEventListener('click', async event => {
   event.preventDefault();
   const id = event.target.closest('.card__item').dataset.movieId;
   const movie = await dataMovie(id);
-  movieDetail.innerHTML = movieDataMarkup(movie);
-  modalHandle('movie');
+  const trailer = await dataTrailer(id);
+
+  renderMarkup(movieDetail, movieDataMarkup(movie));
+  modalHandle('movie', movieDetail);
+
+  const trailerBtn = document.querySelector('[data-movie-tailer-id]');
+
+  trailerBtn.addEventListener('click', () => {
+    renderMarkup(movieTrailer, movieTrailerMarkup(trailer));
+    modalHandle('movie-trailer', movieTrailer);
+  });
 });
