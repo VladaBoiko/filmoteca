@@ -18,13 +18,14 @@ export const modalHandle = (modalName, container) => {
     modal.classList.add('is-hidden');
     modalName !== 'movie-trailer' && body.classList.remove('noscroll');
     closeModalBtn && closeModalBtn.removeEventListener('click', closeModal);
-    container.innerHTML = '';
+    // container.innerHTML = '';
   };
 
   const onEscKeyPress = evt => {
     if (evt.code === 'Escape') {
       closeModal();
       window.removeEventListener('keydown', onEscKeyPress);
+      handleVideo('stopVideo');
     }
   };
 
@@ -32,7 +33,20 @@ export const modalHandle = (modalName, container) => {
     if (evt.target.classList.contains('backdrop')) {
       closeModal();
       backdrop.removeEventListener('click', onBackdropClick);
+      handleVideo('stopVideo');
     }
+  };
+
+  const handleVideo = operation => {
+    const iframe = document.querySelector('.modal-trailer__youtube');
+    iframe &&
+      iframe.contentWindow.postMessage(
+        JSON.stringify({
+          event: 'command',
+          func: operation,
+        }),
+        '*'
+      );
   };
 
   openModal();

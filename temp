@@ -75,6 +75,7 @@ const movieDataMarkup = (movie, videoName) => {
 };
 
 const movieTrailerMarkup = ({ key, name }) => {
+  // console.log(trailer.results);
   return `<iframe class="modal-trailer__youtube" width="100%" height="100%" src="https://www.youtube.com/embed/${key}?autoplay=0&enablejsapi=1" title="${name}" frameborder="0" allow="accelerometer"; loading="lazy"; autoplay; clipboard-write; encrypted-media; allowfullscreen></iframe>`;
 };
 
@@ -92,12 +93,10 @@ movieList.addEventListener('click', async event => {
     trailer.results.find(
       result =>
         result.name ===
-        ('Official Trailer' || 'Official Teaser' || 'Teaser Trailer')
+        ('Official Trailer' || 'Teaser Trailer' || 'Official Teaser')
     ) || trailer.results[0];
-
   renderMarkup(movieDetail, movieDataMarkup(movie, video.name));
   renderMarkup(movieTrailer, movieTrailerMarkup(video));
-  modalHandle('movie', movieDetail);
 
   const trailerBtn = document.querySelector('[data-movie-tailer-id]');
 
