@@ -15,12 +15,16 @@ async function onSearch(evt) {
   if (searchQuery !== '') {
     const data = await dataSearch(searchQuery, language, page);
     renderFilmCards(data);
-    notification(data, searchQuery);
+    notification(data);
   }
-
+  if (searchQuery === '') {
+    errorSearch.style.display = 'block';
+    Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
+    return;
+  }
   refs.searchForm.reset();
 }
-function notification(data, searchQuery) {
+function notification(data) {
   if (data.total_results > 0) {
     Notiflix.Notify.success(
       `Success! We've found ${data.total_results} movies for you!!!`
@@ -31,11 +35,6 @@ function notification(data, searchQuery) {
     Notiflix.Notify.warning(
       'Sorry! The search has no results, change your serch word, please!'
     );
-  }
-  if (searchQuery === '') {
-    errorSearch.style.display = 'block';
-    Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
-    return;
   }
 }
 async function getAllGenres(language) {
