@@ -1,5 +1,5 @@
 import { refs } from './refs';
-import { dataSearch } from './API/api';
+import { dataSearch, dataMovieList, dataGenre } from './API/api';
 import { renderFilmCards } from './searchByName';
 import { renderFilmCardsByGenres } from './searchByGenre';
 import Notiflix from 'notiflix';
@@ -39,19 +39,33 @@ async function onSearch(evt) {
     if (isChosenName) {
       console.log(isChosenName);
       // isChosenGenre = false;
-
       data = await dataSearch(searchQuery, language, page);
+
       renderFilmCards(data);
+      notification(data);
     }
     if (isChosenGenre) {
-      console.log(isChosenGenre);
-      // isChosenName = false;
+      let genre = null;
+      const genresData = (await getAllGenres(language)).genres;
+      genre = genresData.find(genre => {
+        if (searchQuery === genre.name.toLowerCase()) {
+          return genre;
+        }
+      });
+      console.log(genre);
+      if (!genre) {
+        Notiflix.Notify.failure(
+          'Sorry! The search has no results, change your serch word, please!'
+        );
+        return;
+      }
+      if (genre) {
+        refs.errorSearch.style.display = 'none';
 
-      data = await dataSearch(searchQuery, language, page);
-      renderFilmCardsByGenres(searchQuery, data);
+        data = await dataMovieList(page, language);
+        renderFilmCardsByGenres(genre, data);
+      }
     }
-
-    notification(data);
   }
   console.log(searchQuery);
   // renderFilmCardsByGenres(searchQuery, data);
@@ -75,9 +89,9 @@ function notification(data) {
     );
   }
 }
-// async function getAllGenres(language) {
-//   return await dataGenre(language);
-// }
+async function getAllGenres(language) {
+  return await dataGenre(language);
+}
 // async function renderFilmCardsByGenres(query) {
 //   const genresData = (await getAllGenres(language)).genres;
 //   const data = await dataMovieList(page, language);
