@@ -17,8 +17,6 @@ if (queueList) {
   queue = queueList;
 }
 
-console.log(watched);
-
 const movieList = document.getElementById('gallery-list');
 const movieDetail = document.getElementById('modal-movie-detail');
 const movieTrailer = document.getElementById('modal-movie-trailer');
