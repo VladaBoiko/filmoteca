@@ -1,4 +1,6 @@
 import { dataGenre } from './API/api';
+import Notiflix from 'notiflix';
+
 const galleryBySearch = document.querySelector('#gallery-list');
 const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 const page = 1;
@@ -6,23 +8,19 @@ const language = 'en-US';
 async function getAllGenres(language) {
   return await dataGenre(language);
 }
-export async function renderFilmCardsByGenres(query, data) {
+export async function renderFilmCardsByGenres(genre, data) {
   const genresData = (await getAllGenres(language)).genres;
-  let genre = null;
-  genre = genresData.find(genre => {
-    if (query === genre.name.toLowerCase()) {
-      return genre;
-    }
-  });
-  console.log(genre);
   let id = genre.id;
   console.log(id);
+  console.log(data);
   const filteredRes = [];
   data.results.filter(result => {
     if (result.genre_ids.includes(id)) {
       filteredRes.push(result);
     }
   });
+  Notiflix.Notify.success(`Success! We've found some movies for you!!!`);
+
   const filmList = filteredRes
     .map(
       ({
