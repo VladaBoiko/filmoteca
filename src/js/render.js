@@ -1,4 +1,5 @@
 import { dataMovieList, dataGenre } from './API/api';
+import SweetScroll from 'sweet-scroll';
 const headerEl = document.querySelector('header');
 const galleryListEl = document.querySelector('#gallery-list');
 const language = 'en-US';
@@ -16,6 +17,7 @@ const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
 const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
 let currentPage = 1;
 let totalPages = 1;
+const scroller = new SweetScroll({ duration: 6000 });
 
 async function getAllGenres(language) {
   return await dataGenre(language);
@@ -157,15 +159,15 @@ pageNavDivEl.addEventListener('click', e => {
   if (e.target.textContent === 'next') {
     currentPage++;
     request(currentPage);
-    headerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scroller.to('header');
   }
   if (e.target.textContent === 'prev') {
     currentPage--;
     request(currentPage);
-    headerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scroller.to('header');
   }
   if (isFinite(e.target.textContent)) {
     request(e.target.textContent);
-    headerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scroller.to('header');
   }
 });
