@@ -1,0 +1,96 @@
+<div class="backdrop is-hidden backdrop-reg-modal">
+  <div class="reg-modal" data-modal="reg">
+    <button
+      type="button"
+      class="modal__close-btn"
+      data-modal-close="reg"
+    ></button>
+
+    <p class="reg-modal-title">Registration form</p>
+
+    <form id="reg-modal-form" class="reg-modal-form">
+      <input
+        class="reg-modal-username"
+        type="text"
+        name="name"
+        placeholder="Enter your Name"
+        required
+      />
+      <input
+        class="reg-modal-email"
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+      <input
+        class="reg-modal-password"
+        type="password"
+        name="password"
+        autocomplete="off"
+        placeholder="Enter your password"
+        required
+      />
+      <button
+        class="reg-modal-btn-singUp"
+        type="submit"
+        aria-label="sign up btn"
+        name="sign-up"
+      >
+        Sign Up
+      </button>
+      <p>Already have an account? 
+      <button
+        class="modal-btn-singIn"
+        type="button"
+        aria-label="sign in btn"
+        name="sign-in"
+        data-modal-open="singIn"
+      >Sign in</a></p>
+    </form>
+  </div>
+</div>
+
+<div class="backdrop is-hidden backdrop-singIn-modal">
+  <div class="singIn-modal" data-modal="singIn">
+    <button
+      type="button"
+      class="modal__close-btn"
+      data-modal-close="singIn"
+    ></button>
+
+    <p class="singIn-modal-title">Authorization form</p>
+
+    <form id="singIn-modal-form" class="reg-modal-form">
+      
+      <input
+        class="singIn-modal-email"
+        type="email"
+        name="email"
+        placeholder="Enter your email"
+        required
+      />
+      <input
+        class="singIn-modal-password"
+        type="password"
+        name="password"
+        autocomplete="off"
+        placeholder="Enter your password"
+        required
+      />
+      <button
+        class="singIn-modal-btn"
+        type="submit"
+        aria-label="sing in btn"
+        name="sing-in"
+      >
+        Sing in
+      </button>
+      <p> Not registered? 
+      <button
+        class="modal-btn-singIn"
+        type="button"
+      >Click here</a></p>
+    </form>
+  </div>
+</div>
