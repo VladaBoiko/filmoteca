@@ -2,6 +2,23 @@ import { dataMovie, dataTrailer, IMG_URL } from './API/api';
 
 import { modalHandle } from './modalHandle';
 
+let watched = [];
+let queue = [];
+let movie = {};
+
+const watchedList = JSON.parse(localStorage.getItem('watched'));
+const queueList = JSON.parse(localStorage.getItem('queue'));
+
+if (watchedList) {
+  watched = watchedList;
+}
+
+if (queueList) {
+  queue = queueList;
+}
+
+console.log(watched);
+
 const movieList = document.getElementById('gallery-list');
 const movieDetail = document.getElementById('modal-movie-detail');
 const movieTrailer = document.getElementById('modal-movie-trailer');
@@ -19,7 +36,7 @@ const movieDataMarkup = movie => {
     id,
   } = movie;
   return `
-        <div class="movie__tumb">
+        <div class="movie__tumb" data-id="${id}">
         <img
           src=${IMG_URL}${poster_path}
           width="375"
@@ -49,9 +66,9 @@ const movieDataMarkup = movie => {
           </li>
           <li class="stats__row">
             <span class="stats__name">Original Title</span>
-            <sapn class="stats__value stats__value--uppercase">
+            <span class="stats__value stats__value--uppercase">
               ${original_title}
-            </sapn>
+            </span>
           </li>
           <li class="stats__row">
             <span class="stats__name">Genre</span>
@@ -67,8 +84,10 @@ const movieDataMarkup = movie => {
         <button class="movie__button-trailer" data-movie-tailer-id="${id}"></button>
         </div>  
         <div class="movie__actions">
-          <button type="button" class="movie__button">Add to watched</button>
-          <button type="button" class="movie__button">Add to Queue</button>
+          <button type="button" class="movie__button" id="watchedAdd">Add to watched</button>
+          <button type="button" class="movie__button movie__button--hidden" id="watchedRemove">Remove from watched</button>
+          <button type="button" class="movie__button" id="queueAdd">Add to Queue</button>
+          <button type="button" class="movie__button movie__button--hidden" id="queueRemove">Remove from Queue</button>
         </div>
       </div>
   `;
@@ -85,7 +104,7 @@ const renderMarkup = (container, markup) => {
 movieList.addEventListener('click', async event => {
   event.preventDefault();
   const id = event.target.closest('.card__item').dataset.movieId;
-  const movie = await dataMovie(id);
+  movie = await dataMovie(id);
   const trailer = await dataTrailer(id);
 
   renderMarkup(movieDetail, movieDataMarkup(movie));
@@ -97,4 +116,57 @@ movieList.addEventListener('click', async event => {
     renderMarkup(movieTrailer, movieTrailerMarkup(trailer));
     modalHandle('movie-trailer', movieTrailer);
   });
+  movieDetail.innerHTML = movieDataMarkup(movie);
+  const watchedBtnAdd = document.getElementById('watchedAdd');
+  const watchedBtnRemove = document.getElementById('watchedRemove');
+  const queueBtnAdd = document.getElementById('queueAdd');
+  const queueBtnRemove = document.getElementById('queueRemove');
+
+  for (const object of watched) {
+    if (object.id === Number(id)) {
+      watchedBtnAdd.classList.toggle('movie__button--hidden');
+      watchedBtnRemove.classList.toggle('movie__button--hidden');
+    }
+  }
+
+  for (const object of queue) {
+    if (object.id === Number(id)) {
+      queueBtnAdd.classList.toggle('movie__button--hidden');
+      queueBtnRemove.classList.toggle('movie__button--hidden');
+    }
+  }
+
+  function onWatchedBtnAddClick() {
+    watchedBtnAdd.classList.toggle('movie__button--hidden');
+    watchedBtnRemove.classList.toggle('movie__button--hidden');
+    watched.push(movie);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+
+  function onWatchedBtnRemoveClick() {
+    watchedBtnAdd.classList.toggle('movie__button--hidden');
+    watchedBtnRemove.classList.toggle('movie__button--hidden');
+    watched.splice(watched.indexOf(movie), 1);
+    localStorage.setItem('watched', JSON.stringify(watched));
+  }
+
+  function onQueueBtnAddClick() {
+    queueBtnAdd.classList.toggle('movie__button--hidden');
+    queueBtnRemove.classList.toggle('movie__button--hidden');
+    queue.push(movie);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+
+  function onQueueBtnRemoveClick() {
+    queueBtnAdd.classList.toggle('movie__button--hidden');
+    queueBtnRemove.classList.toggle('movie__button--hidden');
+    queue.splice(queue.indexOf(movie), 1);
+    localStorage.setItem('queue', JSON.stringify(queue));
+  }
+
+  watchedBtnAdd.addEventListener('click', onWatchedBtnAddClick);
+  watchedBtnRemove.addEventListener('click', onWatchedBtnRemoveClick);
+  queueBtnAdd.addEventListener('click', onQueueBtnAddClick);
+  queueBtnRemove.addEventListener('click', onQueueBtnRemoveClick);
+  modalHandle('movie');
 });
