@@ -6,6 +6,7 @@ const page = 1;
 const language = 'en-US';
 refs.searchForm.addEventListener('submit', onSearch);
 const galleryBySearch = document.querySelector('#gallery-list');
+const errorSearch = document.querySelector('.warning-notification');
 async function getAllGenres(language) {
   return await dataGenre(language);
 }
@@ -20,16 +21,21 @@ async function onSearch(evt) {
   renderFilmCards(data);
   refs.searchForm.reset();
   if (!searchQuery) {
-    Notiflix.Notify.failure(`Oops, the search is empty`);
+    errorSearch.style.display = 'block';
+    Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
     return;
   }
 
   if (data.total_results > 0) {
-    Notiflix.Notify.success(`Success! We've found ${data.total_results}`);
+    Notiflix.Notify.success(
+      `Success! We've found ${data.total_results} movies for you!!!`
+    );
   }
 
   if (data.total_results === 0) {
-    Notiflix.Notify.warning('Sorry! The search has no results');
+    Notiflix.Notify.warning(
+      'Sorry! The search has no results, change your serch word, please!'
+    );
   }
 }
 
