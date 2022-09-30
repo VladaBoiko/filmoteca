@@ -176,9 +176,16 @@
   position: relative;
 
   width: 280px;
-  margin: 0 auto 22px;
+  margin: 0 auto 5px;
 
   justify-content: center;
+  @include tablet {
+    width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
+  }
 }
 
 .search__input {
@@ -259,4 +266,54 @@
   font-weight: 400;
   color: var(--error);
   display: none;
+  position: absolute;
+  top: 194px;
+  left: 20%;
+  @include tablet {
+    width: 336px;
+    left: 29.5%;
+  }
+
+  @include desktop {
+    width: 394px;
+    top: 194px;
+    left: 35.5%;
+  }
+}
+// то Влада
+.wrapper-header {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  @include tablet {
+    width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
+  }
+}
+.search-choice {
+  color: #929597;
+  font-size: 15px;
+}
+.search-choice-btn {
+  border: none;
+  background-color: transparent;
+  color: #929597;
+  font-size: 15px;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    text-decoration-line: underline;
+  }
+  &:active {
+    text-decoration-line: underline;
+  }
+  &.name {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
