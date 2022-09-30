@@ -212,8 +212,12 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @include desktop {
+  @include tablet {
     width: 336px;
+  }
+
+  @include desktop {
+    width: 394px;
   }
 }
 

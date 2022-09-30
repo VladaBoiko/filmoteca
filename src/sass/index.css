@@ -320,9 +320,14 @@ html {
 .search__input:hover, .search__input:focus {
   border-bottom: 0.5px solid #ff6b01;
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 768px) {
   .search__input {
     width: 336px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .search__input {
+    width: 394px;
   }
 }
 
