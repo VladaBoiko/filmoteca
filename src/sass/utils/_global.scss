@@ -31,8 +31,7 @@
 }
 
 .noscroll {
-  position: fixed;
-  top: 0;
+  overflow: hidden;
 }
 
 .is-open {
