@@ -37,7 +37,6 @@ async function renderFilmCards(data) {
   const filmList = data.results
     .map(
       ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
-        // console.log(poster_path);
         if (poster_path) {
           imgSrc = `${baseUrtlImg}${poster_path}`;
         }
@@ -76,7 +75,7 @@ async function renderFilmCards(data) {
       }
     )
     .join('');
-  galleryListEl.insertAdjacentHTML('beforeend', filmList);
+  galleryListEl.innerHTML = filmList;
 }
 
 request(1);
