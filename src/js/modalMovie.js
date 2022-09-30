@@ -123,7 +123,7 @@ movieList.addEventListener('click', async event => {
   trailerBtn.addEventListener('click', () => {
     modalHandle('movie-trailer', movieTrailer);
   });
-  movieDetail.innerHTML = movieDataMarkup(movie);
+
   const watchedBtnAdd = document.getElementById('watchedAdd');
   const watchedBtnRemove = document.getElementById('watchedRemove');
   const queueBtnAdd = document.getElementById('queueAdd');
