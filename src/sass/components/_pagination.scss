@@ -5,51 +5,82 @@
   width: fit-content;
 }
 .pagination_previousBtn {
-  padding: 20px;
   background-color: #f7f7f7;
   border-radius: 5px;
+  padding: 5px;
+
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
+  &:hover {
+    background-color: var(--accent);
+    color: #f7f7f7;
+    border: 1px solid rgb(65, 61, 61);
+  }
 }
 .pagination_firstPage {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_leftPoints {
   cursor: default;
-  padding: 20px;
 }
 
 .pagination_rightPoints {
   cursor: default;
-  padding: 20px;
 }
 
 .pagination_currentPage {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_lastPage {
   background-color: inherit;
-  padding: 20px;
 }
 .pagination_nextBtn {
-  padding: 20px;
   background-color: #f7f7f7;
   border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
+  &:hover {
+    background-color: var(--accent);
+    color: #f7f7f7;
+    border: 1px solid rgb(65, 61, 61);
+  }
 }
 
 .pagination_page {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_buttons--styles {
+  text-align: center;
   background-color: inherit;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
+  &:hover {
+    background-color: var(--accent);
+    color: #f7f7f7;
+    border: 1px solid rgb(65, 61, 61);
+  }
 }
 
 .pagination_buttons--styles--active {
-  background-color: orange;
-  border-radius: 5px;
+  color: #f7f7f7;
+  border: 1px solid rgb(65, 61, 61);
+  background-color: var(--accent);
 }

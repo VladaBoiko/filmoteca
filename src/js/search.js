@@ -2,6 +2,8 @@ import { refs } from './refs';
 import { dataSearch, dataGenre, dataByGenres } from './API/api';
 import { renderFilmCards } from './searchByName';
 import Notiflix from 'notiflix';
+import { pageNavigation } from './render';
+import SweetScroll from 'sweet-scroll';
 
 const page = 1;
 const language = 'en-US';
@@ -33,6 +35,7 @@ function chosenTypeGenre() {
 async function onSearch(evt) {
   evt.preventDefault();
   const searchQuery = evt.currentTarget.query.value.trim().toLowerCase();
+  refs.pagSerchQuery = searchQuery;
   if (searchQuery !== '') {
     refs.errorSearch.style.display = 'none';
     if (isChosenName) {
@@ -40,6 +43,7 @@ async function onSearch(evt) {
       data = await dataSearch(searchQuery, language, page);
       notification(data);
       renderFilmCards(data);
+      pageNavigation(data);
     }
     if (isChosenGenre) {
       let genre = null;
@@ -61,8 +65,36 @@ async function onSearch(evt) {
         data = await dataByGenres(genre.id, language, page);
         notification(data);
         renderFilmCards(data);
+        pageNavigation(data);
       }
     }
+    refs.pageNavDivEl.onclick = async e => {
+      if (e.target.textContent === 'next') {
+        console.log('refs');
+        refs.currentPage++;
+        data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
+        renderFilmCards(data);
+        refs.scroller.to('header');
+        pageNavigation(data);
+      }
+      if (e.target.textContent === 'prev') {
+        refs.currentPage--;
+        data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
+        renderFilmCards(data);
+        refs.scroller.to('header');
+        pageNavigation(data);
+      }
+      if (isFinite(e.target.textContent)) {
+        data = await dataSearch(
+          refs.pagSerchQuery,
+          language,
+          e.target.textContent
+        );
+        await renderFilmCards(data);
+        refs.scroller.to('header');
+        await pageNavigation(data);
+      }
+    };
   }
 
   console.log(searchQuery);

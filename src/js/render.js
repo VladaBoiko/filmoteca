@@ -1,7 +1,7 @@
 import { dataMovieList, dataGenre } from './API/api';
+import { refs } from './refs';
 import SweetScroll from 'sweet-scroll';
 import emptyImg from '../images/no-image.jpg';
-const headerEl = document.querySelector('header');
 const galleryListEl = document.querySelector('#gallery-list');
 const galleryListWatchedEl = document.querySelector('.gallery__list.watched');
 const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
@@ -36,7 +36,7 @@ async function getAllGenres(language) {
   return await dataGenre(language);
 }
 
-async function request(page, language) {
+export async function request(page, language) {
   const data = await dataMovieList(page, language);
   renderFilmCards(data);
   pageNavigation(data);
@@ -89,109 +89,113 @@ async function renderFilmCards(data) {
 }
 
 request(1);
-async function pageNavigation(data) {
+export async function pageNavigation(data) {
   if (data.total_results <= 20) {
-    pageNavDivEl.style.display = 'none';
+    refs.pageNavDivEl.style.display = 'none';
     return;
   } else {
-    pageNavDivEl.style.display = 'flex';
+    refs.pageNavDivEl.style.display = 'flex';
   }
-  currentPage = data.page;
-  totalPages = data.total_pages;
-  leftFirstPageEl.textContent = currentPage - 1;
-  leftSecondPageEl.textContent = currentPage - 2;
-  rightFirstPageEl.textContent = currentPage + 1;
-  rightSecondPageEl.textContent = currentPage + 2;
-  currentPageEl.textContent = currentPage;
-  lastPageEl.textContent = totalPages;
+  refs.currentPage = data.page;
+  refs.totalPages = data.total_pages;
+  refs.leftFirstPageEl.textContent = refs.currentPage - 1;
+  refs.leftSecondPageEl.textContent = refs.currentPage - 2;
+  refs.rightFirstPageEl.textContent = refs.currentPage + 1;
+  refs.rightSecondPageEl.textContent = refs.currentPage + 2;
+  refs.currentPageEl.textContent = refs.currentPage;
+  refs.lastPageEl.textContent = refs.totalPages;
 
-  if (!currentPage > 0) {
+  if (!refs.currentPage > 0) {
     return;
   }
 
-  if (currentPage === 1) {
-    prevBtnEl.setAttribute('disabled', true);
+  if (refs.currentPage === 1) {
+    refs.prevBtnEl.setAttribute('disabled', true);
   } else {
-    prevBtnEl.removeAttribute('disabled');
+    refs.prevBtnEl.removeAttribute('disabled');
   }
 
-  if (currentPage === totalPages) {
-    nextBtnEl.setAttribute('disabled', true);
+  if (refs.currentPage === refs.totalPages) {
+    refs.nextBtnEl.setAttribute('disabled', true);
   } else {
-    nextBtnEl.removeAttribute('disabled');
+    refs.nextBtnEl.removeAttribute('disabled');
   }
 
-  if (currentPage > 4) {
-    leftPointsEl.style.display = 'block';
+  if (refs.currentPage > 4) {
+    refs.leftPointsEl.style.display = 'block';
   } else {
-    leftPointsEl.style.display = 'none';
+    refs.leftPointsEl.style.display = 'none';
   }
 
-  if (Number(leftFirstPageEl.textContent) <= 1) {
-    leftFirstPageEl.style.display = 'none';
-  } else if (currentPage > 2) {
-    leftFirstPageEl.style.display = 'block';
+  if (Number(refs.leftFirstPageEl.textContent) <= 1) {
+    refs.leftFirstPageEl.style.display = 'none';
+  } else if (refs.currentPage > 2) {
+    refs.leftFirstPageEl.style.display = 'block';
   }
 
-  if (Number(leftSecondPageEl.textContent) <= 1) {
-    leftSecondPageEl.style.display = 'none';
+  if (Number(refs.leftSecondPageEl.textContent) <= 1) {
+    refs.leftSecondPageEl.style.display = 'none';
   } else {
-    if (currentPage > 1) {
-      leftSecondPageEl.style.display = 'block';
+    if (refs.currentPage > 1) {
+      refs.leftSecondPageEl.style.display = 'block';
     }
   }
 
-  if (Number(leftSecondPageEl.textContent) <= -1) {
-    firstPageEl.style.display = 'none';
+  if (Number(refs.leftSecondPageEl.textContent) <= -1) {
+    refs.firstPageEl.style.display = 'none';
   } else {
-    firstPageEl.style.display = 'block';
+    refs.firstPageEl.style.display = 'block';
   }
 
-  if (totalPages - currentPage <= 3) {
-    rightPointsEl.style.display = 'none';
-    rightFirstPageEl.textContent = currentPage + 1;
-    rightSecondPageEl.textContent = currentPage + 2;
+  if (refs.totalPages - refs.currentPage <= 3) {
+    refs.rightPointsEl.style.display = 'none';
+    refs.rightFirstPageEl.textContent = refs.currentPage + 1;
+    refs.rightSecondPageEl.textContent = refs.currentPage + 2;
   } else {
-    rightPointsEl.style.display = 'block';
+    refs.rightPointsEl.style.display = 'block';
   }
 
-  if (totalPages - Number(rightFirstPageEl.textContent) <= 0) {
-    rightFirstPageEl.style.display = 'none';
-  } else if (totalPages - currentPage >= 0) {
-    rightFirstPageEl.textContent = currentPage + 1;
-    rightSecondPageEl.textContent = currentPage + 2;
-    rightFirstPageEl.style.display = 'block';
+  if (refs.totalPages - Number(refs.rightFirstPageEl.textContent) <= 0) {
+    refs.rightFirstPageEl.style.display = 'none';
+  } else if (refs.totalPages - refs.currentPage >= 0) {
+    refs.rightFirstPageEl.textContent = refs.currentPage + 1;
+    refs.rightSecondPageEl.textContent = refs.currentPage + 2;
+    refs.rightFirstPageEl.style.display = 'block';
   }
 
-  if (totalPages - Number(rightSecondPageEl.textContent) <= 0) {
-    rightSecondPageEl.style.display = 'none';
+  if (refs.totalPages - Number(refs.rightSecondPageEl.textContent) <= 0) {
+    refs.rightSecondPageEl.style.display = 'none';
   } else {
-    if (totalPages - currentPage >= 0) {
-      rightSecondPageEl.style.display = 'block';
+    if (refs.totalPages - refs.currentPage >= 0) {
+      refs.rightSecondPageEl.style.display = 'block';
     }
   }
-  if (Number(lastPageEl.textContent) === currentPage) {
-    lastPageEl.style.display = 'none';
+  if (Number(refs.lastPageEl.textContent) === refs.currentPage) {
+    refs.lastPageEl.style.display = 'none';
   } else {
-    lastPageEl.style.display = 'block';
+    refs.lastPageEl.style.display = 'block';
   }
 }
 
-pageNavDivEl.addEventListener('click', e => {
+refs.pageNavDivEl.onclick = e => {
   if (e.target.textContent === 'next') {
-    currentPage++;
-    request(currentPage);
-    scroller.to('header');
+    console.log('refs');
+    refs.currentPage++;
+    request(refs.currentPage);
+    refs.scroller.to('header');
   }
   if (e.target.textContent === 'prev') {
-    currentPage--;
-    request(currentPage);
-    scroller.to('header');
+    refs.currentPage--;
+    request(refs.currentPage);
+    refs.scroller.to('header');
   }
   if (isFinite(e.target.textContent)) {
     request(e.target.textContent);
-    scroller.to('header');
+    refs.scroller.to('header');
   }
+
+};
+
 });
 
 export function renderWatchedList() {
