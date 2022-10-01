@@ -3,6 +3,8 @@ export const refs = {
   headerLibrary: document.querySelector('.header__library'),
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
+  // libraryCurBtn: document.querySelector('current-btn-library'),
+  // homeCurBtn: document.querySelector('current-btn-home'),
   searchForm: document.querySelector('#search-form'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
