@@ -32,7 +32,7 @@ export async function renderFilmCards(data) {
         genresData
           .map(genre => {
             if (genre_ids.includes(genre.id)) {
-              allGenres.push(genre.name);
+              allGenres.push(` ${genre.name}`);
             }
           })
           .join(', ');

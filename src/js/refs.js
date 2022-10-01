@@ -5,6 +5,8 @@ export const refs = {
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
   searchForm: document.querySelector('#search-form'),
+  // nameInput: document.querySelector('.name-input'),
+  // genreInput: document.querySelector('.genre-input'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
   chosenGenreBtn: document.querySelector('.search-choice-btn.genre'),
@@ -28,8 +30,7 @@ export const refs = {
   totalPages: 1,
   scroller: new SweetScroll({ duration: 6000 }),
   pagSerchQuery: '',
-  // footer
-  // modalMovie
+
   openModalMovie: document.querySelector('[data-movie-modal-open]'),
   closeModalMovie: document.querySelector('[data-movie-modal-close]'),
   // modalTeam

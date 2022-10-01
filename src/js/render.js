@@ -12,31 +12,31 @@ import emptyImg from '../images/no-image.jpg';
 const galleryListEl = document.querySelector('#gallery-list');
 const galleryListWatchedEl = document.querySelector('.gallery__list-watched');
 const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
-const page = 1;
+// const page = 1;
 const language = 'en-US';
 const pageNavDivEl = document.querySelector('.pagination');
-const prevBtnEl = document.querySelector('.pagination_previousBtn');
-const nextBtnEl = document.querySelector('.pagination_nextBtn');
-const currentPageEl = document.querySelector('.pagination_currentPage');
-const firstPageEl = document.querySelector('.pagination_firstPage');
-const lastPageEl = document.querySelector('.pagination_lastPage');
-const leftPointsEl = document.querySelector('.pagination_leftPoints');
-const rightPointsEl = document.querySelector('.pagination_rightPoints');
-const rightFirstPageEl = document.querySelector('.pagination_rightFirstPage');
-const rightSecondPageEl = document.querySelector('.pagination_rightSecondPage');
-const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
-const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
+// const prevBtnEl = document.querySelector('.pagination_previousBtn');
+// const nextBtnEl = document.querySelector('.pagination_nextBtn');
+// const currentPageEl = document.querySelector('.pagination_currentPage');
+// const firstPageEl = document.querySelector('.pagination_firstPage');
+// const lastPageEl = document.querySelector('.pagination_lastPage');
+// const leftPointsEl = document.querySelector('.pagination_leftPoints');
+// const rightPointsEl = document.querySelector('.pagination_rightPoints');
+// const rightFirstPageEl = document.querySelector('.pagination_rightFirstPage');
+// const rightSecondPageEl = document.querySelector('.pagination_rightSecondPage');
+// const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
+// const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
 const galleryContainer = document.querySelector('.gallery.watched .container');
 
 const watchedListBtn = document.getElementById('js-WatchedButton');
 const queueListBtn = document.getElementById('js-QueueButton');
-const movieListRef = document.getElementById('gallery-list');
+// const movieListRef = document.getElementById('gallery-list');
 
 watchedListBtn.addEventListener('click', renderWatchedList);
 queueListBtn.addEventListener('click', renderQueueList);
 
-let currentPage = 1;
-let totalPages = 1;
+// let currentPage = 1;
+// let totalPages = 1;
 const scroller = new SweetScroll({ duration: 6000 });
 
 async function getAllGenres(language) {
@@ -48,6 +48,7 @@ export async function request(page, language) {
   renderFilmCards(data);
   pageNavigation(data);
 }
+
 async function renderFilmCards(data) {
   const genresData = (await getAllGenres(language)).genres;
   let imgSrc = null;
@@ -64,7 +65,7 @@ async function renderFilmCards(data) {
         genresData
           .map(genre => {
             if (genre_ids.includes(genre.id)) {
-              allGenres.push(genre.name);
+              allGenres.push(` ${genre.name}`);
             }
           })
           .join(', ');
@@ -241,7 +242,7 @@ export function renderWatchedList() {
       const allGenres = [];
       genres
         .map(genre => {
-          allGenres.push(genre.name);
+          allGenres.push(` ${genre.name}`);
         })
         .join(', ');
       return `<li data-movie-id="${id}" class="card__item">

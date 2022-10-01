@@ -16,17 +16,23 @@ let data = null;
 refs.searchForm.addEventListener('submit', onSearch);
 refs.chosenNameBtn.addEventListener('click', chosenTypeName);
 refs.chosenGenreBtn.addEventListener('click', chosenTypeGenre);
+
 function chosenTypeName() {
   isChosenName = true;
   isChosenGenre = false;
+  // refs.genreInput.classList.add('visually-hidden');
+  // refs.nameInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'underline';
   refs.chosenGenreBtn.style.textDecoration = 'none';
   refs.header.classList.remove('header-genre');
   refs.header.classList.add('header-name');
 }
+
 function chosenTypeGenre() {
   isChosenName = false;
   isChosenGenre = true;
+  // refs.nameInput.classList.add('visually-hidden');
+  // refs.genreInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'none';
   refs.chosenGenreBtn.style.textDecoration = 'underline';
   refs.header.classList.remove('header-name');
@@ -34,6 +40,7 @@ function chosenTypeGenre() {
 }
 async function onSearch(evt) {
   evt.preventDefault();
+  // const genresData = (await getAllGenres(language)).genres;
   const searchQuery = evt.currentTarget.query.value.trim().toLowerCase();
   refs.pagSerchQuery = searchQuery;
   if (searchQuery !== '') {

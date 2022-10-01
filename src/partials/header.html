@@ -44,16 +44,41 @@
 
   <div class="wrapper-header">
     <form id="search-form" action="" class="search">
+       <!-- <input
+        class="search__input name-input"
+        type="text"
+        placeholder="Movie search"
+        name="query-name"
+      /> -->
       <input
         class="search__input"
+        autosave="false"
         type="text"
         placeholder="Movie search"
         name="query"
-        list="query"
+        list="genre-input"
       />
-<datalist id="query">
-  <option value="Текст1"></option>
-  <option value="Текст2"></option>
+<datalist id="genre-input">
+  <option value="Action"></option>
+  <option value="Adventure"></option>
+  <option value="Animation"></option>
+  <option value="Comedy"></option>
+  <option value="Crime"></option>
+  <option value="Documentary"></option>
+  <option value="Drama"></option>
+  <option value="Family"></option>
+    <option value="Fantasy"></option>
+<option value="History"></option>
+  <option value="Horror"></option>
+  <option value="Music"></option>
+  <option value="Mystery"></option>
+  <option value="Romance"></option>
+  <option value="Science Fiction"></option>
+  <option value="TV Movie"></option>
+  <option value="Thriller"></option>
+  <option value="War"></option>
+  <option value="Western"></option>
+
 </datalist>
       <button class="search__button" type="submit" title="Go!">
         <svg class="search__button-icon icon-search" width="12" height="12">
