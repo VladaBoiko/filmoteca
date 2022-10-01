@@ -78,19 +78,17 @@
   @include tablet {
     margin-bottom: 40px;
   }
- 
 }
 
 .logo {
   display: flex;
-   &:hover > .logo__svg {
+  &:hover > .logo__svg {
     stroke: #ff6b01;
   }
 
   &:visited {
     color: var(--header-color-text);
   }
-
 }
 
 .navigation {
@@ -266,12 +264,12 @@
   @include text(400, 14px, 17px);
   color: var(--error);
   display: none;
-  // position: absolute;
-  // top: 194px;
-  // left: 20%;
+  position: absolute;
+  top: 194px;
+  left: 20%;
   @include tablet {
     width: 336px;
-    // left: 29.5%;
+    left: 29.5%;
   }
 
   @include desktop {
@@ -357,8 +355,6 @@
     // color: var(--text-color-button);
   }
 }
-
-
 
 .menu__list {
   @include flexCenter;
