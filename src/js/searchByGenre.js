@@ -8,20 +8,20 @@ const language = 'en-US';
 async function getAllGenres(language) {
   return await dataGenre(language);
 }
-export async function renderFilmCardsByGenres(genre, data) {
+export async function renderFilmCardsByGenres(data) {
   const genresData = (await getAllGenres(language)).genres;
-  let id = genre.id;
-  console.log(id);
-  console.log(data);
-  const filteredRes = [];
-  data.results.filter(result => {
-    if (result.genre_ids.includes(id)) {
-      filteredRes.push(result);
-    }
-  });
+  // let id = genre.id;
+  // console.log(id);
+  // console.log(data);
+  // const filteredRes = [];
+  // data.results.filter(result => {
+  //   if (result.genre_ids.includes(id)) {
+  //     filteredRes.push(result);
+  //   }
+  // });
   Notiflix.Notify.success(`Success! We've found some movies for you!!!`);
 
-  const filmList = filteredRes
+  const filmList = data.results
     .map(
       ({
         id,

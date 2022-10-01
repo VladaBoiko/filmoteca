@@ -1,7 +1,7 @@
 import { refs } from './refs';
-import { dataSearch, dataMovieList, dataGenre } from './API/api';
+import { dataSearch, dataMovieList, dataGenre, dataByGenres } from './API/api';
 import { renderFilmCards } from './searchByName';
-import { renderFilmCardsByGenres } from './searchByGenre';
+// import { renderFilmCardsByGenres } from './searchByGenre';
 import Notiflix from 'notiflix';
 
 const page = 1;
@@ -38,11 +38,9 @@ async function onSearch(evt) {
     refs.errorSearch.style.display = 'none';
     if (isChosenName) {
       console.log(isChosenName);
-      // isChosenGenre = false;
       data = await dataSearch(searchQuery, language, page);
-
-      renderFilmCards(data);
       notification(data);
+      renderFilmCards(data);
     }
     if (isChosenGenre) {
       let genre = null;
@@ -61,12 +59,13 @@ async function onSearch(evt) {
       }
       if (genre) {
         refs.errorSearch.style.display = 'none';
-
-        data = await dataMovieList(page, language);
-        renderFilmCardsByGenres(genre, data);
+        data = await dataByGenres(genre.id, language, page);
+        notification(data);
+        renderFilmCards(data);
       }
     }
   }
+
   console.log(searchQuery);
   // renderFilmCardsByGenres(searchQuery, data);
   if (searchQuery === '') {
