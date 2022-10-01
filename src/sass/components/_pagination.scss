@@ -5,51 +5,64 @@
   width: fit-content;
 }
 .pagination_previousBtn {
-  padding: 20px;
   background-color: #f7f7f7;
   border-radius: 5px;
+  padding: 5px;
+
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
 }
 .pagination_firstPage {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_leftPoints {
   cursor: default;
-  padding: 20px;
 }
 
 .pagination_rightPoints {
   cursor: default;
-  padding: 20px;
 }
 
 .pagination_currentPage {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_lastPage {
   background-color: inherit;
-  padding: 20px;
 }
 .pagination_nextBtn {
-  padding: 20px;
   background-color: #f7f7f7;
   border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
 }
 
 .pagination_page {
   background-color: inherit;
-  padding: 20px;
 }
 
 .pagination_buttons--styles {
   background-color: inherit;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
 }
 
 .pagination_buttons--styles--active {
   background-color: orange;
-  border-radius: 5px;
 }

@@ -91,7 +91,7 @@ async function onSearch(evt) {
           e.target.textContent
         );
         await renderFilmCards(data);
-        await refs.scroller.to('header');
+        refs.scroller.to('header');
         await pageNavigation(data);
       }
     };
