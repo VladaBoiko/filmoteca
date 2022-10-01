@@ -79,7 +79,12 @@ const movieDataMarkup = (movie, videoName) => {
         <p class="movie__description">
           ${overview}
         </p>
-        <button class="movie__button-trailer" data-movie-tailer-id="${id}">${videoName}</button>
+        ${
+          videoName
+            ? `<button class="movie__button-trailer" data-movie-tailer-id="${id}">${videoName}</button>`
+            : ''
+        }
+        
         </div>  
         <div class="movie__actions">
           <button type="button" class="movie__button" id="watchedAdd">Add to watched</button>
@@ -111,16 +116,23 @@ movieList.addEventListener('click', async event => {
         result.name ===
         ('Official Trailer' || 'Official Teaser' || 'Teaser Trailer')
     ) || trailer.results[0];
+  const videoName = video ? video.name : '';
+  const videoNameSliced =
+    videoName.length > 60 ? `${videoName.slice(0, 50)}...` : videoName;
 
-  renderMarkup(movieDetail, movieDataMarkup(movie, video.name));
-  renderMarkup(movieTrailer, movieTrailerMarkup(video));
+  renderMarkup(movieDetail, movieDataMarkup(movie, videoNameSliced));
+  video && renderMarkup(movieTrailer, movieTrailerMarkup(video));
+
   modalHandle('movie', movieDetail);
 
   const trailerBtn = document.querySelector('[data-movie-tailer-id]');
 
-  trailerBtn.addEventListener('click', () => {
-    modalHandle('movie-trailer', movieTrailer);
-  });
+  trailerBtn &&
+    trailerBtn.addEventListener('click', () => {
+      modalHandle('movie-trailer', movieTrailer);
+    });
+
+  // ============================================================================
 
   const watchedBtnAdd = document.getElementById('watchedAdd');
   const watchedBtnRemove = document.getElementById('watchedRemove');
