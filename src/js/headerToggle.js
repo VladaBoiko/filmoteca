@@ -1,6 +1,10 @@
 import { refs } from './refs';
+import { renderWatchedList } from './render';
 refs.homeBtn.addEventListener('click', switchHeaderHome);
-refs.libraryBtn.addEventListener('click', switchHeaderLibrary);
+refs.libraryBtn.addEventListener('click', () => {
+  switchHeaderLibrary();
+  renderWatchedList();
+});
 
 function switchHeaderLibrary() {
   refs.headerIndex.style.display = 'none';
