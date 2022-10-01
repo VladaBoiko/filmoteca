@@ -81,11 +81,12 @@ async function renderFilmCards(data) {
         alt="${title}"
         loading=lazy
     /> -->
-        <picture>
+        <picture  class="card__img">
           <source srcset="${srcSet500}" media="(min-width: 1280px)">
           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
 
           <img
+           class="card__img"
             src=${IMG_URL_342}${poster_path}
             width="395"
             height="574"
@@ -249,11 +250,12 @@ export function renderWatchedList() {
       const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
       return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
-        <picture>
+        <picture  class="card__img">
           <source srcset="${srcSet500}" media="(min-width: 1280px)">
           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
 
           <img
+           class="card__img"
             src=${IMG_URL_342}${poster_path}
             width="395"
             height="574"

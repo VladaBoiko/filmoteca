@@ -1,8 +1,11 @@
+footer {
+  background: #f7f7f7;
+}
 .footer__container {
   padding-left: 28px;
   padding-right: 16px;
-  padding-bottom: 30px;
-  padding-top: 29px;
+  padding-bottom: 29px;
+  padding-top: 22px;
   text-align: center;
   align-items: baseline;
 
@@ -10,7 +13,8 @@
     display: flex;
     justify-content: center;
     align-items: baseline;
-    padding-top: 30px;
+    //    padding-bottom: 30px;
+    // padding-top: 29px;
   }
 }
 
