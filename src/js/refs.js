@@ -4,17 +4,13 @@ export const refs = {
   headerLibrary: document.querySelector('.header__library'),
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
-  // libraryCurBtn: document.querySelector('current-btn-library'),
-  // homeCurBtn: document.querySelector('current-btn-home'),
   searchForm: document.querySelector('#search-form'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
   chosenGenreBtn: document.querySelector('.search-choice-btn.genre'),
   header: document.querySelector('.header-index'),
-  // myLibrary
-  // interface
-  // genere
-  // movie
+  homeGallery: document.querySelector('.home'),
+  libraryGallery: document.querySelector('.watched'),
   headerEl: document.querySelector('header'),
   pageNavDivEl: document.querySelector('.pagination'),
   prevBtnEl: document.querySelector('.pagination_previousBtn'),
