@@ -6,7 +6,7 @@
   text-align: center;
   align-items: baseline;
 
-  @include mq(tablet) {
+  @include tablet {
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -28,7 +28,7 @@ footer {
 
   color: #545454;
 
-  @include mq(tablet) {
+  @include tablet {
     font-size: 16px;
     line-height: 1.19;
     margin-bottom: 0;
@@ -57,7 +57,7 @@ footer {
   line-height: 1.15;
   color: #545454;
 
-  @include mq(tablet) {
+  @include tablet {
     font-size: 16px;
     line-height: 1.19;
   }
@@ -72,7 +72,7 @@ footer {
 
   color: #545454;
 
-  @include mq(tablet) {
+  @include tablet {
     font-size: 16px;
     line-height: 1.19;
   }
@@ -85,7 +85,7 @@ footer {
   line-height: 1.15;
   color: #545454;
   background-color: transparent;
-  @include mq(tablet) {
+  @include tablet {
     font-size: 16px;
     line-height: 1.19;
   }
@@ -98,18 +98,6 @@ footer {
   height: 1px;
   background-color: #545454;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // p {
 //   padding: 0;
