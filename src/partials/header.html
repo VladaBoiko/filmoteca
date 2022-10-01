@@ -1,5 +1,3 @@
-
-
 <header class="header header-index">
   <div class="container">
   <div class="navigation__container">
@@ -12,14 +10,13 @@
     <nav class="navigation">
       <ul class="menu__list">
         <li class="menu__item">
-          <a href="./index.html" class="link current menu__link menu__link-home"
-            >Home</a
-          >
-        </li>
+          <button class="link menu__link menu__link-library">
+          Home
+        </button></li>
+        
         <li class="menu__item">
-          <a href="./library.html" class="link menu__link menu__link-library"
-            >My library</a
-          >
+          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
+            <button class="link menu__link menu__link-library menu__library">My library</button>
         </li>
       </ul>
       <!--блок реєстрації користувача -->
@@ -104,4 +101,98 @@
       </svg>
     </div>
   </div>
+</header>
+<header class="header header__library">
+  <div class="container">
+    <div class="navigation__container">
+        <a href="./" class="logo">
+            <svg class="logo__svg icon-film">
+                <use href="./images/icons/sprite.svg#film"></use>
+            </svg>
+            <span class="logo__text">Filmoteka</span>
+        </a>
+        <nav class="navigation">
+      <ul class="menu__list">
+        <li class="menu__item">
+          <button class="link menu__link menu__link-library menu__home">
+          Home
+        </button></li>
+        
+        <li class="menu__item">
+          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
+            <button class="link menu__link menu__link-library">My library</button>
+        </li>
+      </ul>
+      <!--блок реєстрації користувача -->
+      <div class="regs-btns">
+        <button
+          class="reg-btn-singUp"
+          type="button"
+          aria-label="sign up"
+          name="sign-up-btn"
+          data-modal-open="singUp"
+        >
+          SING UP
+        </button>
+        <button
+          class="logout-btn is-hidden"
+          type="button"
+          aria-label="log-out"
+          name="log-out-btn"
+        >
+          Log out
+        </button>
+      </div>
+    </nav>
+    </div>
+<form>
+    <div role="group">
+        <ul class="storage js-choice-storage">
+            <li class="storage__item">
+                <label class="storage__label">
+                    <input type="radio" name="storage-btn" value="Watched" class="storage__input visually-hidden"
+                        checked />
+                    <span class="storage__btn" id="js-WatchedButton">Watched</span>
+                </label>
+            </li>
+            <li class="storage__item">
+                <label class="storage__label">
+                    <input type="radio" name="storage-btn" value="Queue" class="storage__input visually-hidden" />
+                    <span class="storage__btn" id="js-QueueButton">Queue</span>
+                </label>
+            </li>
+        </ul>
+    </div>
+</form>
+
+    <div class="toolbar">
+    <!-- Разметка переключателя темы -->
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
+        <use href="./images/icons/sprite.svg#sun"></use>
+      </svg>
+
+      <div class="theme-switch__control">
+        <input
+          class="theme-switch__toggle"
+          type="checkbox"
+          name="theme"
+          id="theme-switch-toggle"
+          aria-label="Switch between dark and light themes"
+        />
+        <label
+          aria-hidden="true"
+          class="theme-switch__track"
+          for="theme-switch-toggle"
+        >
+        </label>
+        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
+      </div>
+
+      <svg class="theme-switch__icon" aria-label="Moon icon">
+        <use href="./images/icons/sprite.svg#moon"></use>
+      </svg>
+    </div>
+  </div>
+</div>
 </header>
