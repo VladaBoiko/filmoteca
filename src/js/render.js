@@ -1,10 +1,16 @@
-import { dataMovieList, dataGenre } from './API/api';
+import {
+  dataMovieList,
+  dataGenre,
+  IMG_URL_342,
+  IMG_URL_500,
+  IMG_URL_780,
+  IMG_URL_ORIGINAL,
+} from './API/api';
 import { refs } from './refs';
 import SweetScroll from 'sweet-scroll';
 import emptyImg from '../images/no-image.jpg';
 const galleryListEl = document.querySelector('#gallery-list');
 const galleryListWatchedEl = document.querySelector('.gallery__list.watched');
-const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 const page = 1;
 const language = 'en-US';
 const pageNavDivEl = document.querySelector('.pagination');
@@ -47,12 +53,12 @@ async function renderFilmCards(data) {
   const filmList = data.results
     .map(
       ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
-        if (poster_path) {
-          imgSrc = `${baseUrtlImg}${poster_path}`;
-        }
-        if (poster_path === null) {
-          imgSrc = imgSrc = emptyImg;
-        }
+        // if (poster_path) {
+        //   imgSrc = `${baseUrtlImg}${poster_path}`;
+        // }
+        // if (poster_path === null) {
+        //   imgSrc = imgSrc = emptyImg;
+        // }
         const allGenres = [];
         genresData
           .map(genre => {
@@ -61,13 +67,30 @@ async function renderFilmCards(data) {
             }
           })
           .join(', ');
+
+        const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
+        const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
+
         return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
-        <img class="card__img"
+    
+    <!--    <img class="card__img"
         src="${imgSrc}"
         alt="${title}"
         loading=lazy
-    />
+    /> -->
+        <picture>
+          <source srcset="${srcSet500}" media="(min-width: 1280px)">
+          <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
+
+          <img
+            src=${IMG_URL_342}${poster_path}
+            width="395"
+            height="574"
+            alt="${title}"
+            loading="lazy"
+          />
+        </picture> 
     
     <h2 class="card__title">${title}</h2>
     <div class="card__text">
