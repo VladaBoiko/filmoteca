@@ -1,6 +1,7 @@
 import { dataMovie, dataTrailer } from './API/api';
 import { movieDataMarkup, movieTrailerMarkup } from './markup';
 import { renderWatchedList, renderQueueList } from './render';
+import { refs } from './refs';
 
 import { modalHandle } from './modalHandle';
 
@@ -18,35 +19,40 @@ if (watchedList) {
 if (queueList) {
   queue = queueList;
 }
-
-const movieList = document.querySelector('main');
-const movieDetail = document.getElementById('modal-movie-detail');
-const movieTrailer = document.getElementById('modal-movie-trailer');
+const { movieList, movieDetail, movieTrailer } = refs;
 
 const renderMarkup = (container, markup) => {
   container.innerHTML = markup;
 };
 
-movieList.addEventListener('click', async event => {
-  event.preventDefault();
-  const id = event.target.closest('.card__item').dataset.movieId;
-  movie = await dataMovie(id);
-  const trailer = await dataTrailer(id);
-
+const getVideo = trailers => {
   const video =
-    trailer.results.find(
+    trailers.results.find(
       result =>
         result.name ===
         ('Official Trailer' || 'Official Teaser' || 'Teaser Trailer')
-    ) || trailer.results[0];
+    ) || trailers.results[0];
 
   const videoName = video ? video.name : '';
+  const slicedVideoName =
+    videoName.length > 40 ? `${videoName.slice(0, 40)}...` : videoName;
 
-  const videoNameSliced =
-    videoName.length > 60 ? `${videoName.slice(0, 60)}...` : videoName;
+  return { ...video, slicedVideoName };
+};
 
-  renderMarkup(movieDetail, movieDataMarkup(movie, videoNameSliced));
-  video && renderMarkup(movieTrailer, movieTrailerMarkup(video));
+movieList.addEventListener('click', async event => {
+  event.preventDefault();
+  if (!event.target.closest('.card__item')) {
+    return;
+  }
+  id = event.target.closest('.card__item').dataset.movieId;
+  const movie = await dataMovie(id);
+  const trailers = await dataTrailer(id);
+  const videoInfo = getVideo(trailers);
+
+  renderMarkup(movieDetail, movieDataMarkup(movie, videoInfo.slicedVideoName));
+
+  videoInfo && renderMarkup(movieTrailer, movieTrailerMarkup(videoInfo));
 
   modalHandle('movie', movieDetail);
 
