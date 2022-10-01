@@ -1,7 +1,10 @@
 import axios from 'axios';
 const KEY = '5f2a66e63fa9a8139a0b7e8b9aba27ca';
 const URL = 'https://api.themoviedb.org/';
-export const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+export const IMG_URL_342 = 'https://image.tmdb.org/t/p/w342';
+export const IMG_URL_500 = 'https://image.tmdb.org/t/p/w500';
+export const IMG_URL_780 = 'https://image.tmdb.org/t/p/w780';
+export const IMG_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 // 3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=28
 
 axios.defaults.baseURL = URL;
