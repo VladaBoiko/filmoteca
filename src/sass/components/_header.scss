@@ -5,34 +5,67 @@
   padding-top: 40px;
   height: 230px;
   background-color: #2a2a2a;
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.56),
-      rgba(0, 0, 0, 0.56)
-    ),
-    url(../images/header-background-mobile-2x.jpeg);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  @include tablet {
-   
+  &.header-name {
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-background-tablet@2x.jpeg);
+      url(../images/header-background-mobile-2x.jpeg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include tablet {
+      padding: 45px 60px 20px;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-background-tablet@2x.jpeg);
+    }
+
+    @include desktop {
+      padding-top: 40px;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-background-desktop@2x.jpeg);
+    }
   }
-
-  @include desktop {
-   
+  &.header-genre {
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-background-desktop@2x.jpeg);
+      url(../images/header-page2-background-mobile@2x.jpeg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include tablet {
+      padding: 45px 60px 20px;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-page2-background-tablet@2x.jpeg);
+    }
+
+    @include desktop {
+      padding-top: 40px;
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(../images/header-page2-background-desktop@2x.jpeg);
+    }
   }
 }
 
@@ -243,8 +276,8 @@
 
   @include desktop {
     width: 394px;
-    // top: 194px;
-    // left: 35.5%;
+    top: 194px;
+    left: 39.7%;
   }
 }
 // то Влада

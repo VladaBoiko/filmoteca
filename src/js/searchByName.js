@@ -1,49 +1,14 @@
-import { refs } from './refs';
-import { dataSearch, dataGenre } from './API/api';
-import Notiflix from 'notiflix';
-
+import { dataGenre } from './API/api';
+const galleryBySearch = document.querySelector('#gallery-list');
 const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 const page = 1;
 const language = 'en-US';
-refs.searchForm.addEventListener('submit', onSearch);
-const galleryBySearch = document.querySelector('#gallery-list');
-const errorSearch = document.querySelector('.warning-notification');
-
-async function onSearch(evt) {
-  evt.preventDefault();
-  const searchQuery = evt.currentTarget.query.value.trim();
-  if (searchQuery !== '') {
-    errorSearch.style.display = 'none';
-    const data = await dataSearch(searchQuery, language, page);
-    renderFilmCards(data);
-    notification(data);
-  }
-  if (searchQuery === '') {
-    errorSearch.style.display = 'block';
-    Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
-    return;
-  }
-  refs.searchForm.reset();
-}
-function notification(data) {
-  if (data.total_results > 0) {
-    Notiflix.Notify.success(
-      `Success! We've found ${data.total_results} movies for you!!!`
-    );
-  }
-
-  if (data.total_results === 0) {
-    Notiflix.Notify.warning(
-      'Sorry! The search has no results, change your serch word, please!'
-    );
-  }
-}
 async function getAllGenres(language) {
   return await dataGenre(language);
 }
-
-async function renderFilmCards(data) {
+export async function renderFilmCards(data) {
   const genresData = (await getAllGenres(language)).genres;
+
   const filmList = data.results
     .map(
       ({
