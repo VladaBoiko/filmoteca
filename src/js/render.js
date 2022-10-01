@@ -193,10 +193,7 @@ refs.pageNavDivEl.onclick = e => {
     request(e.target.textContent);
     refs.scroller.to('header');
   }
-
 };
-
-});
 
 export function renderWatchedList() {
   const parsedWatched = JSON.parse(localStorage.getItem('watched'));
