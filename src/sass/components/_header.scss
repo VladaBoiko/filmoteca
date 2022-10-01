@@ -2,12 +2,8 @@
   display: block;
   margin: 0 auto;
   width: 100%;
-  padding: 45px 20px;
+  padding-top: 40px;
   height: 230px;
-
-  font-weight: 500;
-  color: var(--header-color-text);
-
   background-color: #2a2a2a;
   &.header-name {
     background-image: linear-gradient(
@@ -73,29 +69,21 @@
   }
 }
 
-.menu {
-  display: flex;
-}
-
 .navigation__container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 37px;
+  margin-bottom: 54px;
 
   @include tablet {
-    margin-bottom: 45px;
+    margin-bottom: 40px;
   }
-  @include desktop {
-    padding: 0;
-  }
+ 
 }
 
 .logo {
   display: flex;
-  align-self: flex-end;
-
-  &:hover > .logo__svg {
+   &:hover > .logo__svg {
     stroke: #ff6b01;
   }
 
@@ -103,17 +91,6 @@
     color: var(--header-color-text);
   }
 
-  @include tablet {
-    margin-right: 112px;
-  }
-
-  @include tablet {
-    margin-right: 303px;
-  }
-
-  @include desktop {
-    margin-right: 564px;
-  }
 }
 
 .navigation {
@@ -141,15 +118,7 @@
   align-self: center;
   stroke: var(--icon-film-color);
 
-  @include mobile {
-    margin-right: 113px;
-  }
-
   @include tablet {
-    margin-right: 10px;
-  }
-
-  @include desktop {
     margin-right: 10px;
   }
 
@@ -165,9 +134,7 @@
 }
 
 .logo__text {
-  font-size: 30px;
-  line-height: 1.72;
-  font-weight: 500;
+  @include text(500, 30px, 35px);
   color: var(--header-color-text);
 
   @include mobile {
@@ -176,22 +143,18 @@
   @include tablet {
     display: block;
   }
-  @include desktop {
-    display: block;
-  }
 }
 
 .menu__item {
   position: relative;
 
   &:not(:last-child) {
-    margin-right: 39px;
+    margin-right: 40px;
   }
 }
 
 .menu__link {
-  font-size: 12px;
-  line-height: 1.16;
+  @include text(500, 12px, 14px);
   color: var(--header-color-text);
   text-transform: uppercase;
 }
@@ -213,8 +176,9 @@
   display: flex;
   position: relative;
 
-  width: 280px;
-  margin: 0 auto 5px;
+  // width: 280px;
+  width: 100%;
+  margin: 0 auto;
 
   justify-content: center;
   @include tablet {
@@ -227,9 +191,10 @@
 }
 
 .search__input {
-  width: 280px;
-  height: 30px;
-  padding: 4px 0;
+  width: 100%;
+  // width: 280px;
+  height: 20px;
+  // padding: 4px 0;
 
   border-top: none;
   border-right: none;
@@ -240,9 +205,7 @@
   background-color: transparent;
 
   color: var(--header-color-text);
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.17;
+  @include text(400, 14px, 17px);
 
   &::placeholder {
     color: var(--header-color-text);
@@ -257,13 +220,13 @@
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-  @include tablet {
-    width: 336px;
-  }
+  // @include tablet {
+  //   width: 336px;
+  // }
 
-  @include desktop {
-    width: 394px;
-  }
+  // @include desktop {
+  //   width: 394px;
+  // }
 }
 
 .search__button {
@@ -297,19 +260,18 @@
 }
 
 .warning-notification {
-  width: 280px;
+  // width: 280px;
+  margin-top: 16px;
   margin: 0 auto;
-  font-size: 14px;
-  line-height: 1.17;
-  font-weight: 400;
+  @include text(400, 14px, 17px);
   color: var(--error);
   display: none;
-  position: absolute;
-  top: 194px;
-  left: 20%;
+  // position: absolute;
+  // top: 194px;
+  // left: 20%;
   @include tablet {
     width: 336px;
-    left: 29.5%;
+    // left: 29.5%;
   }
 
   @include desktop {
@@ -320,6 +282,7 @@
 }
 // то Влада
 .wrapper-header {
+  width: 100%;
   width: 280px;
   display: flex;
   flex-direction: column;
@@ -359,6 +322,7 @@
 // блок реєстрації користувача
 .regs-btns {
   display: flex;
+  // width: 70px;
   margin-left: 40px;
 }
 
@@ -394,10 +358,8 @@
   }
 }
 
-.reg-btn-singUp {
-  margin-right: 10px;
-}
 
-.menu {
+
+.menu__list {
   @include flexCenter;
 }

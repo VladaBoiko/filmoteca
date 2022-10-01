@@ -1,3 +1,5 @@
+
+<div class="container">
 <header class="header header-index">
   <div class="navigation__container">
     <a href="" class="logo">
@@ -7,7 +9,7 @@
       <span class="logo__text">Filmoteka</span>
     </a>
     <nav class="navigation">
-      <ul class="menu list">
+      <ul class="menu__list">
         <li class="menu__item">
           <a href="./index.html" class="link current menu__link menu__link-home"
             >Home</a
@@ -64,7 +66,15 @@
     </div>
   </div>
 
-  <div class="toolbar container">
+ 
+
+  <!-- Уведомление об ошибке -->
+  <p class="warning-notification">
+    Search result not successful. Enter the correct movie name and try again,
+    please
+  </p>
+
+  <div class="toolbar">
     <!-- Разметка переключателя темы -->
     <div class="theme-switch">
       <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
@@ -85,7 +95,7 @@
           for="theme-switch-toggle"
         >
         </label>
-        <div aria-hidden="true" class="theme-switch__marker"></div>
+        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
       </div>
 
       <svg class="theme-switch__icon" aria-label="Moon icon">
@@ -93,9 +103,4 @@
       </svg>
     </div>
   </div>
-
-  <!-- Уведомление об ошибке -->
-  <p class="warning-notification">
-    Search is empty. Enter the search word and try again, please
-  </p>
 </header>
