@@ -11,7 +11,7 @@ export const { openSingUpBtn, body, backdropSingUp, btnCloseSingUp } = refs;
 
 openSingUpBtn.addEventListener('click', onClickSingUp);
 
-function onClickSingUp() {
+export function onClickSingUp() {
   toggleModal();
   window.addEventListener('keydown', onPressEsk);
   backdropSingUp.addEventListener('click', onClickBackdrop);

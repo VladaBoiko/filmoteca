@@ -10,7 +10,7 @@ refs = {
 
 const { body, backdropSingIn, btnCloseSingIn } = refs;
 
-function toggleModalSingIn() {
+export function toggleModalSingIn() {
   backdropSingIn.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');
 }

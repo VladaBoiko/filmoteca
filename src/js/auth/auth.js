@@ -17,40 +17,45 @@ const firebaseConfig = {
 // import firebase from 'firebase/compat/app';
 // import * as firebaseui from 'firebaseui';
 
-import { toggleModal } from './modalSingUp';
-import { openSingUpBtn } from './modalSingUp';
+import { toggleModal, openSingUpBtn, onClickSingUp } from './modalSingUp';
+// import { openSingUpBtn } from './modalSingUp';
+import { toggleModalSingIn } from './modalSingIn';
 
 import 'firebaseui/dist/firebaseui.css';
-// import {
-//   getDatabase,
-//   set,
-//   ref,
-//   onValue,
-//   update,
-//   remove,
-// } from 'firebase/database';
 
 import {
   getAuth,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  updateProfile,
 } from 'firebase/auth';
 
-import { formSingUp, logOutBtn, singUpBtn, body } from './refs';
+import {
+  formSingUp,
+  formSingIn,
+  logOutBtn,
+  singUpBtn,
+  modalSingUpBtn,
+} from './refs';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// const database = getDatabase(app);
+console.dir(auth);
 
-// регистрация нового пользователя
+formSingUp.addEventListener('submit', regNewUser);
+formSingIn.addEventListener('submit', authUser);
+logOutBtn.addEventListener('click', logOut);
+modalSingUpBtn.addEventListener('click', () => {
+  onClickSingUp();
+  toggleModalSingIn();
+});
+
+// реєстрація нового користувача
 async function regNewUser(evt) {
   evt.preventDefault();
 
-  const userName = evt.currentTarget.elements.name.value;
   const email = evt.currentTarget.elements.email.value;
   const password = evt.currentTarget.elements.password.value;
 
@@ -67,12 +72,17 @@ async function regNewUser(evt) {
       password
     );
 
+    console.log(userCredential.user.displayName);
     const user = userCredential.user;
-    singUpBtn.textContent = `Welcome, ${userName}`;
-    toggleModal();
-    openSingUpBtn.disabled = true;
-    logOutBtn.classList.remove('is-hidden');
-    console.log(user);
+
+    if (user !== null) {
+      const uid = user.uid;
+
+      singUpBtn.textContent = `Welcome, ${email}`;
+      toggleModal();
+      openSingUpBtn.disabled = true;
+      logOutBtn.classList.remove('is-hidden');
+    }
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -83,6 +93,48 @@ async function regNewUser(evt) {
   }
 }
 
-formSingUp.addEventListener('submit', regNewUser);
+// вхід зареєстрованого користувача
 
-// вход зарегистрированного пользователя
+async function authUser(evt) {
+  evt.preventDefault();
+
+  const email = evt.currentTarget.elements.email.value;
+  const password = evt.currentTarget.elements.password.value;
+  try {
+    Loading.pulse({
+      svgColor: '#ff6b08',
+    });
+    Loading.remove(250);
+
+    await signInWithEmailAndPassword(auth, email, password);
+    singUpBtn.textContent = `Welcome, ${email}!`;
+    toggleModalSingIn();
+    openSingUpBtn.disabled = true;
+    logOutBtn.classList.remove('is-hidden');
+  } catch (error) {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    if (errorMessage) {
+      // тут другое предупреждение!!!
+      // Notify.failure('Password should be at least 6 characters!');
+    }
+    console.log(error);
+  }
+}
+
+// log out
+
+async function logOut() {
+  try {
+    await signOut(auth);
+    Loading.pulse({
+      svgColor: '#ff6b08',
+    });
+    Loading.remove(150);
+    logOutBtn.classList.add('is-hidden');
+    singUpBtn.textContent = 'SING UP';
+    openSingUpBtn.disabled = false;
+  } catch (error) {
+    console.log(error);
+  }
+}
