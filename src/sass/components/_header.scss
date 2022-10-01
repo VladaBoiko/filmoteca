@@ -1,10 +1,18 @@
 .header {
-  display: block;
+  // display: block;
   margin: 0 auto;
   width: 100%;
   padding-top: 40px;
   height: 230px;
   background-color: #2a2a2a;
+  overflow: hidden;
+  // display: none;
+  &.header__library {
+    display: none;
+  }
+  &.header-index {
+    display: block;
+  }
   &.header-name {
     background-image: linear-gradient(
         to right,
@@ -97,6 +105,7 @@
 }
 
 .menu__link {
+  background-color: transparent;
   &:visited {
     color: var(--header-color-text);
   }
@@ -163,7 +172,7 @@
   left: 0;
   bottom: -7%;
 
-  width: 34px;
+  width: 100%;
   height: 3px;
   border-radius: 2px;
 
@@ -217,14 +226,6 @@
   transition-property: border-bottom;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-  // @include tablet {
-  //   width: 336px;
-  // }
-
-  // @include desktop {
-  //   width: 394px;
-  // }
 }
 
 .search__button {
@@ -258,24 +259,23 @@
 }
 
 .warning-notification {
-  // width: 280px;
+  width: 280px;
   margin-top: 16px;
   margin: 0 auto;
   @include text(400, 14px, 17px);
   color: var(--error);
   display: none;
   position: absolute;
-  top: 194px;
+  top: 174px;
   left: 20%;
   @include tablet {
     width: 336px;
-    left: 29.5%;
+    left: 35.6%;
   }
 
   @include desktop {
     width: 394px;
-    top: 194px;
-    left: 39.7%;
+    left: 36.7%;
   }
 }
 // то Влада

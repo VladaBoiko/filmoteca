@@ -1,6 +1,8 @@
 export const refs = {
-  // preLoader
-  // header
+  headerIndex: document.querySelector('.header-index'),
+  headerLibrary: document.querySelector('.header__library'),
+  homeBtn: document.querySelector('.menu__home'),
+  libraryBtn: document.querySelector('.menu__library'),
   searchForm: document.querySelector('#search-form'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
