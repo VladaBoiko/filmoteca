@@ -3,6 +3,7 @@ import SweetScroll from 'sweet-scroll';
 import emptyImg from '../images/no-image.jpg';
 const headerEl = document.querySelector('header');
 const galleryListEl = document.querySelector('#gallery-list');
+const galleryListWatchedEl = document.querySelector('.gallery__list.watched');
 const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 const page = 1;
 const language = 'en-US';
@@ -18,7 +19,7 @@ const rightFirstPageEl = document.querySelector('.pagination_rightFirstPage');
 const rightSecondPageEl = document.querySelector('.pagination_rightSecondPage');
 const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
 const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
-const galleryContainer = document.querySelector('.gallery .container');
+const galleryContainer = document.querySelector('.gallery.watched .container');
 
 const watchedListBtn = document.getElementById('js-WatchedButton');
 const queueListBtn = document.getElementById('js-QueueButton');
@@ -241,7 +242,7 @@ export function renderWatchedList() {
 </li>`;
     })
     .join('');
-  galleryListEl.innerHTML = filmList;
+  galleryListWatchedEl.innerHTML = filmList;
 }
 
 export function renderQueueList() {
@@ -292,5 +293,5 @@ export function renderQueueList() {
 </li>`;
     })
     .join('');
-  galleryListEl.innerHTML = filmList;
+  galleryListWatchedEl.innerHTML = filmList;
 }
