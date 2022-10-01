@@ -96,7 +96,11 @@
 .alert {
   margin-bottom: 15px;
   text-align: center;
-  font-size: 42px;
+  font-size: 26px;
   line-height: 1.2;
   text-transform: uppercase;
+
+  @include tablet {
+    font-size: 42px;
+  }
 }
