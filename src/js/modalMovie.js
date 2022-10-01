@@ -1,4 +1,5 @@
 import { dataMovie, dataTrailer, IMG_URL } from './API/api';
+import { renderWatchedList, renderQueueList } from './render';
 
 import { modalHandle } from './modalHandle';
 
@@ -153,6 +154,9 @@ movieList.addEventListener('click', async event => {
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.splice(watched.indexOf(movie), 1);
     localStorage.setItem('watched', JSON.stringify(watched));
+    if (isLibraryOpen) {
+      renderWatchedList;
+    }
   }
 
   function onQueueBtnAddClick() {
