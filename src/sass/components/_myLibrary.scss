@@ -38,10 +38,6 @@
       ),
       url(../images/header-library-background-desktop@2x.jpeg);
   }
-
-  & .current::after {
-    width: 69px;
-  }
 }
 
 .storage {
@@ -91,23 +87,9 @@
 
   border: 1px solid var(--header-color-text);
   border-radius: 5px;
-
-  // &:hover,
-  // &:focus {
-  //   background-color: $accentColor;
-  //   border: 1px solid $accentColor;
-  // }
 }
-
 .storage__input:checked ~ .storage__btn {
   background-color: var(--accent);
   border: 1px solid var(--accent);
   color: var(--header-color-text);
 }
-
-// //добавила для кнопок в модальном окне
-// .storage__input ~ .storage__btn {
-//   background-color: $white;
-//   border: 1px solid $dark;
-//   color: $dark;
-// }

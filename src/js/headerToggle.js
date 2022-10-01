@@ -3,10 +3,10 @@ refs.homeBtn.addEventListener('click', switchHeaderHome);
 refs.libraryBtn.addEventListener('click', switchHeaderLibrary);
 
 function switchHeaderLibrary() {
-  refs.headerIndex.style.display = 'none';
-  refs.headerLibrary.style.display = 'block';
+  refs.headerIndex.classList.add('is-hidden');
+  refs.headerLibrary.classList.remove('is-hidden');
 }
 function switchHeaderHome() {
-  refs.headerLibrary.style.display = 'none';
-  refs.headerIndex.style.display = 'block';
+  refs.headerLibrary.classList.add('is-hidden');
+  refs.headerIndex.classList.remove('is-hidden');
 }

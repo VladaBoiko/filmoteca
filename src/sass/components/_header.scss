@@ -1,17 +1,17 @@
 .header {
-  // display: block;
   margin: 0 auto;
   width: 100%;
   padding-top: 40px;
   height: 230px;
   background-color: #2a2a2a;
   overflow: hidden;
-  // display: none;
+  position: absolute;
+  top: 0;
   &.header__library {
-    display: none;
+    transition: all var(--transition);
   }
   &.header-index {
-    display: block;
+    transition: all var(--transition);
   }
   &.header-name {
     background-image: linear-gradient(
@@ -183,7 +183,6 @@
   display: flex;
   position: relative;
 
-  // width: 280px;
   width: 100%;
   margin: 0 auto;
 
@@ -199,9 +198,7 @@
 
 .search__input {
   width: 100%;
-  // width: 280px;
   height: 20px;
-  // padding: 4px 0;
 
   border-top: none;
   border-right: none;
