@@ -7,9 +7,9 @@
   @include tablet {
     margin-bottom: 60px;
   }
-  // &--hidden {
-  //   display: none;
-  // }
+  &--hidden {
+    display: none;
+  }
 }
 .pagination_previousBtn {
   background-color: #f7f7f7;
