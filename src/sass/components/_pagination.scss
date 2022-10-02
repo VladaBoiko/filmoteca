@@ -3,11 +3,13 @@
   margin-right: auto;
   display: flex;
   width: fit-content;
-
-  &--hidden {
-    display: none;
-  }
+margin-bottom: 40px;
+  @include tablet {
+    margin-bottom: 60px;
 }
+  &--hidden {
+    display: none; }
+  
 .pagination_previousBtn {
   background-color: #f7f7f7;
   border-radius: 5px;
@@ -22,7 +24,6 @@
   &:hover {
     background-color: var(--accent);
     color: #f7f7f7;
-    border: 1px solid rgb(65, 61, 61);
   }
 }
 .pagination_firstPage {
@@ -30,10 +31,28 @@
 }
 
 .pagination_leftPoints {
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
   cursor: default;
 }
 
 .pagination_rightPoints {
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
   cursor: default;
 }
 
@@ -57,7 +76,6 @@
   &:hover {
     background-color: var(--accent);
     color: #f7f7f7;
-    border: 1px solid rgb(65, 61, 61);
   }
 }
 
@@ -79,12 +97,11 @@
   &:hover {
     background-color: var(--accent);
     color: #f7f7f7;
-    border: 1px solid rgb(65, 61, 61);
   }
 }
 
 .pagination_buttons--styles--active {
   color: #f7f7f7;
-  border: 1px solid rgb(65, 61, 61);
+
   background-color: var(--accent);
 }

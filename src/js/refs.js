@@ -5,7 +5,7 @@ export const refs = {
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
   searchForm: document.querySelector('#search-form'),
-  // nameInput: document.querySelector('.name-input'),
+  // input: document.querySelector('.search__input'),
   // genreInput: document.querySelector('.genre-input'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
@@ -30,8 +30,10 @@ export const refs = {
   leftSecondPageEl: document.querySelector('.pagination_leftSecondPage'),
   currentPage: 1,
   totalPages: 1,
-  scroller: new SweetScroll({ duration: 6000 }),
+  scroller: new SweetScroll({ duration: 1000 }),
   pagSerchQuery: '',
+  // GoTopBtn
+  goTopBtn: document.querySelector('.button_to_top'),
   // ModalMovie
   movieList: document.querySelector('main'),
   movieDetail: document.getElementById('modal-movie-detail'),

@@ -2,28 +2,46 @@
   margin: 0 auto;
   width: 100%;
   padding-top: 40px;
-  height: 230px;
   background-color: #2a2a2a;
   overflow: hidden;
   position: absolute;
   top: 0;
   z-index: 100;
+
+  @include mobile {
+    height: 230px;
+  }
+  @include tablet {
+    height: 216px;
+  }
+  @include desktop {
+    height: 216px;
+  }
+  .container {
+    position: relative;
+  }
   &.header__library {
     transition: all var(--transition);
   }
   &.header-index {
     transition: all var(--transition);
   }
+
   &.header-name {
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-background-mobile-2x.jpeg);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
+      url(../images/header-background-mobile-1x.jpeg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/header-background-mobile-2x.jpeg);
+    }
 
     @include tablet {
       padding: 45px 60px 20px;
@@ -32,7 +50,12 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../images/header-background-tablet@2x.jpeg);
+        url(../images/header-background-tablet@1x.jpeg);
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/header-background-tablet@2x.jpeg);
+      }
     }
 
     @include desktop {
@@ -42,19 +65,30 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../images/header-background-desktop@2x.jpeg);
+        url(../images/header-background-desktop@1x.jpeg);
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/header-background-desktop@2x.jpeg);
+      }
     }
   }
+
   &.header-genre {
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-page2-background-mobile@2x.jpeg);
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
+      url(../images/header-page2-background-mobile@1x.jpeg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/header-page2-background-mobile@2x.jpeg);
+    }
 
     @include tablet {
       padding: 45px 60px 20px;
@@ -63,7 +97,12 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../images/header-page2-background-tablet@2x.jpeg);
+        url(../images/header-page2-background-tablet@1x.jpeg);
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/header-page2-background-tablet@2x.jpeg);
+      }
     }
 
     @include desktop {
@@ -73,7 +112,12 @@
           rgba(0, 0, 0, 0.56),
           rgba(0, 0, 0, 0.56)
         ),
-        url(../images/header-page2-background-desktop@2x.jpeg);
+        url(../images/header-page2-background-desktop@1x.jpeg);
+      @media (min-device-pixel-ratio: 2),
+        (min-resolution: 192dpi),
+        (min-resolution: 2dppx) {
+        background-image: url(../images/header-page2-background-desktop@2x.jpeg);
+      }
     }
   }
 }
@@ -87,6 +131,9 @@
   @include tablet {
     margin-bottom: 40px;
   }
+  @include desktop {
+    margin-bottom: 40px;
+  }
 }
 
 .logo {
@@ -97,6 +144,10 @@
 
   &:visited {
     color: var(--header-color-text);
+  }
+
+  @include mobile {
+    margin-right: 10px;
   }
 }
 
@@ -157,7 +208,17 @@
   position: relative;
 
   &:not(:last-child) {
-    margin-right: 40px;
+    @include mobile {
+      margin-right: 20px;
+    }
+
+    @include tablet {
+      margin-right: 39px;
+    }
+
+    @include desktop {
+      margin-right: 39px;
+    }
   }
 }
 
@@ -277,16 +338,16 @@
   color: var(--error);
   display: none;
   position: absolute;
-  top: 174px;
+  top: 29px;
   left: 20%;
   @include tablet {
-    width: 336px;
-    left: 35.6%;
+    left: 28%;
   }
 
   @include desktop {
-    width: 394px;
-    left: 36.7%;
+    // width: 394px;
+    width: 336px;
+    left: 34.7%;
   }
 }
 // то Влада
@@ -329,15 +390,20 @@
 }
 
 // блок реєстрації користувача
+
 .regs-btns {
   display: flex;
-  margin-left: 40px;
+  position: absolute;
+  top: 155px;
+  right: 50%;
+  transform: translate(50%, 50%);
 }
 
-.reg-btn-singUp,
+.reg-btn-singIn,
 .logout-btn {
   padding: 5px 0px;
   width: 70px;
+  height: 40px;
   font-size: 12px;
   line-height: 1.16;
   color: var(--header-color-text);
@@ -347,9 +413,7 @@
 
   border-radius: 5px;
   @include flexCenter;
-  transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition), background-color var(--transition);
 
   &:not([disabled]):hover,
   &:not([disabled]):focus {
@@ -370,4 +434,8 @@
 
 .menu__list {
   @include flexCenter;
+}
+
+.one {
+  position: relative;
 }
