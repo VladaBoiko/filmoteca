@@ -5,26 +5,23 @@ import {
   formSingUpInputPassword,
   formSingInInputEmail,
   formSingInInputPassword,
-  singUpBtn,
-  singInBtn,
+  modalSingInBtn,
   backdropSingUp,
   btnCloseSingUp,
 } from './refs.js';
-
-singUpBtn.addEventListener('click', onClickSingUp);
 
 export function onClickSingUp() {
   toggleModal();
   window.addEventListener('keydown', onPressEsk);
   backdropSingUp.addEventListener('click', onClickBackdrop);
   btnCloseSingUp.addEventListener('click', toggleModal);
-  singInBtn.addEventListener('click', onSingIn);
+  modalSingInBtn.addEventListener('click', onSingIn);
 }
 
 function onSingIn() {
   toggleModal();
   onClickSingInBtn();
-  singInBtn.removeEventListener('click', onSingIn);
+  modalSingInBtn.removeEventListener('click', onSingIn);
 }
 
 export function toggleModal() {
