@@ -17,7 +17,9 @@
   @include desktop {
     height: 216px;
   }
-
+  .container {
+    position: relative;
+  }
   &.header__library {
     transition: all var(--transition);
   }
@@ -335,16 +337,16 @@
   color: var(--error);
   display: none;
   position: absolute;
-  top: 174px;
+  top: 130px;
   left: 20%;
   @include tablet {
-    width: 336px;
-    left: 35.6%;
+    left: 28%;
   }
 
   @include desktop {
-    width: 394px;
-    left: 36.7%;
+    // width: 394px;
+    width: 336px;
+    left: 34.7%;
   }
 }
 // то Влада
