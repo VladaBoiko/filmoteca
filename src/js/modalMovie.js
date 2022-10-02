@@ -45,7 +45,7 @@ movieList.addEventListener('click', async event => {
   if (!event.target.closest('.card__item')) {
     return;
   }
-  id = event.target.closest('.card__item').dataset.movieId;
+  const id = event.target.closest('.card__item').dataset.movieId;
   const movie = await dataMovie(id);
   const trailers = await dataTrailer(id);
   const videoInfo = getVideo(trailers);
