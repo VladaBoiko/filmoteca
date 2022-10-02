@@ -8,6 +8,9 @@ refs.goTopBtn.addEventListener('click', () => {
 });
 
 function btnVisibility() {
+  if (!(window.innerWidth > 1279)) {
+    return;
+  }
   if (window.pageYOffset > 1000) {
     refs.goTopBtn.style.display = 'block';
   } else {
