@@ -7,17 +7,21 @@
 
   font-weight: 500;
   color: var(--header-color-text);
-
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: #2a2a2a;
   background-image: linear-gradient(
       to right,
       rgba(0, 0, 0, 0.56),
       rgba(0, 0, 0, 0.56)
     ),
-    url(../images/header-library-background-mobile@2x.jpeg);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: cover;
+    url(../images/header-library-background-mobile@1x.jpeg);
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(../images/header-library-background-mobile@2x.jpeg);
+  }
 
   @include tablet {
     padding: 45px 60px 20px;
@@ -26,7 +30,12 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-library-background-tablet@2x.jpeg);
+      url(../images/header-library-background-tablet@1x.jpeg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/header-library-background-tablet@2x.jpeg);
+    }
   }
 
   @include desktop {
@@ -36,7 +45,12 @@
         rgba(0, 0, 0, 0.56),
         rgba(0, 0, 0, 0.56)
       ),
-      url(../images/header-library-background-desktop@2x.jpeg);
+      url(../images/header-library-background-desktop@1x.jpeg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(../images/header-library-background-desktop@2x.jpeg);
+    }
   }
 }
 
