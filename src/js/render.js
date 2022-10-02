@@ -49,18 +49,11 @@ export async function request(page, language) {
   pageNavigation(data);
 }
 
-async function renderFilmCards(data) {
+export async function renderFilmCards(data) {
   const genresData = (await getAllGenres(language)).genres;
-  let imgSrc = null;
   const filmList = data.results
     .map(
       ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
-        // if (poster_path) {
-        //   imgSrc = `${baseUrtlImg}${poster_path}`;
-        // }
-        // if (poster_path === null) {
-        //   imgSrc = imgSrc = emptyImg;
-        // }
         const allGenres = [];
         genresData
           .map(genre => {
@@ -72,6 +65,27 @@ async function renderFilmCards(data) {
 
         const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
         const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
+        let poster = '';
+        if (poster_path !== null) {
+          poster = `<picture>
+                      <source srcset="${srcSet500}" media="(min-width: 1280px)">
+                      <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
+
+                      <img
+                        src=${IMG_URL_342}${poster_path}
+                        width="395"
+                        height="574"
+                        alt="${title}"
+                        loading="lazy"
+                      />
+                    </picture> `;
+        } else {
+          poster = `<img class="card__img"
+                      src="${emptyImg}"
+                      alt="${title}"
+                      loading="lazy"
+                    />`;
+        }
 
         return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
