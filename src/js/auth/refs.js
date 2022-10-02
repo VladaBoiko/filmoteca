@@ -1,4 +1,4 @@
-refs = {
+const refs = {
   body: document.querySelector('body'),
   formSingUp: document.getElementById('reg-modal-form'),
   formSingIn: document.getElementById('singIn-modal-form'),
@@ -14,6 +14,7 @@ refs = {
   backdropSingUp: document.querySelector('.backdrop-reg-modal'),
   btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
   backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
+
   btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
 };
 
