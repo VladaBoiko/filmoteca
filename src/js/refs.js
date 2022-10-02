@@ -28,7 +28,7 @@ export const refs = {
   leftSecondPageEl: document.querySelector('.pagination_leftSecondPage'),
   currentPage: 1,
   totalPages: 1,
-  scroller: new SweetScroll({ duration: 6000 }),
+  scroller: new SweetScroll({ duration: 1000 }),
   pagSerchQuery: '',
   // GoTopBtn
   goTopBtn: document.querySelector('.button_to_top'),

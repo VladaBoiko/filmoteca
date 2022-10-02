@@ -30,10 +30,28 @@
 }
 
 .pagination_leftPoints {
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
   cursor: default;
 }
 
 .pagination_rightPoints {
+  background-color: inherit;
+  border-radius: 5px;
+  padding: 5px;
+  @include tablet {
+    padding: 10px;
+  }
+  @include desktop {
+    padding: 20px;
+  }
   cursor: default;
 }
 
