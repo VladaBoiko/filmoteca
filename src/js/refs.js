@@ -5,7 +5,7 @@ export const refs = {
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
   searchForm: document.querySelector('#search-form'),
-  // nameInput: document.querySelector('.name-input'),
+  // input: document.querySelector('.search__input'),
   // genreInput: document.querySelector('.genre-input'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
