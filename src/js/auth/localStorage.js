@@ -19,7 +19,7 @@ function checkLocalStorage() {
 
   singInBtn.textContent = `Welcome, ${userData.userName}`;
   singInBtn.disabled = true;
-  logOutBtn.classList.remove('visually-hidden');
+  logOutBtn.disabled = false;
 }
 
 checkLocalStorage();
