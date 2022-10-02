@@ -8,7 +8,6 @@ refs.goTopBtn.addEventListener('click', () => {
 });
 
 function btnVisibility() {
-  console.log(window.pageYOffset);
   if (window.pageYOffset > 1000) {
     refs.goTopBtn.style.display = 'block';
   } else {
