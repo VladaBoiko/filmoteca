@@ -89,15 +89,24 @@ movieList.addEventListener('click', async event => {
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
-    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderWatchedList();
+    }
   }
 
   function onWatchedBtnRemoveClick() {
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
-    watched.splice(watched.indexOf(movie), 1);
+    for (const object of watched) {
+      if (object.id === Number(id)) {
+        watched.splice(watched.indexOf(object), 1);
+        break;
+      }
+    }
     localStorage.setItem('watched', JSON.stringify(watched));
-    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderWatchedList();
+    }
   }
 
   function onQueueBtnAddClick() {
@@ -105,15 +114,24 @@ movieList.addEventListener('click', async event => {
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
-    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderQueueList();
+    }
   }
 
   function onQueueBtnRemoveClick() {
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
-    queue.splice(queue.indexOf(movie), 1);
+    for (const object of queue) {
+      if (object.id === Number(id)) {
+        queue.splice(queue.indexOf(object), 1);
+        break;
+      }
+    }
     localStorage.setItem('queue', JSON.stringify(queue));
-    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderQueueList();
+    }
   }
 
   watchedBtnAdd.addEventListener('click', onWatchedBtnAddClick);
