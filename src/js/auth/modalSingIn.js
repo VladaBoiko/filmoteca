@@ -1,6 +1,6 @@
 import { body, backdropSingIn, btnCloseSingIn, modalSingUpBtn } from './refs';
 import { onPressEsk, onClickSingUp, resetForm } from './modalSingUp';
-
+console.log(btnCloseSingIn);
 export function toggleModalSingIn() {
   backdropSingIn.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');

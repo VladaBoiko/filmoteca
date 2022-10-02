@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { dataSearch, dataGenre, dataByGenres } from './API/api';
-import { renderFilmCards } from './searchByName';
+import { renderFilmCards } from './renderCard';
 import Notiflix from 'notiflix';
 import { pageNavigation } from './render';
 import SweetScroll from 'sweet-scroll';
@@ -16,6 +16,7 @@ let data = null;
 refs.searchForm.addEventListener('submit', onSearch);
 refs.chosenNameBtn.addEventListener('click', chosenTypeName);
 refs.chosenGenreBtn.addEventListener('click', chosenTypeGenre);
+const galleryBySearch = document.querySelector('#gallery-list');
 
 function chosenTypeName() {
   isChosenName = true;
@@ -49,7 +50,7 @@ async function onSearch(evt) {
       console.log(isChosenName);
       data = await dataSearch(searchQuery, language, page);
       notification(data);
-      renderFilmCards(data);
+      renderFilmCards(data.results, galleryBySearch);
       pageNavigation(data);
     }
     if (isChosenGenre) {
@@ -71,7 +72,7 @@ async function onSearch(evt) {
         refs.errorSearch.style.display = 'none';
         data = await dataByGenres(genre.id, language, page);
         notification(data);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         pageNavigation(data);
       }
     }
@@ -80,14 +81,14 @@ async function onSearch(evt) {
         console.log('refs');
         refs.currentPage++;
         data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         pageNavigation(data);
       }
       if (e.target.textContent === 'prev') {
         refs.currentPage--;
         data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         pageNavigation(data);
       }
@@ -97,7 +98,7 @@ async function onSearch(evt) {
           language,
           e.target.textContent
         );
-        await renderFilmCards(data);
+        await renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         await pageNavigation(data);
       }
