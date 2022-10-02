@@ -394,8 +394,9 @@
 .regs-btns {
   display: flex;
   position: absolute;
-  top: 155px;
+  top: 145px;
   right: 50%;
+  z-index: 101;
   transform: translate(50%, 50%);
 }
 
@@ -434,8 +435,4 @@
 
 .menu__list {
   @include flexCenter;
-}
-
-.one {
-  position: relative;
 }
