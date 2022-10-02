@@ -1,30 +1,36 @@
-import { onClickSingInBtn, openSingInBtn } from './modalSingIn';
+import { onClickSingInBtn } from './modalSingIn';
+import {
+  body,
+  formSingUpInputEmail,
+  formSingUpInputPassword,
+  formSingInInputEmail,
+  formSingInInputPassword,
+  singUpBtn,
+  singInBtn,
+  backdropSingUp,
+  btnCloseSingUp,
+} from './refs.js';
 
-refs = {
-  openSingUpBtn: document.querySelector('[data-modal-open="singUp"]'),
-  body: document.querySelector('body'),
-  backdropSingUp: document.querySelector('.backdrop-reg-modal'),
-  btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
-};
+singUpBtn.addEventListener('click', onClickSingUp);
 
-export const { openSingUpBtn, body, backdropSingUp, btnCloseSingUp } = refs;
-
-openSingUpBtn.addEventListener('click', onClickSingUp);
-
-function onClickSingUp() {
+export function onClickSingUp() {
   toggleModal();
   window.addEventListener('keydown', onPressEsk);
   backdropSingUp.addEventListener('click', onClickBackdrop);
   btnCloseSingUp.addEventListener('click', toggleModal);
-  openSingInBtn.addEventListener('click', () => {
-    toggleModal();
-    onClickSingInBtn();
-  });
+  singInBtn.addEventListener('click', onSingIn);
+}
+
+function onSingIn() {
+  toggleModal();
+  onClickSingInBtn();
+  singInBtn.removeEventListener('click', onSingIn);
 }
 
 export function toggleModal() {
   backdropSingUp.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');
+  resetForm();
 }
 
 export function onPressEsk(e) {
@@ -39,4 +45,11 @@ function onClickBackdrop(e) {
     toggleModal();
     backdropSingUp.removeEventListener('click', onClickBackdrop);
   }
+}
+
+export function resetForm() {
+  formSingUpInputEmail.value = '';
+  formSingUpInputPassword.value = '';
+  formSingInInputEmail.value = '';
+  formSingInInputPassword.value = '';
 }

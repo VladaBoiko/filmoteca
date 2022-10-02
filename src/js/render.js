@@ -88,19 +88,40 @@ export async function renderFilmCards(data) {
         }
 
         return `<li data-movie-id="${id}" class="card__item">
-                  <a class="card__link" href = "">
-                    ${poster}    
-                    <h2 class="card__title">${title}</h2>
-                    <div class="card__text">
-                      <p class="card__info">
-                        ${allGenres} | ${release_date.split('', 4).join('')}
-                      </p>
-                      <div class="card__rating">
-                      ${vote_average.toString().split('', 3).join('')}
-                      </div>
-                    </div>
-                  </a>
-                </li>`;
+    <a class="card__link" href = "">
+    
+    <!--    <img class="card__img"
+        src="${imgSrc}"
+        alt="${title}"
+        loading=lazy
+    /> -->
+        <picture  class="card__img">
+          <source srcset="${srcSet500}" media="(min-width: 1280px)">
+          <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
+
+          <img
+           class="card__img"
+            src=${IMG_URL_342}${poster_path}
+            width="395"
+            height="574"
+            alt="${title}"
+            loading="lazy"
+          />
+        </picture> 
+    
+    <h2 class="card__title">${title}</h2>
+    <div class="card__text">
+        <p class="card__info">${allGenres} | ${release_date
+          .split('', 4)
+          .join('')}</p>
+        <div class="card__rating">${vote_average
+          .toString()
+          .split('', 3)
+          .join('')}</div>
+    </div>
+    </a>
+
+</li>`;
       }
     )
     .join('');
@@ -243,11 +264,12 @@ export function renderWatchedList() {
       const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
       return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
-        <picture>
+        <picture  class="card__img">
           <source srcset="${srcSet500}" media="(min-width: 1280px)">
           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
 
           <img
+           class="card__img"
             src=${IMG_URL_342}${poster_path}
             width="395"
             height="574"

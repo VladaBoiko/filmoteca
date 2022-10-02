@@ -331,7 +331,6 @@
 // блок реєстрації користувача
 .regs-btns {
   display: flex;
-  // width: 70px;
   margin-left: 40px;
 }
 
@@ -362,9 +361,11 @@
   &:disabled {
     border: none;
     color: var(--accent);
-    // background-color: var(--accent);
-    // color: var(--text-color-button);
   }
+}
+
+.logout-btn {
+  margin-left: 40px;
 }
 
 .menu__list {
