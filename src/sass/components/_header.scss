@@ -2,12 +2,22 @@
   margin: 0 auto;
   width: 100%;
   padding-top: 40px;
-  height: 230px;
   background-color: #2a2a2a;
   overflow: hidden;
   position: absolute;
   top: 0;
   z-index: 100;
+
+  @include mobile {
+    height: 230px;
+  }
+  @include tablet {
+    height: 216px;
+  }
+  @include desktop {
+    height: 216px;
+  }
+
   &.header__library {
     transition: all var(--transition);
   }
@@ -118,6 +128,9 @@
   @include tablet {
     margin-bottom: 40px;
   }
+  @include desktop {
+    margin-bottom: 40px;
+  }
 }
 
 .logo {
@@ -192,7 +205,17 @@
   position: relative;
 
   &:not(:last-child) {
-    margin-right: 40px;
+    @include mobile {
+      margin-right: 20px;
+    }
+
+    @include tablet {
+      margin-right: 39px;
+    }
+
+    @include desktop {
+      margin-right: 39px;
+    }
   }
 }
 
