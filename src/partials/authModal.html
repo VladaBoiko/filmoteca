@@ -9,13 +9,6 @@
     <p class="reg-modal-title">Registration form</p>
 
     <form id="reg-modal-form" class="reg-modal-form">
-      <!-- <input
-        class="reg-modal-username"
-        type="text"
-        name="name"
-        placeholder="Enter your Name"
-        required
-      /> -->
       <input
         class="reg-modal-email"
         type="email"
@@ -39,14 +32,19 @@
       >
         Sign Up
       </button>
-      <p>Already have an account? 
-      <button
-        class="modal-btn-singIn"
-        type="button"
-        aria-label="sign in btn"
-        name="sign-in"
-        data-modal-open="singIn"
-      >Sign in</a></p>
+
+      <p class="wrap_bottom">
+        Already have an account?
+        <button
+          class="modal-btn-singIn"
+          type="button"
+          aria-label="sign in btn"
+          name="sign-in"
+          data-modal-open="singIn-second"
+        >
+          Sign in
+        </button>
+      </p>
     </form>
   </div>
 </div>
@@ -62,7 +60,6 @@
     <p class="singIn-modal-title">Authorization form</p>
 
     <form id="singIn-modal-form" class="reg-modal-form">
-      
       <input
         class="singIn-modal-email"
         type="email"
@@ -86,12 +83,16 @@
       >
         Sing in
       </button>
-      <p> Not registered? 
-      <button
-        class="modal-btn-singIn "
-        data-modal-open="singIn-second"
-        type="button"
-      >Click here</a></p>
+      <p>
+        Not registered?
+        <button
+          class="modal-btn-singIn"
+          data-modal-open="singUp-second"
+          type="button"
+        >
+          Click here
+        </button>
+      </p>
     </form>
   </div>
 </div>

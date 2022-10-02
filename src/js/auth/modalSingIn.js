@@ -1,4 +1,11 @@
-import { body, backdropSingIn, btnCloseSingIn, modalSingUpBtn } from './refs';
+import {
+  body,
+  backdropSingIn,
+  btnCloseSingIn,
+  modalSingUpBtn,
+  singInBtn,
+} from './refs.js';
+
 import { onPressEsk, onClickSingUp, resetForm } from './modalSingUp';
 
 export function toggleModalSingIn() {
@@ -6,6 +13,8 @@ export function toggleModalSingIn() {
   body.classList.toggle('noscroll');
   resetForm();
 }
+
+singInBtn.addEventListener('click', onClickSingInBtn);
 
 function onClickBackdrop(e) {
   if (e.target.classList.contains('backdrop')) {

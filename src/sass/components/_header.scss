@@ -44,6 +44,7 @@
         url(../images/header-background-desktop@2x.jpeg);
     }
   }
+
   &.header-genre {
     background-image: linear-gradient(
         to right,
@@ -315,15 +316,20 @@
 }
 
 // блок реєстрації користувача
+
 .regs-btns {
   display: flex;
-  margin-left: 40px;
+  position: absolute;
+  top: 155px;
+  right: 50%;
+  transform: translate(50%, 50%);
 }
 
-.reg-btn-singUp,
+.reg-btn-singIn,
 .logout-btn {
   padding: 5px 0px;
   width: 70px;
+  height: 40px;
   font-size: 12px;
   line-height: 1.16;
   color: var(--header-color-text);
@@ -333,9 +339,7 @@
 
   border-radius: 5px;
   @include flexCenter;
-  transition-property: color, background-color;
-  transition-duration: 250ms;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color var(--transition), background-color var(--transition);
 
   &:not([disabled]):hover,
   &:not([disabled]):focus {
@@ -356,4 +360,8 @@
 
 .menu__list {
   @include flexCenter;
+}
+
+.one {
+  position: relative;
 }

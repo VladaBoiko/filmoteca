@@ -7,7 +7,6 @@ import 'firebaseui/dist/firebaseui.css';
 
 import {
   getAuth,
-  // onAuthStateChanged,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -23,14 +22,13 @@ const firebaseConfig = {
   appId: '1:579941014930:web:cda5220011d3007db5354b',
 };
 
-// import firebase from 'firebase/compat/app';
-// import * as firebaseui from 'firebaseui';
-
 import { toggleModal, resetForm } from './modalSingUp';
 
 import { toggleModalSingIn } from './modalSingIn';
 
-import { formSingUp, formSingIn, logOutBtn, singUpBtn } from './refs';
+import { formSingUp, formSingIn, logOutBtn, singInBtn } from './refs';
+
+import { saveUser, clearUserOnLocalStorage } from './localStorage';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -46,6 +44,8 @@ async function regNewUser(evt) {
 
   const email = evt.currentTarget.elements.email.value.trim();
   const password = evt.currentTarget.elements.password.value.trim();
+  const indexInEmail = email.indexOf('@');
+  const userName = email.slice(0, indexInEmail).toUpperCase();
 
   if (password.length < 6) {
     Notify.failure('Password should be at least 6 characters!');
@@ -58,20 +58,14 @@ async function regNewUser(evt) {
     });
     Loading.remove(250);
 
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    const indexInEmail = email.indexOf('@');
-    const userName = email.slice(0, indexInEmail).toUpperCase();
-    const uid = user.uid;
+    await createUserWithEmailAndPassword(auth, email, password);
 
-    singUpBtn.textContent = `Welcome, ${userName}`;
+    saveUser(userName, email, password);
+
+    singInBtn.textContent = `Welcome, ${userName}`;
     toggleModal();
-    singUpBtn.disabled = true;
-    logOutBtn.classList.remove('is-hidden');
+    singInBtn.disabled = true;
+    logOutBtn.classList.remove('visually-hidden');
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -87,6 +81,9 @@ async function authUser(evt) {
 
   const email = evt.currentTarget.elements.email.value.trim();
   const password = evt.currentTarget.elements.password.value.trim();
+  const indexInEmail = email.indexOf('@');
+  const userName = email.slice(0, indexInEmail).toUpperCase();
+
   try {
     Loading.pulse({
       svgColor: '#ff6b08',
@@ -95,13 +92,12 @@ async function authUser(evt) {
 
     await signInWithEmailAndPassword(auth, email, password);
     resetForm();
-    const indexInEmail = email.indexOf('@');
-    const userName = email.slice(0, indexInEmail).toUpperCase();
+    saveUser(userName, email, password);
 
-    singUpBtn.textContent = `Welcome, ${userName}!`;
+    singInBtn.textContent = `Welcome, ${userName}!`;
     toggleModalSingIn();
-    singUpBtn.disabled = true;
-    logOutBtn.classList.remove('is-hidden');
+    singInBtn.disabled = true;
+    logOutBtn.classList.remove('visually-hidden');
   } catch (error) {
     Notify.failure('Oooops! User not found or wrong password:( Try again!');
   }
@@ -116,9 +112,10 @@ async function logOut() {
       svgColor: '#ff6b08',
     });
     Loading.remove(150);
-    logOutBtn.classList.add('is-hidden');
-    singUpBtn.textContent = 'SING UP';
-    singUpBtn.disabled = false;
+    logOutBtn.classList.add('visually-hidden');
+    singInBtn.textContent = 'SING IN';
+    singInBtn.disabled = false;
+    clearUserOnLocalStorage();
   } catch (error) {
     console.log(error);
   }
