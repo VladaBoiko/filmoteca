@@ -234,7 +234,7 @@ refs.pageNavDivEl.onclick = e => {
 export function renderWatchedList() {
   const parsedWatched = JSON.parse(localStorage.getItem('watched'));
 
-  pageNavDivEl.remove();
+  pageNavDivEl.classList.toggle('pagination--hidden');
   if (!parsedWatched || parsedWatched.length === 0) {
     galleryContainer.innerHTML =
       '<h1 class="alert">No movies here yet</h1><img class="alert-img" src="https://i.kym-cdn.com/entries/icons/original/000/019/277/confusedtravolta.jpg" alt="Confused Travolta">';
@@ -296,7 +296,7 @@ export function renderWatchedList() {
 
 export function renderQueueList() {
   const parsedQueue = JSON.parse(localStorage.getItem('queue'));
-  pageNavDivEl.remove();
+  pageNavDivEl.classList.toggle('pagination--hidden');
 
   if (!parsedQueue || parsedQueue.length === 0) {
     galleryContainer.innerHTML =

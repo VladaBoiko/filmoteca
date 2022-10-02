@@ -3,6 +3,10 @@
   margin-right: auto;
   display: flex;
   width: fit-content;
+
+  &--hidden {
+    display: none;
+  }
 }
 .pagination_previousBtn {
   background-color: #f7f7f7;
