@@ -45,9 +45,11 @@ const scroller = new SweetScroll({ duration: 6000 });
 // }
 
 export async function request(page, language) {
+  loader.show();
   const data = await dataMovieList(page, language);
   renderFilmCards(data.results, galleryListEl);
   pageNavigation(data);
+  await loader.hide();
 }
 
 // export async function renderFilm(data) {
