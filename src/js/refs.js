@@ -4,17 +4,15 @@ export const refs = {
   headerLibrary: document.querySelector('.header__library'),
   homeBtn: document.querySelector('.menu__home'),
   libraryBtn: document.querySelector('.menu__library'),
-  // libraryCurBtn: document.querySelector('current-btn-library'),
-  // homeCurBtn: document.querySelector('current-btn-home'),
   searchForm: document.querySelector('#search-form'),
+  // input: document.querySelector('.search__input'),
+  // genreInput: document.querySelector('.genre-input'),
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
   chosenGenreBtn: document.querySelector('.search-choice-btn.genre'),
   header: document.querySelector('.header-index'),
-  // myLibrary
-  // interface
-  // genere
-  // movie
+  homeGallery: document.querySelector('.home'),
+  libraryGallery: document.querySelector('.watched'),
   headerEl: document.querySelector('header'),
   pageNavDivEl: document.querySelector('.pagination'),
   prevBtnEl: document.querySelector('.pagination_previousBtn'),
@@ -30,11 +28,14 @@ export const refs = {
   leftSecondPageEl: document.querySelector('.pagination_leftSecondPage'),
   currentPage: 1,
   totalPages: 1,
-  scroller: new SweetScroll({ duration: 6000 }),
+  scroller: new SweetScroll({ duration: 1000 }),
   pagSerchQuery: '',
-  // footer
-  // modalMovie
-  openModalMovie: document.querySelector('[data-movie-modal-open]'),
-  closeModalMovie: document.querySelector('[data-movie-modal-close]'),
+  // GoTopBtn
+  goTopBtn: document.querySelector('.button_to_top'),
+  // ModalMovie
+  movieList: document.querySelector('main'),
+  movieDetail: document.getElementById('modal-movie-detail'),
+  movieTrailer: document.getElementById('modal-movie-trailer'),
+
   // modalTeam
 };

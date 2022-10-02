@@ -15,38 +15,37 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./sass/index.scss" />
+    <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <div>
-      <include src="./partials/preLoader.html"></include>
-      <!-- Header -->
-      <include src="./partials/header.html"></include>
-      <!-- Поля для пошуку яке доступне тільки на головній сторінці -->
-      <include src="./partials/index/search.html"></include>
-      <!-- Кнопки які доступні тільки на сторінці бібліотеки -->
-      <include src="./partials/watched/myLibrary.html"></include>
-      <!-- Зміна мови, теми, авторизація -->
-      <include src="./partials/interface.html"></include>
-    </div>
+    <!-- <include src="./partials/preLoader.html"></include> -->
+    <!-- Header -->
+    <include src="./partials/header.html"></include>
+    <!-- Поля для пошуку яке доступне тільки на головній сторінці -->
+    <!-- <include src="./partials/index/search.html"></include> -->
+    <!-- Кнопки які доступні тільки на сторінці бібліотеки -->
+    <!-- <include src="./partials/watched/myLibrary.html"></include> -->
+    <!-- Зміна мови, теми, авторизація -->
+    <!-- <include src="./partials/interface.html"></include> -->
 
     <main>
       <!-- Фільтрація по жанрам -->
       <include src="./partials/genere.html"></include>
       <!-- Картки фільмів -->
       <include src="./partials/movie.html"></include>
-      <!-- Кнопки навігації по сторіночкам -->>
+      <!-- Кнопки навігації по сторіночкам -->
       <include src="./partials/pageNavigation.html"></include>
+      <!-- Кнопка в гору -->
+      <include src="./partials/buttonToTop.html"</include>
     </main>
 
     <!-- Footer -->
     <include src="./partials/footer.html"></include>
     <!-- Модалка реєстрації -->
-    <include src="./partials/authModal.html"></include>
+    <!-- <include src="./partials/authModal.html"></include> -->
     <!-- Модалка для фільма -->
-    <include src="./partials/modalMovie.html"></include>
+    <!-- <include src="./partials/modalMovie.html"></include> -->
     <!-- Модалка команди -->
-    <include src="./partials/modalTeam.html"></include>
-    <script type="module" src="./index.js"></script>
+    <!-- <include src="./partials/modalTeam.html"></include> -->
   </body>
 </html>
