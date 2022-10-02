@@ -3,12 +3,13 @@
   margin-right: auto;
   display: flex;
   width: fit-content;
-  margin-bottom: 40px;
-  display: none;
+margin-bottom: 40px;
   @include tablet {
     margin-bottom: 60px;
-  }
 }
+  &--hidden {
+    display: none; }
+  
 .pagination_previousBtn {
   background-color: #f7f7f7;
   border-radius: 5px;

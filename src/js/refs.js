@@ -14,6 +14,8 @@ export const refs = {
   homeGallery: document.querySelector('.home'),
   libraryGallery: document.querySelector('.watched'),
   headerEl: document.querySelector('header'),
+  galleryListEl: document.querySelector('#gallery-list'),
+  galleryListWatchedEl: document.querySelector('.gallery__list-watched'),
   pageNavDivEl: document.querySelector('.pagination'),
   prevBtnEl: document.querySelector('.pagination_previousBtn'),
   nextBtnEl: document.querySelector('.pagination_nextBtn'),

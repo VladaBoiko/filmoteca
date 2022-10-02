@@ -17,6 +17,7 @@ function switchHeaderHome() {
   refs.headerIndex.classList.remove('is-hidden');
   refs.libraryGallery.classList.add('visually-hidden');
   refs.homeGallery.classList.remove('visually-hidden');
+  refs.pageNavDivEl.classList.toggle('pagination--hidden');
 }
 // homeGallery: document.querySelector('.home'),
 //   libraryGallery: document.querySelector('.watched'),

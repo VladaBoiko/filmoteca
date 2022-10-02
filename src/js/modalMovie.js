@@ -89,6 +89,7 @@ movieList.addEventListener('click', async event => {
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
+    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
   }
 
   function onWatchedBtnRemoveClick() {
@@ -96,9 +97,7 @@ movieList.addEventListener('click', async event => {
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.splice(watched.indexOf(movie), 1);
     localStorage.setItem('watched', JSON.stringify(watched));
-    if (isLibraryOpen) {
-      renderWatchedList;
-    }
+    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
   }
 
   function onQueueBtnAddClick() {
@@ -106,6 +105,7 @@ movieList.addEventListener('click', async event => {
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
+    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
   }
 
   function onQueueBtnRemoveClick() {
@@ -113,6 +113,7 @@ movieList.addEventListener('click', async event => {
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.splice(queue.indexOf(movie), 1);
     localStorage.setItem('queue', JSON.stringify(queue));
+    // if(refs.pageNavDivEl.classList.contains('pagination--hidden')) {}
   }
 
   watchedBtnAdd.addEventListener('click', onWatchedBtnAddClick);
