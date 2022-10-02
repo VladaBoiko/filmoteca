@@ -7,6 +7,9 @@
   position: absolute;
   top: 0;
   z-index: 100;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @include mobile {
     height: 230px;
@@ -28,9 +31,6 @@
   }
 
   &.header-name {
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
@@ -74,9 +74,6 @@
     }
   }
   &.header-genre {
-    background-position: top;
-    background-repeat: no-repeat;
-    background-size: cover;
     background-image: linear-gradient(
         to right,
         rgba(0, 0, 0, 0.56),
