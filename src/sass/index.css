@@ -241,6 +241,11 @@ html {
 .logo:visited {
   color: var(--header-color-text);
 }
+@media screen and (min-width: 320px) {
+  .logo {
+    margin-right: 10px;
+  }
+}
 
 .navigation {
   display: flex;
@@ -680,6 +685,17 @@ body.dark-theme .footer-link:hover {
 .toolbar {
   display: flex;
   justify-content: flex-end;
+  padding-top: 20px;
+}
+@media screen and (min-width: 768px) {
+  .toolbar {
+    margin-right: 95px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .toolbar {
+    margin-right: 95px;
+  }
 }
 
 .theme-switch {
