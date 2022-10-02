@@ -1,8 +1,35 @@
 refs = {
+  body: document.querySelector('body'),
   formSingUp: document.getElementById('reg-modal-form'),
+  formSingIn: document.getElementById('singIn-modal-form'),
   logOutBtn: document.querySelector('.logout-btn'),
-  singUpBtn: document.querySelector('.reg-btn-singUp'),
-  singInBtn: document.querySelector('.modal-btn-singIn'),
+  singUpBtn: document.querySelector('[data-modal-open="singUp"]'),
+  singInBtn: document.querySelector('[data-modal-open="singIn"]'),
+  modalSingUpBtn: document.querySelector('[data-modal-open="singIn-second"]'),
+  formSingUpInputEmail: document.querySelector('.reg-modal-email'),
+  formSingUpInputPassword: document.querySelector('.reg-modal-password'),
+  formSingInInputEmail: document.querySelector('.singIn-modal-email'),
+  formSingInInputPassword: document.querySelector('.singIn-modal-password'),
+  backdropSingUp: document.querySelector('.backdrop-reg-modal'),
+  btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
+  backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
+  btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
 };
 
-export const { formSingUp, logOutBtn, singUpBtn, singInBtn } = refs;
+export const {
+  body,
+  formSingUp,
+  formSingIn,
+  logOutBtn,
+  singUpBtn,
+  singInBtn,
+  modalSingUpBtn,
+  formSingUpInputEmail,
+  formSingUpInputPassword,
+  formSingInInputEmail,
+  formSingInInputPassword,
+  backdropSingUp,
+  btnCloseSingUp,
+  backdropSingIn,
+  btnCloseSingIn,
+} = refs;

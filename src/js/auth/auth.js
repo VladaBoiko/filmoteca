@@ -3,6 +3,15 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebaseui/dist/firebaseui.css';
+
+import {
+  getAuth,
+  // onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDi-ICz73fxtdr7-RyJz1uHSFQUh0rXdhQ',
@@ -17,72 +26,100 @@ const firebaseConfig = {
 // import firebase from 'firebase/compat/app';
 // import * as firebaseui from 'firebaseui';
 
-import { toggleModal } from './modalSingUp';
-import { openSingUpBtn } from './modalSingUp';
+import { toggleModal, resetForm } from './modalSingUp';
 
-import 'firebaseui/dist/firebaseui.css';
-// import {
-//   getDatabase,
-//   set,
-//   ref,
-//   onValue,
-//   update,
-//   remove,
-// } from 'firebase/database';
+import { toggleModalSingIn } from './modalSingIn';
 
-import {
-  getAuth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  updateProfile,
-} from 'firebase/auth';
-
-import { formSingUp, logOutBtn, singUpBtn, body } from './refs';
+import { formSingUp, formSingIn, logOutBtn, singUpBtn } from './refs';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-// const database = getDatabase(app);
 
-// регистрация нового пользователя
+formSingUp.addEventListener('submit', regNewUser);
+formSingIn.addEventListener('submit', authUser);
+logOutBtn.addEventListener('click', logOut);
+
+// реєстрація нового користувача
 async function regNewUser(evt) {
   evt.preventDefault();
 
-  const userName = evt.currentTarget.elements.name.value;
-  const email = evt.currentTarget.elements.email.value;
-  const password = evt.currentTarget.elements.password.value;
+  const email = evt.currentTarget.elements.email.value.trim();
+  const password = evt.currentTarget.elements.password.value.trim();
+
+  if (password.length < 6) {
+    Notify.failure('Password should be at least 6 characters!');
+    return;
+  }
 
   try {
-    // тут еще нужно проверить на сущ. пользователя
-
     Loading.pulse({
       svgColor: '#ff6b08',
     });
     Loading.remove(250);
+
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
       password
     );
-
     const user = userCredential.user;
+    const indexInEmail = email.indexOf('@');
+    const userName = email.slice(0, indexInEmail).toUpperCase();
+    const uid = user.uid;
+
     singUpBtn.textContent = `Welcome, ${userName}`;
     toggleModal();
-    openSingUpBtn.disabled = true;
+    singUpBtn.disabled = true;
     logOutBtn.classList.remove('is-hidden');
-    console.log(user);
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
-    if (errorMessage) {
-      Notify.failure('Password should be at least 6 characters!');
-    }
-    console.log(error);
+
+    Notify.failure(`${errorMessage}`);
   }
 }
 
-formSingUp.addEventListener('submit', regNewUser);
+// вхід зареєстрованого користувача
 
-// вход зарегистрированного пользователя
+async function authUser(evt) {
+  evt.preventDefault();
+
+  const email = evt.currentTarget.elements.email.value.trim();
+  const password = evt.currentTarget.elements.password.value.trim();
+  try {
+    Loading.pulse({
+      svgColor: '#ff6b08',
+    });
+    Loading.remove(250);
+
+    await signInWithEmailAndPassword(auth, email, password);
+    resetForm();
+    const indexInEmail = email.indexOf('@');
+    const userName = email.slice(0, indexInEmail).toUpperCase();
+
+    singUpBtn.textContent = `Welcome, ${userName}!`;
+    toggleModalSingIn();
+    singUpBtn.disabled = true;
+    logOutBtn.classList.remove('is-hidden');
+  } catch (error) {
+    Notify.failure('Oooops! User not found or wrong password:( Try again!');
+  }
+}
+
+// log out
+
+async function logOut() {
+  try {
+    await signOut(auth);
+    Loading.pulse({
+      svgColor: '#ff6b08',
+    });
+    Loading.remove(150);
+    logOutBtn.classList.add('is-hidden');
+    singUpBtn.textContent = 'SING UP';
+    singUpBtn.disabled = false;
+  } catch (error) {
+    console.log(error);
+  }
+}

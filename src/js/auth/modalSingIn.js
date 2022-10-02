@@ -1,18 +1,10 @@
-import { onPressEsk } from './modalSingUp';
+import { body, backdropSingIn, btnCloseSingIn, modalSingUpBtn } from './refs';
+import { onPressEsk, onClickSingUp, resetForm } from './modalSingUp';
 
-export const openSingInBtn = document.querySelector('.modal-btn-singIn');
-
-refs = {
-  body: document.querySelector('body'),
-  backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
-  btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
-};
-
-const { body, backdropSingIn, btnCloseSingIn } = refs;
-
-function toggleModalSingIn() {
+export function toggleModalSingIn() {
   backdropSingIn.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');
+  resetForm();
 }
 
 function onClickBackdrop(e) {
@@ -27,4 +19,11 @@ export function onClickSingInBtn() {
   window.addEventListener('keydown', onPressEsk);
   backdropSingIn.addEventListener('click', onClickBackdrop);
   btnCloseSingIn.addEventListener('click', toggleModalSingIn);
+  modalSingUpBtn.addEventListener('click', onSingUp);
+}
+
+function onSingUp() {
+  toggleModalSingIn();
+  onClickSingUp();
+  modalSingUpBtn.removeEventListener('click', onSingUp);
 }
