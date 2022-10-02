@@ -6,7 +6,7 @@
   overflow: hidden;
   position: absolute;
   top: 0;
-  z-index: 100;
+  z-index: 99;
 
   @include mobile {
     height: 230px;
