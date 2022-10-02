@@ -1,4 +1,4 @@
-// import './sass/index.scss';
+import './sass/index.scss';
 import './js/headerToggle';
 import './js/render';
 import './js/modalMovie';
