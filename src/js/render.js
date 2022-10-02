@@ -90,11 +90,7 @@ export async function renderFilmCards(data) {
         return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
     
-    <!--    <img class="card__img"
-        src="${imgSrc}"
-        alt="${title}"
-        loading=lazy
-    /> -->
+   
         <picture  class="card__img">
           <source srcset="${srcSet500}" media="(min-width: 1280px)">
           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
