@@ -129,6 +129,10 @@
   &:visited {
     color: var(--header-color-text);
   }
+
+  @include mobile {
+    margin-right: 10px;
+  }
 }
 
 .navigation {
