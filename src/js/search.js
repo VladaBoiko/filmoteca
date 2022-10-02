@@ -1,6 +1,6 @@
 import { refs } from './refs';
 import { dataSearch, dataGenre, dataByGenres } from './API/api';
-import { renderFilmCards } from './searchByName';
+import { renderFilmCards } from './renderCard';
 import Notiflix from 'notiflix';
 import { pageNavigation } from './render';
 import SweetScroll from 'sweet-scroll';
@@ -16,17 +16,24 @@ let data = null;
 refs.searchForm.addEventListener('submit', onSearch);
 refs.chosenNameBtn.addEventListener('click', chosenTypeName);
 refs.chosenGenreBtn.addEventListener('click', chosenTypeGenre);
+const galleryBySearch = document.querySelector('#gallery-list');
+
 function chosenTypeName() {
   isChosenName = true;
   isChosenGenre = false;
+  // refs.genreInput.classList.add('visually-hidden');
+  // refs.nameInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'underline';
   refs.chosenGenreBtn.style.textDecoration = 'none';
   refs.header.classList.remove('header-genre');
   refs.header.classList.add('header-name');
 }
+
 function chosenTypeGenre() {
   isChosenName = false;
   isChosenGenre = true;
+  // refs.nameInput.classList.add('visually-hidden');
+  // refs.genreInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'none';
   refs.chosenGenreBtn.style.textDecoration = 'underline';
   refs.header.classList.remove('header-name');
@@ -34,6 +41,7 @@ function chosenTypeGenre() {
 }
 async function onSearch(evt) {
   evt.preventDefault();
+  // const genresData = (await getAllGenres(language)).genres;
   const searchQuery = evt.currentTarget.query.value.trim().toLowerCase();
   refs.pagSerchQuery = searchQuery;
   if (searchQuery !== '') {
@@ -42,7 +50,7 @@ async function onSearch(evt) {
       console.log(isChosenName);
       data = await dataSearch(searchQuery, language, page);
       notification(data);
-      renderFilmCards(data);
+      renderFilmCards(data.results, galleryBySearch);
       pageNavigation(data);
     }
     if (isChosenGenre) {
@@ -64,7 +72,7 @@ async function onSearch(evt) {
         refs.errorSearch.style.display = 'none';
         data = await dataByGenres(genre.id, language, page);
         notification(data);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         pageNavigation(data);
       }
     }
@@ -73,14 +81,14 @@ async function onSearch(evt) {
         console.log('refs');
         refs.currentPage++;
         data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         pageNavigation(data);
       }
       if (e.target.textContent === 'prev') {
         refs.currentPage--;
         data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data);
+        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         pageNavigation(data);
       }
@@ -90,7 +98,7 @@ async function onSearch(evt) {
           language,
           e.target.textContent
         );
-        await renderFilmCards(data);
+        await renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         await pageNavigation(data);
       }

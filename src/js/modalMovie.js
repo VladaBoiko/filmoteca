@@ -1,5 +1,7 @@
-import { dataMovie, dataTrailer, IMG_URL } from './API/api';
+import { dataMovie, dataTrailer } from './API/api';
+import { movieDataMarkup, movieTrailerMarkup } from './markup';
 import { renderWatchedList, renderQueueList } from './render';
+import { refs } from './refs';
 
 import { modalHandle } from './modalHandle';
 
@@ -17,111 +19,51 @@ if (watchedList) {
 if (queueList) {
   queue = queueList;
 }
-
-const movieList = document.getElementById('gallery-list');
-const movieDetail = document.getElementById('modal-movie-detail');
-const movieTrailer = document.getElementById('modal-movie-trailer');
-
-const movieDataMarkup = (movie, videoName) => {
-  const {
-    poster_path,
-    title,
-    vote_average,
-    vote_count,
-    popularity,
-    original_title,
-    genres,
-    overview,
-    id,
-  } = movie;
-  return `
-        <div class="movie__tumb" data-id="${id}">
-        <img
-          src=${IMG_URL}${poster_path}
-          width="375"
-          height="478"
-          alt="${title}"
-        />
-      </div>
-      <div class="movie__content">
-      <div class="movie__body">
-      <h2 class="movie__title">${title}</h2>
-        <ul class="movie__stats stats">
-          <li class="stats__row">
-            <span class="stats__name">Vote / Votes</span>
-            <span class="statss__value">
-              <span class="stats__vote">${
-                Math.round(vote_average * 10) / 10
-              }</span>
-              /
-              <span class="stats__votes">${vote_count}</span>
-            </span>
-          </li>
-          <li class="stats__row">
-            <span class="stats__name">Popularity</span>
-            <span class="stats__value">${
-              Math.round(popularity * 10) / 10
-            }</span>
-          </li>
-          <li class="stats__row">
-            <span class="stats__name">Original Title</span>
-            <span class="stats__value stats__value--uppercase">
-              ${original_title}
-            </span>
-          </li>
-          <li class="stats__row">
-            <span class="stats__name">Genre</span>
-            <span class="stats__value">${genres
-              .map(genre => genre.name)
-              .join(', ')}</span>
-          </li>
-        </ul>
-        <h3 class="movie__sub-title">About</h3>
-        <p class="movie__description">
-          ${overview}
-        </p>
-        <button class="movie__button-trailer" data-movie-tailer-id="${id}">${videoName}</button>
-        </div>  
-        <div class="movie__actions">
-          <button type="button" class="movie__button" id="watchedAdd">Add to watched</button>
-          <button type="button" class="movie__button movie__button--hidden" id="watchedRemove">Remove from watched</button>
-          <button type="button" class="movie__button" id="queueAdd">Add to Queue</button>
-          <button type="button" class="movie__button movie__button--hidden" id="queueRemove">Remove from Queue</button>
-        </div>
-      </div>
-  `;
-};
-
-const movieTrailerMarkup = ({ key, name }) => {
-  return `<iframe class="modal-trailer__youtube" width="100%" height="100%" src="https://www.youtube.com/embed/${key}?autoplay=0&enablejsapi=1" title="${name}" frameborder="0" allow="accelerometer"; loading="lazy"; autoplay; clipboard-write; encrypted-media; allowfullscreen></iframe>`;
-};
+const { movieList, movieDetail, movieTrailer } = refs;
 
 const renderMarkup = (container, markup) => {
   container.innerHTML = markup;
 };
 
-movieList.addEventListener('click', async event => {
-  event.preventDefault();
-  const id = event.target.closest('.card__item').dataset.movieId;
-  movie = await dataMovie(id);
-  const trailer = await dataTrailer(id);
-
+const getVideo = trailers => {
   const video =
-    trailer.results.find(
+    trailers.results.find(
       result =>
         result.name ===
         ('Official Trailer' || 'Official Teaser' || 'Teaser Trailer')
-    ) || trailer.results[0];
+    ) || trailers.results[0];
 
-  renderMarkup(movieDetail, movieDataMarkup(movie, video.name));
-  renderMarkup(movieTrailer, movieTrailerMarkup(video));
+  const videoName = video ? video.name : '';
+  const slicedVideoName =
+    videoName.length > 40 ? `${videoName.slice(0, 40)}...` : videoName;
+
+  return { ...video, slicedVideoName };
+};
+
+movieList.addEventListener('click', async event => {
+  event.preventDefault();
+  if (!event.target.closest('.card__item')) {
+    return;
+  }
+  const id = event.target.closest('.card__item').dataset.movieId;
+  const movie = await dataMovie(id);
+  const trailers = await dataTrailer(id);
+  const videoInfo = getVideo(trailers);
+
+  renderMarkup(movieDetail, movieDataMarkup(movie, videoInfo.slicedVideoName));
+
+  videoInfo && renderMarkup(movieTrailer, movieTrailerMarkup(videoInfo));
+
   modalHandle('movie', movieDetail);
 
   const trailerBtn = document.querySelector('[data-movie-tailer-id]');
 
-  trailerBtn.addEventListener('click', () => {
-    modalHandle('movie-trailer', movieTrailer);
-  });
+  trailerBtn &&
+    trailerBtn.addEventListener('click', () => {
+      modalHandle('movie-trailer', movieTrailer);
+    });
+
+  // ============================================================================
 
   const watchedBtnAdd = document.getElementById('watchedAdd');
   const watchedBtnRemove = document.getElementById('watchedRemove');
@@ -147,15 +89,23 @@ movieList.addEventListener('click', async event => {
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderWatchedList();
+    }
   }
 
   function onWatchedBtnRemoveClick() {
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
-    watched.splice(watched.indexOf(movie), 1);
+    for (const object of watched) {
+      if (object.id === Number(id)) {
+        watched.splice(watched.indexOf(object), 1);
+        break;
+      }
+    }
     localStorage.setItem('watched', JSON.stringify(watched));
-    if (isLibraryOpen) {
-      renderWatchedList;
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderWatchedList();
     }
   }
 
@@ -164,13 +114,24 @@ movieList.addEventListener('click', async event => {
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderQueueList();
+    }
   }
 
   function onQueueBtnRemoveClick() {
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
-    queue.splice(queue.indexOf(movie), 1);
+    for (const object of queue) {
+      if (object.id === Number(id)) {
+        queue.splice(queue.indexOf(object), 1);
+        break;
+      }
+    }
     localStorage.setItem('queue', JSON.stringify(queue));
+    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+      renderQueueList();
+    }
   }
 
   watchedBtnAdd.addEventListener('click', onWatchedBtnAddClick);
