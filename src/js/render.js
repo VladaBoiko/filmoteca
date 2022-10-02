@@ -10,6 +10,9 @@ import { refs } from './refs';
 import { renderFilmCards, renderFilmCardsInLibrary } from './renderCard';
 import SweetScroll from 'sweet-scroll';
 // import emptyImg from '../images/no-image.jpg';
+
+import { loader } from './preLoader';
+
 const galleryListEl = document.querySelector('#gallery-list');
 const galleryListWatchedEl = document.querySelector('.gallery__list-watched');
 // const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
@@ -38,16 +41,20 @@ queueListBtn.addEventListener('click', renderQueueList);
 
 // let currentPage = 1;
 // let totalPages = 1;
-const scroller = new SweetScroll({ duration: 6000 });
+const scroller = new SweetScroll({ duration: 200 });
 
 // async function getAllGenres(language) {
 //   return await dataGenre(language);
 // }
 
 export async function request(page, language) {
+  loader.show();
+
   const data = await dataMovieList(page, language);
   renderFilmCards(data.results, galleryListEl);
   pageNavigation(data);
+
+  loader.hide();
 }
 
 // export async function renderFilm(data) {

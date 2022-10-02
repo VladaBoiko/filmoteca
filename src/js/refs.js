@@ -30,6 +30,8 @@ export const refs = {
   totalPages: 1,
   scroller: new SweetScroll({ duration: 6000 }),
   pagSerchQuery: '',
+  // GoTopBtn
+  goTopBtn: document.querySelector('.button_to_top'),
   // ModalMovie
   movieList: document.querySelector('main'),
   movieDetail: document.getElementById('modal-movie-detail'),
