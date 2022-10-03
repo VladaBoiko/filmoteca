@@ -4,7 +4,8 @@ import { initializeApp } from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebaseui/dist/firebaseui.css';
-
+import { authModal } from '../changeLangs';
+// console.log(authModal);
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -37,8 +38,7 @@ const auth = getAuth(app);
 formSingUp.addEventListener('submit', regNewUser);
 formSingIn.addEventListener('submit', authUser);
 logOutBtn.addEventListener('click', logOut);
-import { authModal } from '../changeLangs';
-console.log(authModal);
+
 // реєстрація нового користувача
 async function regNewUser(evt) {
   evt.preventDefault();
