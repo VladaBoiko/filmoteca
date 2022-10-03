@@ -4,12 +4,11 @@ import { renderWatchedList, renderQueueList, pageNavigation } from './render';
 import { renderFilmCards } from './renderCard';
 import { notification } from './search';
 import { refs } from './refs';
-import { modalHandle, closeModal } from './modalHandle';
+import { modalHandle } from './modalHandle';
 import { loader } from './preLoader';
 
 let watched = [];
 let queue = [];
-let movie = {};
 
 const watchedList = JSON.parse(localStorage.getItem('watched'));
 const queueList = JSON.parse(localStorage.getItem('queue'));
@@ -170,13 +169,12 @@ movieList.addEventListener('click', async event => {
   }
 
   function onWatchedBtnAddClick() {
-    console.log(refs.watchedListBtnInput.checked);
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.watchedListBtnInput.checked
     ) {
       renderWatchedList();
@@ -184,7 +182,6 @@ movieList.addEventListener('click', async event => {
   }
 
   function onWatchedBtnRemoveClick() {
-    console.log(refs.watchedListBtnInput.checked);
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     for (const object of watched) {
@@ -195,7 +192,7 @@ movieList.addEventListener('click', async event => {
     }
     localStorage.setItem('watched', JSON.stringify(watched));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.watchedListBtnInput.checked
     ) {
       renderWatchedList();
@@ -203,13 +200,12 @@ movieList.addEventListener('click', async event => {
   }
 
   function onQueueBtnAddClick() {
-    console.log(refs.queueListBtnInput.checked);
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.queueListBtnInput.checked
     ) {
       renderQueueList();
@@ -217,7 +213,6 @@ movieList.addEventListener('click', async event => {
   }
 
   function onQueueBtnRemoveClick() {
-    console.log(refs.queueListBtnInput.checked);
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
     for (const object of queue) {
@@ -228,7 +223,7 @@ movieList.addEventListener('click', async event => {
     }
     localStorage.setItem('queue', JSON.stringify(queue));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.queueListBtnInput.checked
     ) {
       renderQueueList();

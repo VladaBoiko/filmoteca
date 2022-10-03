@@ -1,6 +1,5 @@
 import { dataGenre } from './API/api';
 import {
-  // dataMovieList,
   dataGenre,
   IMG_URL_342,
   IMG_URL_500,
@@ -8,10 +7,6 @@ import {
   IMG_URL_ORIGINAL,
   emptyImge,
 } from './API/api';
-// const galleryBySearch = document.querySelector('#gallery-list');
-// const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
-// const page = 1;
-// const language = 'en-US';
 async function getAllGenres() {
   return await dataGenre();
 }
@@ -47,8 +42,6 @@ export async function renderFilmCards(data, container) {
             }
           })
           .join(', ');
-        // const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
-        // const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
         return `<li data-movie-id="${id}" class="card__item">
     <a class="card__link" href = "">
          <picture  class="card__img">

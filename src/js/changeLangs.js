@@ -69,14 +69,10 @@ export function changeData() {
     authModal.notifiErorr =
       'Упс! Ви ввели некоректний логін або пароль, спробуйте ще раз!';
     refs.modalRegTitle.textContent = 'Реєстрація';
-    // refs.modalRegSign.textContent = 'Зареєструватися';
     refs.modalRegAlready.textContent = 'Є аккаунт?';
-    // refs.modalRegSign.textContent = 'Увійти';
 
     refs.modalLogTitle.textContent = 'Авторизація';
-    // refs.modalLogSign.text = 'Увійти';
     refs.modalLogAlready.textContent = 'Не зареєстровані?';
-    // refs.modalLogSign.textContent = 'Створити аккаунт';
   }
   if (language === 'es') {
     refs.langs.value = 'spa';
@@ -106,14 +102,10 @@ export function changeData() {
     authModal.notifiPass = 'La frase de paso es demasiado corta!';
     authModal.notifiErorr = 'Mala contraseña intentar de nuevo!';
     refs.modalRegTitle.textContent = 'Los registros';
-    // refs.modalRegSign.textContent = 'Зареєструватися';
     refs.modalRegAlready.textContent = 'Tiene una cuenta?';
-    // refs.modalRegSign.textContent = 'Увійти';
 
     refs.modalLogTitle.textContent = 'Autorizar que';
-    // refs.modalLogSign.text = 'Увійти';
     refs.modalLogAlready.textContent = 'Autorizar?';
-    // refs.modalLogSign.textContent = 'Створити аккаунт';
   }
   if (language === 'en') {
     refs.langs.value = 'en';

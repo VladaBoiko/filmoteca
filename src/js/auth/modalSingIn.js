@@ -7,7 +7,6 @@ import {
 } from './refs.js';
 
 import { onPressEsk, onClickSingUp, resetForm } from './modalSingUp';
-
 export function toggleModalSingIn() {
   backdropSingIn.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');

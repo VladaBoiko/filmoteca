@@ -1,6 +1,6 @@
 .gallery {
   padding-top: 250px;
-  padding-bottom: 40px;
+  padding-bottom: 140px;
 
   transition: all var(--transition);
   @include tablet {
@@ -8,13 +8,6 @@
     padding-bottom: 160px;
   }
 }
-// .watched {
-// width: 100%;
-// position: absolute;
-// top: 0;
-// left: 50%;
-// transform: translateX(-50%) scale(1);
-// }
 .gallery__list {
   width: 100%;
   @include tablet {
