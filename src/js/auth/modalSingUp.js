@@ -38,7 +38,7 @@ export function onPressEsk(e) {
 }
 
 function onClickBackdrop(e) {
-  if (e.target.classList.contains('backdrop')) {
+  if (e.target.classList.contains('backdrop-auth')) {
     toggleModal();
     backdropSingUp.removeEventListener('click', onClickBackdrop);
   }
