@@ -115,7 +115,7 @@ movieList.addEventListener('click', async event => {
   const genresCard = document.querySelectorAll('[data-genre]');
   genresCard.forEach(genre => {
     genre.addEventListener('click', async () => {
-      loader.hide();
+      loader.show();
       const id = await findIdGenre(genre.dataset.genre);
       const data = await dataByGenres(id, language, page);
       loader.hide();
