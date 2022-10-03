@@ -15,6 +15,9 @@ const refs = {
   btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
   backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
   btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
+
+  singIn: document.querySelector('.singIn-modal-btn'),
+  singUp: document.querySelector('.reg-modal-btn-singUp'),
 };
 
 export const {
@@ -34,5 +37,6 @@ export const {
   btnCloseSingUp,
   backdropSingIn,
   btnCloseSingIn,
+  singIn,
+  singUp,
 } = refs;
-

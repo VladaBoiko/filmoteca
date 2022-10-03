@@ -1,4 +1,5 @@
 import { singInBtn, logOutBtn } from './refs';
+import { authModal } from '../changeLangs';
 
 export function saveUser(userName, email, password) {
   const formData = {
@@ -17,10 +18,10 @@ function checkLocalStorage() {
     return;
   }
 
-  singInBtn.textContent = `Welcome, ${userData.userName}`;
+  singInBtn.textContent = `${authModal.hello} ${userData.userName}`;
   singInBtn.disabled = true;
   logOutBtn.disabled = false;
-  logOutBtn.textContent = 'LOG OUT';
+  logOutBtn.textContent = `${authModal.logOut}`;
 }
 
 checkLocalStorage();

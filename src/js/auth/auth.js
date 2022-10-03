@@ -113,9 +113,10 @@ async function logOut() {
       svgColor: '#ff6b08',
     });
     Loading.remove(150);
-    logOutBtn.disabled = true;
+
     logOutBtn.textContent = `${authModal.come}`;
-    singInBtn.textContent = `${authModal.signIn}`;
+    singInBtn.textContent = `${authModal.logIn}`;
+    logOutBtn.disabled = true;
     singInBtn.disabled = false;
     clearUserOnLocalStorage();
   } catch (error) {
