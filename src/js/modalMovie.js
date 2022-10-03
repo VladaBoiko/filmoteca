@@ -113,6 +113,7 @@ movieList.addEventListener('click', async event => {
   };
 
   const genresCard = document.querySelectorAll('[data-genre]');
+
   genresCard.forEach(genre => {
     genre.addEventListener('click', async () => {
       loader.show();
