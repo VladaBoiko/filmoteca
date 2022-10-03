@@ -111,7 +111,6 @@ export const dataByGenres = async (
   language = 'en-US',
   page = 1
 ) => {
-  console.log(genreId);
   try {
     const server = await axios.get(
       `3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=${genreId}`

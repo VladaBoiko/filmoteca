@@ -243,6 +243,24 @@
     &--uppercase {
       text-transform: uppercase;
     }
+    &.genres {
+      display: flex;
+      gap: 3px;
+    }
+    &.genres span {
+      cursor: pointer;
+
+      padding: 1px 4px;
+      background-color: #f7f7f7;
+      border-radius: 5px;
+
+      transition: color var(--transition), background-color var(--transition);
+    }
+    &.genres span:hover,
+    &.genres span:focus {
+      color: var(--text-revers-color-button);
+      background-color: var(--accent);
+    }
   }
 
   &__vote {
