@@ -1,37 +1,73 @@
 body.dark-theme {
   background-color: #272424;
   color: var(--header-color-text);
-
-  // & .pagination-button {
-  //   background-color: #333030;
-  //   color: lightgrey;
-  // }
-  // & .arrow-right {
-  //   stroke: darkgrey;
-  // }
-  // & .pagination--current {
-  //   background-color: var(--accent);
-  // }
+ & footer{
+  background-color: #272424;
+  border-top: 1px solid var(--params-name);
+  color: var(--header-color-text);
+}
+& .modal{
+  background-color: #333;
+ 
+}
+& .modal__close-btn{
+  
+  &:before,
+  &:after {
+      background-color: #fff;
+      }
+    &:hover,
+    &:focus{
+      border-radius: 50%;
+      border-top: 1px solid var(--modal-background-color);
+      border-bottom: 1px solid var(--modal-background-color);
+      
+    }
+} 
+& .stats__value{
+  color: var(--header-color-text);
+}
+& .stats__votes{
+  color: var(--color-title);
+  background-color: var(--params-name);
+}
+& .movie__button{
+  border: 1px solid var(--modal-background-color);
+  color: var(--header-color-text);
+}
+& .movie__button-trailer{
+  color: var(--header-color-text);
+}
+& .reg-modal,
+& .singIn-modal{
+  background-color: #333;
+}
+& .reg-modal-email,
+& .reg-modal-password,
+& .singIn-modal-password,
+& .singIn-modal-email{
+  border: 1px solid var(--modal-background-color);
+  background-color: transparent;
+}
+ & .modal-wrap-bottom{
+  color: var(--header-color-text);
+ }
 
   & .card__title {
     color: #cccccc;
   }
 
-  // & .footer-text {
-  //   color: lightgrey;
-  // }
-  // & .footer-link:hover {
-  //   color: var(--accent);
-  // }
+
   .card__link:hover .card__img {
     box-shadow: 0 1px 4px rgba(119, 117, 117, 0.3),
       -23px 0 20px -23px rgba(90, 88, 88, 0.6), 23px 0 20px -23px rgba(224, 219, 219, 0.6),
       inset 0 0 40px rgba(235, 230, 230, 0.1);
   }
 }
-footer.dark-theme{
-  background-color: #272424;
-}
+
+
+
+
 .toolbar {
   display: flex;
   justify-content: flex-end;
@@ -112,7 +148,3 @@ footer.dark-theme{
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px var(--accent);
 }
-// .dark-theme {
-//   color: lightgrey;
-//   background-color: #222;
-// }
