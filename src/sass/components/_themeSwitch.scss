@@ -66,17 +66,17 @@ body.dark-theme {
   & .pagination_previousBtn{
     background-color: transparent;
     border: 1px solid var(--params-name);
-    margin-right: 5px;
+  
     color: var(--header-color-text);
   }
   & .pagination_nextBtn{
     background-color: transparent;
     border: 1px solid var(--params-name);
     color: var(--header-color-text);
-    // margin-left: 5px;
+  
   }
   & .pagination_buttons--styles{
-    margin-right: 5px;
+   
     color: var(--header-color-text);
   }
 }
