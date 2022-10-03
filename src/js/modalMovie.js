@@ -4,11 +4,12 @@ import { renderWatchedList, renderQueueList, pageNavigation } from './render';
 import { renderFilmCards } from './renderCard';
 import { notification } from './search';
 import { refs } from './refs';
-import { modalHandle} from './modalHandle';
+import { modalHandle, closeModal } from './modalHandle';
 import { loader } from './preLoader';
 
 let watched = [];
 let queue = [];
+let movie = {};
 
 const watchedList = JSON.parse(localStorage.getItem('watched'));
 const queueList = JSON.parse(localStorage.getItem('queue'));
