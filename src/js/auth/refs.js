@@ -14,7 +14,6 @@ const refs = {
   backdropSingUp: document.querySelector('.backdrop-reg-modal'),
   btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
   backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
-
   btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
 };
 

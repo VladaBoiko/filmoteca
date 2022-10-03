@@ -22,7 +22,7 @@ const firebaseConfig = {
   appId: '1:579941014930:web:cda5220011d3007db5354b',
 };
 
-import { toggleModal, resetForm } from './modalSingUp';
+import { toggleModal } from './modalSingUp';
 
 import { toggleModalSingIn } from './modalSingIn';
 
@@ -65,7 +65,8 @@ async function regNewUser(evt) {
     singInBtn.textContent = `Welcome, ${userName}`;
     toggleModal();
     singInBtn.disabled = true;
-    logOutBtn.classList.remove('visually-hidden');
+    logOutBtn.disabled = false;
+    logOutBtn.textContent = 'LOG OUT';
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -91,13 +92,13 @@ async function authUser(evt) {
     Loading.remove(250);
 
     await signInWithEmailAndPassword(auth, email, password);
-    resetForm();
-    saveUser(userName, email, password);
 
+    saveUser(userName, email, password);
     singInBtn.textContent = `Welcome, ${userName}!`;
-    toggleModalSingIn();
     singInBtn.disabled = true;
-    logOutBtn.classList.remove('visually-hidden');
+    logOutBtn.disabled = false;
+    logOutBtn.textContent = 'LOG OUT';
+    toggleModalSingIn();
   } catch (error) {
     Notify.failure('Oooops! User not found or wrong password:( Try again!');
   }
@@ -112,7 +113,8 @@ async function logOut() {
       svgColor: '#ff6b08',
     });
     Loading.remove(150);
-    logOutBtn.classList.add('visually-hidden');
+    logOutBtn.disabled = true;
+    logOutBtn.textContent = 'Log in to your account!';
     singInBtn.textContent = 'SING IN';
     singInBtn.disabled = false;
     clearUserOnLocalStorage();

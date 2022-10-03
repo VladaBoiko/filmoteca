@@ -403,7 +403,7 @@
 .reg-btn-singIn,
 .logout-btn {
   padding: 5px 0px;
-  width: 70px;
+  width: 75px;
   height: 40px;
   font-size: 12px;
   line-height: 1.16;
@@ -422,7 +422,6 @@
     color: var(--text-color-button);
   }
 
-  &:disabled,
   &:disabled {
     border: none;
     color: var(--accent);
@@ -430,7 +429,11 @@
 }
 
 .logout-btn {
-  margin-left: 40px;
+  margin-left: 20px;
+  &:disabled {
+    border: none;
+    color: var(--accent);
+  }
 }
 
 .menu__list {
