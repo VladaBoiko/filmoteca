@@ -3,9 +3,8 @@ import { dataSearch, dataGenre, dataByGenres } from './API/api';
 import { renderFilmCards } from './renderCard';
 import Notiflix from 'notiflix';
 import { pageNavigation } from './render';
-import SweetScroll from 'sweet-scroll';
 const page = 1;
-// const language = 'en-US';
+
 let isChosenName = true;
 let isChosenGenre = false;
 refs.chosenNameBtn.style.textDecoration = 'underline';
@@ -18,11 +17,8 @@ refs.chosenGenreBtn.addEventListener('click', chosenTypeGenre);
 const galleryBySearch = document.querySelector('#gallery-list');
 
 function chosenTypeName() {
-  // console.log(language);
   isChosenName = true;
   isChosenGenre = false;
-  // refs.genreInput.classList.add('visually-hidden');
-  // refs.nameInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'underline';
   refs.chosenGenreBtn.style.textDecoration = 'none';
   refs.header.classList.remove('header-genre');
@@ -32,8 +28,6 @@ function chosenTypeName() {
 function chosenTypeGenre() {
   isChosenName = false;
   isChosenGenre = true;
-  // refs.nameInput.classList.add('visually-hidden');
-  // refs.genreInput.classList.remove('visually-hidden');
   refs.chosenNameBtn.style.textDecoration = 'none';
   refs.chosenGenreBtn.style.textDecoration = 'underline';
   refs.header.classList.remove('header-name');
@@ -41,7 +35,6 @@ function chosenTypeGenre() {
 }
 async function onSearch(evt) {
   evt.preventDefault();
-  // const genresData = (await getAllGenres(language)).genres;
   const searchQuery = evt.currentTarget.query.value.trim().toLowerCase();
   refs.pagSerchQuery = searchQuery;
   if (searchQuery !== '') {
@@ -78,22 +71,18 @@ async function onSearch(evt) {
     }
     refs.pageNavDivEl.onclick = e => {
       if (e.target.textContent === 'next') {
-        // console.log('refs');
         refs.currentPage++;
-        // data = await dataSearch(refs.pagSerchQuery, refs.currentPage);
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         paginationRequest(refs.currentPage);
       }
       if (e.target.textContent === 'prev') {
         refs.currentPage--;
-        // data = await dataSearch(refs.pagSerchQuery, refs.currentPage);
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         paginationRequest(refs.currentPage);
       }
       if (isFinite(e.target.textContent)) {
-        // data = await dataSearch(refs.pagSerchQuery, e.target.textContent);
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         paginationRequest(e.target.textContent);

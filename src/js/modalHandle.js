@@ -18,7 +18,6 @@ export const modalHandle = (modalName, container) => {
     modal.classList.add('is-hidden');
     modalName !== 'movie-trailer' && body.classList.remove('noscroll');
     closeModalBtn && closeModalBtn.removeEventListener('click', closeModal);
-    // container.innerHTML = '';
   };
 
   const onEscKeyPress = evt => {

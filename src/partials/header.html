@@ -1,9 +1,5 @@
  <include src="./partials/preLoader.html"></include>
-<include src="./partials/index/search.html"></include>
-    <!-- Кнопки які доступні тільки на сторінці бібліотеки -->
-    <include src="./partials/watched/myLibrary.html"></include>
-    <!-- Зміна мови, теми, авторизація -->
-    <include src="./partials/interface.html"></include>
+
 <header class="header header-index">
   <div class="container">
   <div class="navigation__container">
@@ -21,7 +17,6 @@
         </button></li>
         
         <li class="menu__item">
-          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
             <button class="link menu__link menu__link-library menu__library">My library</button>
         </li>
       </ul>
@@ -30,12 +25,6 @@
 
   <div class="wrapper-header">
     <form id="search-form" action="" class="search">
-       <!-- <input
-        class="search__input name-input"
-        type="text"
-        placeholder="Movie search"
-        name="query-name"
-      /> -->
       <input
         class="search__input"
         type="text"
@@ -84,37 +73,6 @@
     Search result not successful. Enter the correct movie name and try again,
     please
   </p>
-
-   <!-- Разметка переключателя темы -->
-  <!-- <div class="toolbar">
-   
-    <div class="theme-switch">
-      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-        <use href="./images/icons/sprite.svg#sun"></use>
-      </svg>
-
-      <div class="theme-switch__control">
-        <input
-          class="theme-switch__toggle"
-          type="checkbox"
-          name="theme"
-          id="theme-switch-toggle"
-          aria-label="Switch between dark and light themes"
-        />
-        <label
-          aria-hidden="true"
-          class="theme-switch__track"
-          for="theme-switch-toggle"
-        >
-        </label>
-        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
-      </div>
-
-      <svg class="theme-switch__icon" aria-label="Moon icon">
-        <use href="./images/icons/sprite.svg#moon"></use>
-      </svg>
-    </div>
-  </div> -->
 </header>
 <header class="header header__library is-hidden">
   <div class="container">
@@ -133,7 +91,6 @@
         </button></li>
         
         <li class="menu__item">
-          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
             <button class="link menu__link menu__link-library current library-current">My library</button>
         </li>
       </ul>
@@ -158,37 +115,6 @@
         </ul>
     </div>
 </form>
-
-<!-- Разметка переключателя темы -->    
-<!-- <div class="toolbar">
-    
-    <div class="theme-switch">
-      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-        <use href="./images/icons/sprite.svg#sun"></use>
-      </svg>
-
-      <div class="theme-switch__control">
-        <input
-          class="theme-switch__toggle"
-          type="checkbox"
-          name="theme"
-          id="theme-switch-toggle"
-          aria-label="Switch between dark and light themes"
-        />
-        <label
-          aria-hidden="true"
-          class="theme-switch__track"
-          for="theme-switch-toggle"
-        >
-        </label>
-        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
-      </div>
-
-      <svg class="theme-switch__icon" aria-label="Moon icon">
-        <use href="./images/icons/sprite.svg#moon"></use>
-      </svg>
-    </div>
-  </div> -->
 </div>
 </header>
 

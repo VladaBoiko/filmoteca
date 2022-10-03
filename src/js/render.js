@@ -1,50 +1,14 @@
-import {
-  dataMovieList,
-  // dataGenre,
-  // IMG_URL_342,
-  // IMG_URL_500,
-  // IMG_URL_780,
-  // IMG_URL_ORIGINAL,
-} from './API/api';
+import { dataMovieList } from './API/api';
 import { refs } from './refs';
 import { renderFilmCards, renderFilmCardsInLibrary } from './renderCard';
-import SweetScroll from 'sweet-scroll';
-// import { language } from './changeLangs';
-// import emptyImg from '../images/no-image.jpg';
 
 import { loader } from './preLoader';
 
 const galleryListEl = document.querySelector('#gallery-list');
 const galleryListWatchedEl = document.querySelector('.gallery__list-watched');
-// const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
-// const page = 1;
-// const language = 'en-US';
-// const pageNavDivEl = document.querySelector('.pagination');
-// const prevBtnEl = document.querySelector('.pagination_previousBtn');
-// const nextBtnEl = document.querySelector('.pagination_nextBtn');
-// const currentPageEl = document.querySelector('.pagination_currentPage');
-// const firstPageEl = document.querySelector('.pagination_firstPage');
-// const lastPageEl = document.querySelector('.pagination_lastPage');
-// const leftPointsEl = document.querySelector('.pagination_leftPoints');
-// const rightPointsEl = document.querySelector('.pagination_rightPoints');
-// const rightFirstPageEl = document.querySelector('.pagination_rightFirstPage');
-// const rightSecondPageEl = document.querySelector('.pagination_rightSecondPage');
-// const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
-// const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
-// const galleryContainer = document.querySelector('.gallery.watched .container');
-
-// const movieListRef = document.getElementById('gallery-list');
 
 refs.watchedListBtn.addEventListener('click', renderWatchedList);
 refs.queueListBtn.addEventListener('click', renderQueueList);
-
-// let currentPage = 1;
-// let totalPages = 1;
-// const scroller = new SweetScroll({ duration: 200 });
-
-// async function getAllGenres(language) {
-//   return await dataGenre(language);
-// }
 
 export async function request(page) {
   loader.show();
@@ -55,80 +19,6 @@ export async function request(page) {
 
   loader.hide();
 }
-
-// export async function renderFilm(data) {
-//   const genresData = (await getAllGenres(language)).genres;
-//   const filmList = data.results
-//     .map(
-//       ({ id, title, vote_average, genre_ids, release_date, poster_path }) => {
-//         const allGenres = [];
-//         genresData
-//           .map(genre => {
-//             if (genre_ids.includes(genre.id)) {
-//               allGenres.push(` ${genre.name}`);
-//             }
-//           })
-//           .join(', ');
-
-//         const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
-//         const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
-//         let poster = '';
-//         if (poster_path !== null) {
-//           poster = `<picture>
-//                       <source srcset="${srcSet500}" media="(min-width: 1280px)">
-//                       <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
-
-//                       <img
-//                         src=${IMG_URL_342}${poster_path}
-//                         width="395"
-//                         height="574"
-//                         alt="${title}"
-//                         loading="lazy"
-//                       />
-//                     </picture> `;
-//         } else {
-//           poster = `<img class="card__img"
-//                       src="${emptyImg}"
-//                       alt="${title}"
-//                       loading="lazy"
-//                     />`;
-//         }
-
-//         return `<li data-movie-id="${id}" class="card__item">
-//     <a class="card__link" href = "">
-
-//         <picture  class="card__img">
-//           <source srcset="${srcSet500}" media="(min-width: 1280px)">
-//           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
-
-//           <img
-//            class="card__img"
-//             src=${IMG_URL_342}${poster_path}
-//             width="395"
-//             height="574"
-//             alt="${title}"
-//             loading="lazy"
-//           />
-//         </picture>
-
-//     <h2 class="card__title">${title}</h2>
-//     <div class="card__text">
-//         <p class="card__info">${allGenres} | ${release_date
-//           .split('', 4)
-//           .join('')}</p>
-//         <div class="card__rating">${vote_average
-//           .toString()
-//           .split('', 3)
-//           .join('')}</div>
-//     </div>
-//     </a>
-
-// </li>`;
-//       }
-//     )
-//     .join('');
-//   galleryListEl.innerHTML = filmList;
-// }
 
 request(1);
 export async function pageNavigation(data) {
@@ -246,59 +136,9 @@ export function renderWatchedList() {
     return;
   }
 
-  // let imgSrc = null;
   refs.noMoviesAlert.classList.add('alert-block--hidden');
   refs.galleryListWatchedEl.classList.remove('gallery__list-watched--hidden');
   renderFilmCardsInLibrary(parsedWatched, galleryListWatchedEl);
-  // renderFilmCardsInLibrary(parsedWatched, galleryListWatchedEl);
-  //   const filmList = parsedWatched
-  //     .map(({ id, title, vote_average, genres, release_date, poster_path }) => {
-  //       // if (poster_path) {
-  //       //   imgSrc = `${baseUrtlImg}${poster_path}`;
-  //       // }
-  //       // if (poster_path === null) {
-  //       //   imgSrc = imgSrc = emptyImg;
-  //       // }
-  //       const allGenres = [];
-  //       genres
-  //         .map(genre => {
-  //           allGenres.push(` ${genre.name}`);
-  //         })
-  //         .join(', ');
-  //       const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
-  //       const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
-  //       return `<li data-movie-id="${id}" class="card__item">
-  //     <a class="card__link" href = "">
-  //         <picture  class="card__img">
-  //           <source srcset="${srcSet500}" media="(min-width: 1280px)">
-  //           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
-
-  //           <img
-  //            class="card__img"
-  //             src=${IMG_URL_342}${poster_path}
-  //             width="395"
-  //             height="574"
-  //             alt="${title}"
-  //             loading="lazy"
-  //           />
-  //         </picture>
-
-  //     <h2 class="card__title">${title}</h2>
-  //     <div class="card__text">
-  //         <p class="card__info">${allGenres} | ${release_date
-  //         .split('', 4)
-  //         .join('')}</p>
-  //         <div class="card__rating">${vote_average
-  //           .toString()
-  //           .split('', 3)
-  //           .join('')}</div>
-  //     </div>
-  //     </a>
-
-  // </li>`;
-  //     })
-  //     .join('');
-  // galleryListWatchedEl.innerHTML = filmList;
 }
 
 export function renderQueueList() {
@@ -310,56 +150,8 @@ export function renderQueueList() {
     return;
   }
 
-  // let imgSrc = null;
-  // renderFilmCards(parsedQueue, galleryListWatchedEl);
   refs.noMoviesAlert.classList.add('alert-block--hidden');
   refs.galleryListWatchedEl.classList.remove('gallery__list-watched--hidden');
   renderFilmCardsInLibrary(parsedQueue, galleryListWatchedEl);
-  //   const filmList = parsedQueue
-  //     .map(({ id, title, vote_average, genres, release_date, poster_path }) => {
-  //       if (poster_path) {
-  //         imgSrc = `${baseUrtlImg}${poster_path}`;
-  //       }
-  //       if (poster_path === null) {
-  //         imgSrc = imgSrc = emptyImg;
-  //       }
-  //       const allGenres = [];
-  //       genres
-  //         .map(genre => {
-  //           allGenres.push(genre.name);
-  //         })
-  //         .join(', ');
-  //       const srcSet500 = `${IMG_URL_500}${poster_path} 1x, ${IMG_URL_ORIGINAL}${poster_path} 2x`;
-  //       const srcSet342 = `${IMG_URL_342}${poster_path} 1x, ${IMG_URL_780}${poster_path} 2x`;
-  //       return `<li data-movie-id="${id}" class="card__item">
-  //     <a class="card__link" href = "">
-  //         <picture>
-  //           <source srcset="${srcSet500}" media="(min-width: 1280px)">
-  //           <source srcset="${srcSet342}" media="(max-width: 1279.98px)">
-
-  //           <img
-  //             src=${IMG_URL_342}${poster_path}
-  //             width="395"
-  //             height="574"
-  //             alt="${title}"
-  //             loading="lazy"
-  //           />
-  //         </picture>
-
-  //     <h2 class="card__title">${title}</h2>
-  //     <div class="card__text">
-  //         <p class="card__info">${allGenres} | ${release_date
-  //         .split('', 4)
-  //         .join('')}</p>
-  //         <div class="card__rating">${vote_average
-  //           .toString()
-  //           .split('', 3)
-  //           .join('')}</div>
-  //     </div>
-  //     </a>
-
-  // </li>`;
-  //     })
-  //     .join('');
-  //   galleryListWatchedEl.innerHTML = filmList;
+  
 }
