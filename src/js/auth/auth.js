@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebaseui/dist/firebaseui.css';
 import { authModal } from '../changeLangs';
-// console.log(authModal);
+
 import {
   getAuth,
   createUserWithEmailAndPassword,

@@ -17,7 +17,7 @@ export function toggleModalSingIn() {
 singInBtn.addEventListener('click', onClickSingInBtn);
 
 function onClickBackdrop(e) {
-  if (e.target.classList.contains('backdrop')) {
+  if (e.target.classList.contains('backdrop-auth')) {
     toggleModalSingIn();
     backdropSingIn.removeEventListener('click', onClickBackdrop);
   }
