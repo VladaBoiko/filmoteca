@@ -15,7 +15,7 @@
   background-color: #f7f7f7;
   border-radius: 5px;
   padding: 5px;
-
+  margin-right: 5px;
   @include tablet {
     padding: 10px;
   }
@@ -89,6 +89,7 @@
   background-color: inherit;
   border-radius: 5px;
   padding: 5px;
+  margin-right: 5px;
   @include tablet {
     padding: 10px;
   }
