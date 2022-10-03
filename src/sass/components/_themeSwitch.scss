@@ -1,49 +1,41 @@
-body.light-theme {
-  background-color: #fff;
-  color: #000000;
-}
-
 body.dark-theme {
-  background-color: #333333;
+  background-color: #272424;
   color: var(--header-color-text);
 
-  & .pagination-button {
-    background-color: #333333;
-    color: lightgrey;
-  }
-  & .arrow-right {
-    stroke: darkgrey;
-  }
-  & .pagination--current {
-    background-color: var(--accent);
-  }
+  // & .pagination-button {
+  //   background-color: #333030;
+  //   color: lightgrey;
+  // }
+  // & .arrow-right {
+  //   stroke: darkgrey;
+  // }
+  // & .pagination--current {
+  //   background-color: var(--accent);
+  // }
 
   & .card__title {
     color: #cccccc;
   }
 
-  & .card__text {
-    color: #ff8800;
-  }
-  & .footer-text {
-    color: lightgrey;
-  }
-  & .footer-link:hover {
-    color: var(--accent);
+  // & .footer-text {
+  //   color: lightgrey;
+  // }
+  // & .footer-link:hover {
+  //   color: var(--accent);
+  // }
+  .card__link:hover .card__img {
+    box-shadow: 0 1px 4px rgba(119, 117, 117, 0.3),
+      -23px 0 20px -23px rgba(90, 88, 88, 0.6), 23px 0 20px -23px rgba(224, 219, 219, 0.6),
+      inset 0 0 40px rgba(235, 230, 230, 0.1);
   }
 }
-
+footer.dark-theme{
+  background-color: #272424;
+}
 .toolbar {
   display: flex;
   justify-content: flex-end;
-  // padding-top: 20px;
-
-  // @include tablet {
-  //   margin-right: 95px;
-  // }
-  // @include desktop {
-  //   margin-right: 95px;
-  // }
+  
 }
 .theme-switch {
   display: flex;
@@ -120,7 +112,7 @@ body.dark-theme {
 .theme-switch__toggle:active + .theme-switch__track {
   box-shadow: 0 0 0 3px var(--accent);
 }
-.dark-theme {
-  color: lightgrey;
-  background-color: #222;
-}
+// .dark-theme {
+//   color: lightgrey;
+//   background-color: #222;
+// }
