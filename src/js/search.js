@@ -113,7 +113,7 @@ async function onSearch(evt) {
   }
   refs.searchForm.reset();
 }
-function notification(data) {
+export function notification(data) {
   if (data.total_results > 0) {
     Notiflix.Notify.success(
       `Success! We've found ${data.total_results} movies for you!!!`

@@ -52,31 +52,36 @@ export const movieDataMarkup = (movie, videoName) => {
       <h2 class="movie__title">${title}</h2>
         <ul class="movie__stats stats">
           <li class="stats__row">
-            <span class="stats__name">Vote / Votes</span>
-            <span class="statss__value">
-              <span class="stats__vote">${
-                Math.round(vote_average * 10) / 10
-              }</span>
+            <p class="stats__name">Vote / Votes</p>
+            <p class="statss__value">
+              <span class="stats__vote">
+                ${Math.round(vote_average * 10) / 10}
+              </span>
               /
               <span class="stats__votes">${vote_count}</span>
-            </span>
+            </p>
           </li>
           <li class="stats__row">
-            <span class="stats__name">Popularity</span>
-            <span class="stats__value">
+            <p class="stats__name">Popularity</p>
+            <p class="stats__value">
               ${Math.round(popularity * 10) / 10}
-            </span>
+            </p>
           </li>
           <li class="stats__row">
-            <span class="stats__name">Original Title</span>
-            <span class="stats__value stats__value--uppercase">
+            <p class="stats__name">Original Title</p>
+            <p class="stats__value stats__value--uppercase">
               ${original_title}
-            </span>
+            </p>
           </li>
           <li class="stats__row">
-            <span class="stats__name">Genre</span>
-            <span class="stats__value">
-              ${genres.map(genre => genre.name).join(', ')}</span>
+            <p class="stats__name">Genre</p>
+            <p class="stats__value genres">
+              ${genres
+                .map(
+                  genre =>
+                    `<span data-genre="${genre.name}">${genre.name}</span>`
+                )
+                .join('')}</p>
           </li>
         </ul>
         <h3 class="movie__sub-title">About</h3>

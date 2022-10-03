@@ -1,4 +1,3 @@
-// import '../sass/index.scss';
 export const loader = {
   preLoader: document.querySelector('.loader'),
   backdrop: document.querySelector('.backdrop__loader'),
