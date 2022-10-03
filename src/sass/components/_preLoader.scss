@@ -17,7 +17,7 @@
   height: 20px;
   position: absolute;
   border-radius: 50%;
-  background-color: #dfb79e;
+  background-color: #8E0303;
   left: 15%;
   transform-origin: 50%;
   animation: circle 0.5s alternate infinite ease;
@@ -55,7 +55,7 @@
   width: 20px;
   height: 4px;
   border-radius: 50%;
-  background-color: rgba(220, 91, 81, 0.5);
+  background-color: rgba(35, 2, 2, 0.5);
   position: absolute;
   top: 62px;
   transform-origin: 50%;
@@ -84,7 +84,7 @@
   animation-delay: 0.2s;
 }
 
-shadow:nth-child(5) {
+.shadow:nth-child(5) {
   left: auto;
   right: 15%;
   animation-delay: 0.3s;
