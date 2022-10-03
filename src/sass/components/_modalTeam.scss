@@ -4,60 +4,80 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   overflow: auto; 
-
-}
-
-
-.modal-body {
-  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 10px;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.35s ease-in;
 }
 
-.modal-content {
-    margin: auto;
+.modal.is-visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-dialog {
   position: relative;
-  background-color: #fff;
-  color: #000;
-  max-width: 800px;
-  padding: 30px;
-  -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
+  border-radius: 5px;
+  background: #fff;
+  overflow: auto;
+  cursor: default;
 }
 
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
+.modal-dialog > * {
+  padding: 1rem;
 }
-.close {
-  position: absolute;
+
+.modal-header,
+.modal-footer {
+  background: #ff6b08;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.close-modal {
+    position: absolute;
   right: 10px;
-  top: 0px;
+  top: 10px;
   font-size: 30px;
   text-decoration: none;
   float: right;
+  background-color: #ff6b08;
 }
-.close:hover,
-.close:focus {
-    color: #ff6b08;
+
+.close-modal:hover,
+.close-modal:focus {
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 }
 
-.modal-members__body h4 {
-  margin-bottom: 30px;
-  font-size: 28px;
-  text-align: center;
-  color: #000;
+.modal-header .close-modal {
+  font-size: 1.5rem;
 }
+
+.modal p + p {
+  margin-top: 1rem;
+}
+
+
+.page-footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.page-footer span {
+  color: #e31b23;
+}
+
 .modal-members__item h5, p {
   margin-bottom: 5px;
 }
