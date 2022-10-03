@@ -59,7 +59,6 @@ export function changeData() {
     modalBtn.removeWatch = 'Видалити з черги';
     modalBtn.removeLib = 'Пройшла любов';
     authModal.signIn = 'Увійти';
-    // authModal.signIn = 'Авторизуватися';
     authModal.signUp = 'Зареєструватися';
     authModal.logIn = 'Увійти';
     authModal.logOut = 'Вийти';
@@ -70,7 +69,6 @@ export function changeData() {
       'Упс! Ви ввели некоректний логін або пароль, спробуйте ще раз!';
     refs.modalRegTitle.textContent = 'Реєстрація';
     refs.modalRegAlready.textContent = 'Є аккаунт?';
-
     refs.modalLogTitle.textContent = 'Авторизація';
     refs.modalLogAlready.textContent = 'Не зареєстровані?';
   }
@@ -103,7 +101,6 @@ export function changeData() {
     authModal.notifiErorr = 'Mala contraseña intentar de nuevo!';
     refs.modalRegTitle.textContent = 'Los registros';
     refs.modalRegAlready.textContent = 'Tiene una cuenta?';
-
     refs.modalLogTitle.textContent = 'Autorizar que';
     refs.modalLogAlready.textContent = 'Autorizar?';
   }
