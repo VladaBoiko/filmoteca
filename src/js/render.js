@@ -40,7 +40,7 @@ refs.queueListBtn.addEventListener('click', renderQueueList);
 
 // let currentPage = 1;
 // let totalPages = 1;
-const scroller = new SweetScroll({ duration: 200 });
+// const scroller = new SweetScroll({ duration: 200 });
 
 // async function getAllGenres(language) {
 //   return await dataGenre(language);
