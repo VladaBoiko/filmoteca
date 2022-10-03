@@ -174,7 +174,7 @@ movieList.addEventListener('click', async event => {
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.watchedListBtnInput.checked
     ) {
       renderWatchedList();
@@ -192,7 +192,7 @@ movieList.addEventListener('click', async event => {
     }
     localStorage.setItem('watched', JSON.stringify(watched));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.watchedListBtnInput.checked
     ) {
       renderWatchedList();
@@ -205,7 +205,7 @@ movieList.addEventListener('click', async event => {
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.queueListBtnInput.checked
     ) {
       renderQueueList();
@@ -223,7 +223,7 @@ movieList.addEventListener('click', async event => {
     }
     localStorage.setItem('queue', JSON.stringify(queue));
     if (
-      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.pageNavDivEl.classList.contains('visually-hidden') &&
       refs.queueListBtnInput.checked
     ) {
       renderQueueList();
