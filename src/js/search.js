@@ -40,7 +40,6 @@ async function onSearch(evt) {
   if (searchQuery !== '') {
     refs.errorSearch.style.display = 'none';
     if (isChosenName) {
-      console.log(isChosenName);
       data = await dataSearch(searchQuery, page);
       notification(data);
       renderFilmCards(data.results, galleryBySearch);

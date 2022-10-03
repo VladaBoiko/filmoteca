@@ -111,7 +111,6 @@ export async function pageNavigation(data) {
 
 refs.pageNavDivEl.onclick = e => {
   if (e.target.textContent === 'next') {
-    console.log('refs');
     refs.currentPage++;
     request(refs.currentPage);
     refs.scroller.to('header');
@@ -153,5 +152,4 @@ export function renderQueueList() {
   refs.noMoviesAlert.classList.add('alert-block--hidden');
   refs.galleryListWatchedEl.classList.remove('gallery__list-watched--hidden');
   renderFilmCardsInLibrary(parsedQueue, galleryListWatchedEl);
-  
 }
