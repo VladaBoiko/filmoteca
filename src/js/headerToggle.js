@@ -5,8 +5,8 @@ refs.libraryBtn.addEventListener('click', () => {
   switchHeaderLibrary();
   renderWatchedList();
 });
-
 function switchHeaderLibrary() {
+  footer = true;
   refs.headerIndex.classList.add('is-hidden');
   refs.headerLibrary.classList.remove('is-hidden');
   refs.homeGallery.classList.add('visually-hidden');
