@@ -52,6 +52,10 @@ const handlePagination = (id, queryF, list) => {
       const data = await queryF(id, language, refs.currentPage);
       loader.hide();
 
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
+
       renderFilmCards(data.results, list);
       refs.scroller.to('header');
       pageNavigation(data);
@@ -63,6 +67,10 @@ const handlePagination = (id, queryF, list) => {
       const data = await queryF(id, language, refs.currentPage);
       loader.hide();
 
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
+
       renderFilmCards(data.results, list);
       refs.scroller.to('header');
       pageNavigation(data);
@@ -71,6 +79,10 @@ const handlePagination = (id, queryF, list) => {
       loader.show();
       data = await queryF(id, language, e.target.textContent);
       loader.hide();
+
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
 
       await renderFilmCards(data.results, list);
       refs.scroller.to('header');
@@ -119,6 +131,9 @@ movieList.addEventListener('click', async event => {
       loader.show();
       const id = await findIdGenre(genre.dataset.genre);
       const data = await dataByGenres(id, language, page);
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
       loader.hide();
       notification(data);
       renderFilmCards(data.results, refs.galleryListEl);
