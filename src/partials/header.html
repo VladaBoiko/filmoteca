@@ -86,8 +86,9 @@
     please
   </p>
 
-  <div class="toolbar">
-    <!-- Разметка переключателя темы -->
+   <!-- Разметка переключателя темы -->
+  <!-- <div class="toolbar">
+   
     <div class="theme-switch">
       <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
         <use href="./images/icons/sprite.svg#sun"></use>
@@ -114,7 +115,7 @@
         <use href="./images/icons/sprite.svg#moon"></use>
       </svg>
     </div>
-  </div>
+  </div> -->
 </header>
 <header class="header header__library is-hidden">
   <div class="container">
@@ -159,8 +160,61 @@
     </div>
 </form>
 
-    <div class="toolbar">
-    <!-- Разметка переключателя темы -->
+<!-- Разметка переключателя темы -->    
+<!-- <div class="toolbar">
+    
+    <div class="theme-switch">
+      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
+        <use href="./images/icons/sprite.svg#sun"></use>
+      </svg>
+
+      <div class="theme-switch__control">
+        <input
+          class="theme-switch__toggle"
+          type="checkbox"
+          name="theme"
+          id="theme-switch-toggle"
+          aria-label="Switch between dark and light themes"
+        />
+        <label
+          aria-hidden="true"
+          class="theme-switch__track"
+          for="theme-switch-toggle"
+        >
+        </label>
+        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
+      </div>
+
+      <svg class="theme-switch__icon" aria-label="Moon icon">
+        <use href="./images/icons/sprite.svg#moon"></use>
+      </svg>
+    </div>
+  </div> -->
+</div>
+</header>
+
+<!--блок реєстрації користувача -->
+<div class="regs-btns">
+  <button
+    class="reg-btn-singIn"
+    type="button"
+    aria-label="sign up"
+    name="sign-in-btn"
+    data-modal-open="singIn"
+  >
+    SING IN
+  </button>
+  <button
+    class="logout-btn"
+    type="button"
+    aria-label="log-out"
+    name="log-out-btn"
+    disabled
+  >
+    Log in to your account!
+  </button>
+  <div class="toolbar">
+    
     <div class="theme-switch">
       <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
         <use href="./images/icons/sprite.svg#sun"></use>
@@ -188,27 +242,4 @@
       </svg>
     </div>
   </div>
-</div>
-</header>
-
-<!--блок реєстрації користувача -->
-<div class="regs-btns">
-  <button
-    class="reg-btn-singIn"
-    type="button"
-    aria-label="sign up"
-    name="sign-in-btn"
-    data-modal-open="singIn"
-  >
-    SING IN
-  </button>
-  <button
-    class="logout-btn"
-    type="button"
-    aria-label="log-out"
-    name="log-out-btn"
-    disabled
-  >
-    Log in to your account!
-  </button>
 </div>
