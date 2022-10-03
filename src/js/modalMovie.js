@@ -5,6 +5,7 @@ import { renderFilmCards } from './renderCard';
 import { notification } from './search';
 import { refs } from './refs';
 import { modalHandle, closeModal } from './modalHandle';
+import { loader } from './preLoader';
 
 let watched = [];
 let queue = [];
@@ -43,24 +44,34 @@ const getVideo = trailers => {
   return { ...video, slicedVideoName };
 };
 
-const handlePaпination = (id, queryF, list) => {
+const handlePagination = (id, queryF, list) => {
   refs.pageNavDivEl.onclick = async e => {
     if (e.target.textContent === 'next') {
       refs.currentPage++;
+      loader.show();
       const data = await queryF(id, language, refs.currentPage);
+      loader.hide();
+
       renderFilmCards(data.results, list);
       refs.scroller.to('header');
       pageNavigation(data);
     }
     if (e.target.textContent === 'prev') {
       refs.currentPage--;
+
+      loader.show();
       const data = await queryF(id, language, refs.currentPage);
+      loader.hide();
+
       renderFilmCards(data.results, list);
       refs.scroller.to('header');
       pageNavigation(data);
     }
     if (isFinite(e.target.textContent)) {
+      loader.show();
       data = await queryF(id, language, e.target.textContent);
+      loader.hide();
+
       await renderFilmCards(data.results, list);
       refs.scroller.to('header');
       await pageNavigation(data);
@@ -104,12 +115,14 @@ movieList.addEventListener('click', async event => {
   const genresCard = document.querySelectorAll('[data-genre]');
   genresCard.forEach(genre => {
     genre.addEventListener('click', async () => {
+      loader.hide();
       const id = await findIdGenre(genre.dataset.genre);
       const data = await dataByGenres(id, language, page);
+      loader.hide();
       notification(data);
       renderFilmCards(data.results, refs.galleryListEl);
       pageNavigation(data);
-      handlePaпination(id, dataByGenres, refs.galleryListEl);
+      handlePagination(id, dataByGenres, refs.galleryListEl);
       refs.scroller.to('header');
       document
         .querySelector('[data-modal="movie"]')

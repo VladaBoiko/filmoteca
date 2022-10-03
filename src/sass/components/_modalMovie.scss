@@ -245,6 +245,7 @@
     }
     &.genres {
       display: flex;
+      flex-wrap: wrap;
       gap: 3px;
     }
     &.genres span {
