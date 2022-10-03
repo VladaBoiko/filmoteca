@@ -37,7 +37,8 @@ const auth = getAuth(app);
 formSingUp.addEventListener('submit', regNewUser);
 formSingIn.addEventListener('submit', authUser);
 logOutBtn.addEventListener('click', logOut);
-
+import { authModal } from '../changeLangs';
+console.log(authModal);
 // реєстрація нового користувача
 async function regNewUser(evt) {
   evt.preventDefault();
@@ -48,7 +49,7 @@ async function regNewUser(evt) {
   const userName = email.slice(0, indexInEmail).toUpperCase();
 
   if (password.length < 6) {
-    Notify.failure('Password should be at least 6 characters!');
+    Notify.failure(`${authModal.notifiPass}`);
     return;
   }
 
@@ -62,11 +63,11 @@ async function regNewUser(evt) {
 
     saveUser(userName, email, password);
 
-    singInBtn.textContent = `Welcome, ${userName}`;
+    singInBtn.textContent = `${authModal.hello}${userName}!`;
     toggleModal();
     singInBtn.disabled = true;
     logOutBtn.disabled = false;
-    logOutBtn.textContent = 'LOG OUT';
+    logOutBtn.textContent = `${authModal.logOut}`;
   } catch (error) {
     const errorCode = error.code;
     const errorMessage = error.message;
@@ -94,13 +95,13 @@ async function authUser(evt) {
     await signInWithEmailAndPassword(auth, email, password);
 
     saveUser(userName, email, password);
-    singInBtn.textContent = `Welcome, ${userName}!`;
+    singInBtn.textContent = `${authModal.hello}${userName}!`;
     singInBtn.disabled = true;
     logOutBtn.disabled = false;
-    logOutBtn.textContent = 'LOG OUT';
+    logOutBtn.textContent = `${authModal.logOut}`;
     toggleModalSingIn();
   } catch (error) {
-    Notify.failure('Oooops! User not found or wrong password:( Try again!');
+    Notify.failure(`${authModal.notifiErorr}`);
   }
 }
 
@@ -114,8 +115,8 @@ async function logOut() {
     });
     Loading.remove(150);
     logOutBtn.disabled = true;
-    logOutBtn.textContent = 'Log in to your account!';
-    singInBtn.textContent = 'SING IN';
+    logOutBtn.textContent = `${authModal.come}`;
+    singInBtn.textContent = `${authModal.signIn}`;
     singInBtn.disabled = false;
     clearUserOnLocalStorage();
   } catch (error) {

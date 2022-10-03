@@ -5,4 +5,5 @@ import './js/modalMovie';
 import './js/changeTheme';
 import './js/search';
 import './js/goTopBtn';
+import './js/changeLangs';
 import './js/auth/auth';
