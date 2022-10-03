@@ -10,6 +10,10 @@ import {
   btnCloseSingUp,
 } from './refs.js';
 
+import { changeLangModalReg } from './lang';
+
+changeLangModalReg();
+
 export function onClickSingUp() {
   toggleModal();
   window.addEventListener('keydown', onPressEsk);

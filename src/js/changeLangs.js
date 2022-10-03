@@ -58,7 +58,8 @@ export function changeData() {
     modalBtn.addLib = 'Вподобати';
     modalBtn.removeWatch = 'Видалити з черги';
     modalBtn.removeLib = 'Пройшла любов';
-    authModal.signIn = 'Авторизуватися';
+    authModal.signIn = 'Увійти';
+    // authModal.signIn = 'Авторизуватися';
     authModal.signUp = 'Зареєструватися';
     authModal.logIn = 'Увійти';
     authModal.logOut = 'Вийти';
@@ -66,7 +67,7 @@ export function changeData() {
     authModal.come = 'Увійдіть у свій аккаунт!';
     authModal.notifiPass = 'Пароль повинен містити мінімум 6 символів!';
     authModal.notifiErorr =
-      'Упс! Ви ввели некоректний пароль, спробуйте ще раз!';
+      'Упс! Ви ввели некоректний логін або пароль, спробуйте ще раз!';
     refs.modalRegTitle.textContent = 'Реєстрація';
     // refs.modalRegSign.textContent = 'Зареєструватися';
     refs.modalRegAlready.textContent = 'Є аккаунт?';
@@ -96,7 +97,7 @@ export function changeData() {
     modalBtn.addLib = 'Agregar agradó';
     modalBtn.removeWatch = 'Eliminar vistos';
     modalBtn.removeLib = 'Eliminar agradó';
-    authModal.signIn = 'Autorizar que';
+    // authModal.signIn = 'Autorizar que';
     authModal.signUp = 'Los registros';
     authModal.logIn = 'Ingresar';
     authModal.logOut = 'Salir';
@@ -120,6 +121,13 @@ export function changeData() {
     modalBtn.addLib = 'add to queue';
     modalBtn.removeWatch = 'remove from Watched';
     modalBtn.removeLib = 'remove from queue';
+    authModal.hello = 'Welcome, ';
+    authModal.come = ' Log in to your account!';
+    authModal.logIn = 'SING IN';
+    authModal.logOut = 'LOG OUT';
+    authModal.notifiPass = 'Password must have at least 6 characters!';
+    authModal.notifiErorr =
+      'Ooops..You entered an incorrect login or password, try again!';
   }
 }
 export { modalBtn, authModal };
