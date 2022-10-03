@@ -394,10 +394,13 @@
 .regs-btns {
   display: flex;
   position: absolute;
-  top: 145px;
+  top: 155px;
   right: 50%;
   z-index: 101;
   transform: translate(50%, 50%);
+  @include tablet {
+    top: 148px;
+  }
 }
 
 .reg-btn-singIn,
