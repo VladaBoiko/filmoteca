@@ -1,6 +1,6 @@
 import { refs } from './refs';
 refs.langs.addEventListener('change', changeLangs);
-let language = null;
+let language = 'en';
 
 function changeLangs() {
   let langs = refs.langs.value;
