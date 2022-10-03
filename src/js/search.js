@@ -47,8 +47,10 @@ async function onSearch(evt) {
   if (searchQuery !== '') {
     refs.errorSearch.style.display = 'none';
     if (isChosenName) {
-      console.log(isChosenName);
       data = await dataSearch(searchQuery, language, page);
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
       notification(data);
       renderFilmCards(data.results, galleryBySearch);
       pageNavigation(data);
@@ -58,10 +60,10 @@ async function onSearch(evt) {
       const genresData = (await getAllGenres(language)).genres;
       genre = genresData.find(genre => {
         if (searchQuery === genre.name.toLowerCase()) {
+          refs.genre = genre.id;
           return genre;
         }
       });
-      console.log(genre);
       if (!genre) {
         Notiflix.Notify.failure(
           'Sorry! The search has no results, change your serch word, please!'
@@ -71,41 +73,32 @@ async function onSearch(evt) {
       if (genre) {
         refs.errorSearch.style.display = 'none';
         data = await dataByGenres(genre.id, language, page);
+        if (data.total_pages > 500) {
+          data.total_pages = 500;
+        }
         notification(data);
         renderFilmCards(data.results, galleryBySearch);
         pageNavigation(data);
       }
     }
-    refs.pageNavDivEl.onclick = async e => {
+    refs.pageNavDivEl.onclick = e => {
       if (e.target.textContent === 'next') {
-        console.log('refs');
         refs.currentPage++;
-        data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        pageNavigation(data);
+        paginationRequest(refs.currentPage);
       }
       if (e.target.textContent === 'prev') {
         refs.currentPage--;
-        data = await dataSearch(refs.pagSerchQuery, language, refs.currentPage);
-        renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        pageNavigation(data);
+        paginationRequest(refs.currentPage);
       }
       if (isFinite(e.target.textContent)) {
-        data = await dataSearch(
-          refs.pagSerchQuery,
-          language,
-          e.target.textContent
-        );
-        await renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        await pageNavigation(data);
+        paginationRequest(e.target.textContent);
       }
     };
   }
 
-  console.log(searchQuery);
   if (searchQuery === '') {
     refs.errorSearch.style.display = 'block';
     Notiflix.Notify.failure(`Oops, the search is empty, try again.`);
@@ -128,4 +121,25 @@ function notification(data) {
 }
 async function getAllGenres(language) {
   return await dataGenre(language);
+}
+
+async function paginationRequest(page) {
+  if (isChosenName) {
+    data = await dataSearch(refs.searchQuery, language, page);
+    if (data.total_pages > 500) {
+      data.total_pages = 500;
+    }
+    notification(data);
+    renderFilmCards(data.results, galleryBySearch);
+    pageNavigation(data);
+  }
+  if (isChosenGenre) {
+    data = await dataByGenres(refs.genre, language, page);
+    if (data.total_pages > 500) {
+      data.total_pages = 500;
+    }
+    notification(data);
+    renderFilmCards(data.results, galleryBySearch);
+    pageNavigation(data);
+  }
 }

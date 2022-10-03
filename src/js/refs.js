@@ -29,6 +29,7 @@ export const refs = {
   rightSecondPageEl: document.querySelector('.pagination_rightSecondPage'),
   leftFirstPageEl: document.querySelector('.pagination_leftFirstPage'),
   leftSecondPageEl: document.querySelector('.pagination_leftSecondPage'),
+  genre: '',
   watchedListBtn: document.getElementById('js-WatchedButton'),
   queueListBtn: document.getElementById('js-QueueButton'),
   watchedListBtnInput: document.querySelector('[value="Watched"]'),
