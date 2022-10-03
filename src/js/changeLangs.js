@@ -114,5 +114,12 @@ export function changeData() {
     refs.modalLogAlready.textContent = 'Autorizar?';
     // refs.modalLogSign.textContent = 'Створити аккаунт';
   }
+  if (language === 'en') {
+    refs.langs.value = 'en';
+    modalBtn.addWatch = 'add to Watched';
+    modalBtn.addLib = 'add to queue';
+    modalBtn.removeWatch = 'remove from Watched';
+    modalBtn.removeLib = 'remove from queue';
+  }
 }
 export { modalBtn, authModal };
