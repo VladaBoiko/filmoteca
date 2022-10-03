@@ -20,6 +20,7 @@ function checkLocalStorage() {
   singInBtn.textContent = `Welcome, ${userData.userName}`;
   singInBtn.disabled = true;
   logOutBtn.disabled = false;
+  logOutBtn.textContent = 'LOG OUT';
 }
 
 checkLocalStorage();

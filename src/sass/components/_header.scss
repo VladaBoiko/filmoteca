@@ -328,6 +328,7 @@
 
 .reg-btn-singIn,
 .logout-btn {
+  cursor: auto;
   padding: 5px 0px;
   width: 75px;
   height: 40px;
@@ -346,6 +347,7 @@
   &:not([disabled]):focus {
     background-color: var(--accent);
     color: var(--text-color-button);
+    cursor: pointer;
   }
 
   &:disabled {
