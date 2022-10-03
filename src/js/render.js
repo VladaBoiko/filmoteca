@@ -32,12 +32,10 @@ const pageNavDivEl = document.querySelector('.pagination');
 // const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
 const galleryContainer = document.querySelector('.gallery.watched .container');
 
-const watchedListBtn = document.getElementById('js-WatchedButton');
-const queueListBtn = document.getElementById('js-QueueButton');
 // const movieListRef = document.getElementById('gallery-list');
 
-watchedListBtn.addEventListener('click', renderWatchedList);
-queueListBtn.addEventListener('click', renderQueueList);
+refs.watchedListBtn.addEventListener('click', renderWatchedList);
+refs.queueListBtn.addEventListener('click', renderQueueList);
 
 // let currentPage = 1;
 // let totalPages = 1;
@@ -242,12 +240,14 @@ export function renderWatchedList() {
   const parsedWatched = JSON.parse(localStorage.getItem('watched'));
 
   if (!parsedWatched || parsedWatched.length === 0) {
-    galleryContainer.innerHTML =
-      '<h1 class="alert">No movies here yet</h1><img class="alert-img" src="https://i.kym-cdn.com/entries/icons/original/000/019/277/confusedtravolta.jpg" alt="Confused Travolta">';
+    refs.noMoviesAlert.classList.remove('alert-block--hidden');
+    refs.galleryListWatchedEl.classList.add('gallery__list-watched--hidden');
     return;
   }
 
   // let imgSrc = null;
+  refs.noMoviesAlert.classList.add('alert-block--hidden');
+  refs.galleryListWatchedEl.classList.remove('gallery__list-watched--hidden');
   renderFilmCardsInLibrary(parsedWatched, galleryListWatchedEl);
   // renderFilmCardsInLibrary(parsedWatched, galleryListWatchedEl);
   //   const filmList = parsedWatched
@@ -304,13 +304,15 @@ export function renderQueueList() {
   const parsedQueue = JSON.parse(localStorage.getItem('queue'));
 
   if (!parsedQueue || parsedQueue.length === 0) {
-    galleryContainer.innerHTML =
-      '<h1 class="alert">No movies here yet</h1><img class="alert-img" src="https://i.kym-cdn.com/entries/icons/original/000/019/277/confusedtravolta.jpg" alt="Confused Travolta">';
+    refs.noMoviesAlert.classList.remove('alert-block--hidden');
+    refs.galleryListWatchedEl.classList.add('gallery__list-watched--hidden');
     return;
   }
 
-  let imgSrc = null;
+  // let imgSrc = null;
   // renderFilmCards(parsedQueue, galleryListWatchedEl);
+  refs.noMoviesAlert.classList.add('alert-block--hidden');
+  refs.galleryListWatchedEl.classList.remove('gallery__list-watched--hidden');
   renderFilmCardsInLibrary(parsedQueue, galleryListWatchedEl);
   //   const filmList = parsedQueue
   //     .map(({ id, title, vote_average, genres, release_date, poster_path }) => {
@@ -360,7 +362,3 @@ export function renderQueueList() {
   //     .join('');
   //   galleryListWatchedEl.innerHTML = filmList;
 }
-
-// export function togglePagination() {
-//   pageNavDivEl.classList.toggle('pagination--hidden');
-// }

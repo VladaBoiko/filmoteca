@@ -85,16 +85,21 @@ movieList.addEventListener('click', async event => {
   }
 
   function onWatchedBtnAddClick() {
+    console.log(refs.watchedListBtnInput.checked);
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     watched.push(movie);
     localStorage.setItem('watched', JSON.stringify(watched));
-    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+    if (
+      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.watchedListBtnInput.checked
+    ) {
       renderWatchedList();
     }
   }
 
   function onWatchedBtnRemoveClick() {
+    console.log(refs.watchedListBtnInput.checked);
     watchedBtnAdd.classList.toggle('movie__button--hidden');
     watchedBtnRemove.classList.toggle('movie__button--hidden');
     for (const object of watched) {
@@ -104,22 +109,30 @@ movieList.addEventListener('click', async event => {
       }
     }
     localStorage.setItem('watched', JSON.stringify(watched));
-    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+    if (
+      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.watchedListBtnInput.checked
+    ) {
       renderWatchedList();
     }
   }
 
   function onQueueBtnAddClick() {
+    console.log(refs.queueListBtnInput.checked);
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
     queue.push(movie);
     localStorage.setItem('queue', JSON.stringify(queue));
-    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+    if (
+      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.queueListBtnInput.checked
+    ) {
       renderQueueList();
     }
   }
 
   function onQueueBtnRemoveClick() {
+    console.log(refs.queueListBtnInput.checked);
     queueBtnAdd.classList.toggle('movie__button--hidden');
     queueBtnRemove.classList.toggle('movie__button--hidden');
     for (const object of queue) {
@@ -129,7 +142,10 @@ movieList.addEventListener('click', async event => {
       }
     }
     localStorage.setItem('queue', JSON.stringify(queue));
-    if (refs.pageNavDivEl.classList.contains('pagination--hidden')) {
+    if (
+      refs.pageNavDivEl.classList.contains('pagination--hidden') &&
+      refs.queueListBtnInput.checked
+    ) {
       renderQueueList();
     }
   }

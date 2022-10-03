@@ -12,6 +12,7 @@ function switchHeaderLibrary() {
   refs.homeGallery.classList.add('visually-hidden');
   refs.libraryGallery.classList.remove('visually-hidden');
   refs.pageNavDivEl.classList.add('pagination--hidden');
+  refs.watchedListBtnInput.checked = true;
 }
 function switchHeaderHome() {
   refs.headerLibrary.classList.add('is-hidden');
