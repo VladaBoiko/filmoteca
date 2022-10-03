@@ -5,6 +5,8 @@ export const IMG_URL_342 = 'https://image.tmdb.org/t/p/w342';
 export const IMG_URL_500 = 'https://image.tmdb.org/t/p/w500';
 export const IMG_URL_780 = 'https://image.tmdb.org/t/p/w780';
 export const IMG_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
+import emptyImg from '../../images/no-image.jpg';
+export const emptyImge = emptyImg;
 // 3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=28
 
 axios.defaults.baseURL = URL;
