@@ -54,14 +54,18 @@
 .reg-modal-title,
 .singIn-modal-title {
   color: var(--accent);
-  @include text(700, 24px, 24px);
+  @include text(700, 18px, 18px);
   text-align: center;
   margin-bottom: 20px;
+
+  @include tablet {
+    @include text(700, 24px, 24px);
+  }
 }
 
 .reg-modal-form,
 .singIn-modal-form {
-  width: 80%;
+  width: 90%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,7 +79,8 @@
 .reg-modal-password,
 .singIn-modal-email,
 .singIn-modal-password {
-  width: 80%;
+  font-size: 14px;
+  width: 90%;
   height: 50px;
   margin-right: auto;
   margin-left: auto;
@@ -85,10 +90,22 @@
   border-radius: 5px;
   transition: border var(--transition), outline var(--transition);
 
+  @include tablet {
+    font-size: 18px;
+  }
+
   &:hover,
   &:focus {
     border: 1px solid var(--accent);
     outline: 1px solid var(--accent);
+  }
+
+  &::placeholder {
+    font-size: 12px;
+
+    @include tablet {
+      font-size: 16px;
+    }
   }
 }
 

@@ -5,6 +5,10 @@ import {
   modalSingInBtn,
   singIn,
   singUp,
+  formSingUpInputEmail,
+  formSingUpInputPassword,
+  formSingInInputEmail,
+  formSingInInputPassword,
 } from './refs.js';
 
 import { language } from '../changeLangs.js';
@@ -17,6 +21,10 @@ export function changeLangModalReg() {
     logOutBtn.textContent = 'Увійдіть у свій аккаунт!';
     modalSingUpBtn.textContent = 'Доєднуйтесь!';
     modalSingInBtn.textContent = 'Увійти';
+    formSingUpInputEmail.placeholder = 'Введіть електронну адресу';
+    formSingInInputEmail.placeholder = 'Введіть електронну адресу';
+    formSingUpInputPassword.placeholder = 'Введіть ваш пароль';
+    formSingInInputPassword.placeholder = 'Введіть ваш пароль';
   }
 
   if (language === 'es') {
@@ -26,6 +34,10 @@ export function changeLangModalReg() {
     logOutBtn.textContent = 'Iniciar sesión en una cuenta!';
     modalSingUpBtn.textContent = 'Los registros!';
     modalSingInBtn.textContent = 'Ingresar';
+    formSingUpInputEmail.placeholder = 'Introduce tu correo electrónico';
+    formSingInInputEmail.placeholder = 'Introduce tu correo electrónico';
+    formSingUpInputPassword.placeholder = 'Ingresa tu contraseña';
+    formSingInInputPassword.placeholder = 'Ingresa tu contraseña';
   }
 
   if (language === 'en') {
