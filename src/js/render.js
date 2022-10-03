@@ -9,6 +9,7 @@ import {
 import { refs } from './refs';
 import { renderFilmCards, renderFilmCardsInLibrary } from './renderCard';
 import SweetScroll from 'sweet-scroll';
+// import { language } from './changeLangs';
 // import emptyImg from '../images/no-image.jpg';
 
 import { loader } from './preLoader';
@@ -18,7 +19,7 @@ const galleryListWatchedEl = document.querySelector('.gallery__list-watched');
 // const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 // const page = 1;
 // const language = 'en-US';
-const pageNavDivEl = document.querySelector('.pagination');
+// const pageNavDivEl = document.querySelector('.pagination');
 // const prevBtnEl = document.querySelector('.pagination_previousBtn');
 // const nextBtnEl = document.querySelector('.pagination_nextBtn');
 // const currentPageEl = document.querySelector('.pagination_currentPage');
@@ -30,7 +31,7 @@ const pageNavDivEl = document.querySelector('.pagination');
 // const rightSecondPageEl = document.querySelector('.pagination_rightSecondPage');
 // const leftFirstPageEl = document.querySelector('.pagination_leftFirstPage');
 // const leftSecondPageEl = document.querySelector('.pagination_leftSecondPage');
-const galleryContainer = document.querySelector('.gallery.watched .container');
+// const galleryContainer = document.querySelector('.gallery.watched .container');
 
 // const movieListRef = document.getElementById('gallery-list');
 
@@ -45,10 +46,10 @@ const scroller = new SweetScroll({ duration: 200 });
 //   return await dataGenre(language);
 // }
 
-export async function request(page, language) {
+export async function request(page) {
   loader.show();
 
-  const data = await dataMovieList(page, language);
+  const data = await dataMovieList(page);
   renderFilmCards(data.results, galleryListEl);
   pageNavigation(data);
 

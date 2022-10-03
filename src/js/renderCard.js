@@ -1,6 +1,6 @@
 import { dataGenre } from './API/api';
 import {
-  dataMovieList,
+  // dataMovieList,
   dataGenre,
   IMG_URL_342,
   IMG_URL_500,
@@ -11,12 +11,12 @@ import {
 // const galleryBySearch = document.querySelector('#gallery-list');
 // const baseUrtlImg = 'https://image.tmdb.org/t/p/original/';
 // const page = 1;
-const language = 'en-US';
-async function getAllGenres(language) {
-  return await dataGenre(language);
+// const language = 'en-US';
+async function getAllGenres() {
+  return await dataGenre();
 }
 export async function renderFilmCards(data, container) {
-  const genresData = (await getAllGenres(language)).genres;
+  const genresData = (await getAllGenres()).genres;
 
   const filmList = data
     .map(

@@ -8,13 +8,13 @@ export const IMG_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 import emptyImg from '../../images/no-image.jpg';
 export const emptyImge = emptyImg;
 // 3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=28
-
+import { language } from '../changeLangs';
 axios.defaults.baseURL = URL;
 
 // uk-UA;
 
 // Загальна інформація про фільми
-export const dataMovieList = async (page = 1, language = 'en-US') => {
+export const dataMovieList = async (page = 1) => {
   try {
     const server = await axios.get(
       `3/trending/movie/day?api_key=${KEY}&page=${page}&language=${language}`
@@ -29,7 +29,7 @@ export const dataMovieList = async (page = 1, language = 'en-US') => {
 };
 
 // пошук по ключовому слову
-export const dataSearch = async (name, language = 'en-US', page = 1) => {
+export const dataSearch = async (name, page = 1) => {
   try {
     const server = await axios.get(
       `3/search/movie?api_key=${KEY}&language=${language}&query=${name}&page=${page}&include_adult=false`
@@ -42,7 +42,7 @@ export const dataSearch = async (name, language = 'en-US', page = 1) => {
 };
 
 // список усіх жанрів
-export const dataGenre = async (language = 'en-US') => {
+export const dataGenre = async () => {
   try {
     const server = await axios.get(
       `3/genre/movie/list?api_key=${KEY}&language=${language}`
@@ -57,7 +57,7 @@ export const dataGenre = async (language = 'en-US') => {
 };
 
 // Повна інформація про фільм
-export const dataMovie = async (id, language = 'en-US') => {
+export const dataMovie = async id => {
   try {
     const server = await axios.get(
       `3/movie/${id}?api_key=${KEY}&language=${language}`
@@ -70,7 +70,7 @@ export const dataMovie = async (id, language = 'en-US') => {
 };
 
 // Список акторів
-export const dataAuthors = async (id, language = 'en-US') => {
+export const dataAuthors = async id => {
   try {
     const server = await axios.get(
       `3/movie/${id}/credits?api_key=${KEY}&language=${language}`
@@ -83,7 +83,7 @@ export const dataAuthors = async (id, language = 'en-US') => {
 };
 
 // пошук фільмів по актору
-export const dataAuthorMovie = async (id, language = 'en-US') => {
+export const dataAuthorMovie = async id => {
   try {
     const server = await axios.get(
       `3/person/${id}/movie_credits?api_key=${KEY}&language=${language}`
