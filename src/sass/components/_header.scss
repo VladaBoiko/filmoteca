@@ -439,6 +439,14 @@
     border: none;
     color: var(--accent);
   }
+  // @include tablet {
+  //   left: 28%;
+  //   top: 129px;
+  // }
+
+  @include desktop {
+    margin-left: 50px;
+  }
 }
 
 .menu__list {
