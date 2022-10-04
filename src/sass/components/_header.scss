@@ -342,12 +342,12 @@
   left: 20%;
   @include tablet {
     left: 28%;
-    top: 129px;
   }
 
   @include desktop {
     width: 336px;
     left: 34.7%;
+    top: 129px;
   }
 }
 // то Влада
