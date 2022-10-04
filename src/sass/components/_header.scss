@@ -398,7 +398,7 @@
   right: 50%;
   z-index: 101;
   transform: translate(50%, 50%);
-  @include tablet {
+  @include desktop {
     top: 20px;
   }
 }
@@ -439,10 +439,6 @@
     border: none;
     color: var(--accent);
   }
-  // @include tablet {
-  //   left: 28%;
-  //   top: 129px;
-  // }
 
   @include desktop {
     margin-left: 50px;
