@@ -43,7 +43,7 @@ async function onSearch(evt) {
       data = await dataSearch(searchQuery, page);
       notification(data);
       renderFilmCards(data.results, galleryBySearch);
-      pageNavigation(data);
+      pageNavigation(data, searchQuery);
     }
     if (isChosenGenre) {
       let genre = null;
@@ -65,7 +65,7 @@ async function onSearch(evt) {
         data = await dataByGenres(genre.id, page);
         notification(data);
         renderFilmCards(data.results, galleryBySearch);
-        pageNavigation(data);
+        pageNavigation(data, searchQuery);
       }
     }
     refs.pageNavDivEl.onclick = e => {
@@ -73,18 +73,18 @@ async function onSearch(evt) {
         refs.currentPage++;
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        paginationRequest(refs.currentPage);
+        paginationRequest(refs.currentPage, searchQuery);
       }
       if (e.target.textContent === 'prev') {
         refs.currentPage--;
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        paginationRequest(refs.currentPage);
+        paginationRequest(refs.currentPage, searchQuery);
       }
       if (isFinite(e.target.textContent)) {
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
-        paginationRequest(e.target.textContent);
+        paginationRequest(e.target.textContent, searchQuery);
       }
     };
   }
@@ -113,9 +113,10 @@ async function getAllGenres() {
   return await dataGenre();
 }
 
-async function paginationRequest(page) {
+async function paginationRequest(page, searchQuery) {
   if (isChosenName) {
-    data = await dataSearch(refs.searchQuery, page);
+    // console.log(searchQuery);
+    data = await dataSearch(searchQuery, page);
     if (data.total_pages > 500) {
       data.total_pages = 500;
     }
