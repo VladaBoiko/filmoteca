@@ -10,6 +10,10 @@ import {
   btnCloseSingUp,
 } from './refs.js';
 
+import { changeLangModalReg } from './lang';
+
+changeLangModalReg();
+
 export function onClickSingUp() {
   toggleModal();
   window.addEventListener('keydown', onPressEsk);
@@ -38,7 +42,7 @@ export function onPressEsk(e) {
 }
 
 function onClickBackdrop(e) {
-  if (e.target.classList.contains('backdrop')) {
+  if (e.target.classList.contains('backdrop-auth')) {
     toggleModal();
     backdropSingUp.removeEventListener('click', onClickBackdrop);
   }

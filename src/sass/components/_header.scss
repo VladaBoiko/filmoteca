@@ -342,10 +342,10 @@
   left: 20%;
   @include tablet {
     left: 28%;
+    top: 129px;
   }
 
   @include desktop {
-    // width: 394px;
     width: 336px;
     left: 34.7%;
   }
@@ -394,10 +394,13 @@
 .regs-btns {
   display: flex;
   position: absolute;
-  top: 145px;
+  top: 155px;
   right: 50%;
   z-index: 101;
   transform: translate(50%, 50%);
+  @include tablet {
+    top: 20px;
+  }
 }
 
 .reg-btn-singIn,
@@ -436,26 +439,27 @@
     border: none;
     color: var(--accent);
   }
+  // @include tablet {
+  //   left: 28%;
+  //   top: 129px;
+  // }
+
+  @include desktop {
+    margin-left: 50px;
+  }
 }
 
 .menu__list {
   @include flexCenter;
 }
 .change-lng {
-  // position: absolute;
-  // right: 15px;
-  // top: -19px;
   background-color: transparent;
   color: red;
   border: none;
   outline: none;
   cursor: pointer;
-  // @media screen and (min-width: $tablet) {
-  //   right: 70px;
-  //   top: 78px;
-  // }
 }
 
 .change-lng__item {
-  color: blue;
+  color: red;
 }

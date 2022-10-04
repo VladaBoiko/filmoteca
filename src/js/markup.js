@@ -1,5 +1,5 @@
 import emptyImg from '../images/no-image.jpg';
-
+import { modalBtn } from './changeLangs';
 import {
   IMG_URL_342,
   IMG_URL_500,
@@ -95,10 +95,18 @@ export const movieDataMarkup = (movie, videoName) => {
         }
         </div>  
         <div class="movie__actions">
-          <button type="button" class="movie__button" id="watchedAdd">Add to watched</button>
-          <button type="button" class="movie__button movie__button--hidden" id="watchedRemove">Remove from watched</button>
-          <button type="button" class="movie__button" id="queueAdd">Add to Queue</button>
-          <button type="button" class="movie__button movie__button--hidden" id="queueRemove">Remove from Queue</button>
+          <button type="button" class="movie__button" id="watchedAdd">${
+            modalBtn.addWatch
+          }</button>
+          <button type="button" class="movie__button movie__button--hidden" id="watchedRemove">${
+            modalBtn.removeWatch
+          }</button>
+          <button type="button" class="movie__button" id="queueAdd">${
+            modalBtn.addLib
+          }</button>
+          <button type="button" class="movie__button movie__button--hidden" id="queueRemove">${
+            modalBtn.removeLib
+          }</button>
         </div>
       </div>
   `;

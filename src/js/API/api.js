@@ -7,11 +7,8 @@ export const IMG_URL_780 = 'https://image.tmdb.org/t/p/w780';
 export const IMG_URL_ORIGINAL = 'https://image.tmdb.org/t/p/original';
 import emptyImg from '../../images/no-image.jpg';
 export const emptyImge = emptyImg;
-// 3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=28
 import { language } from '../changeLangs';
 axios.defaults.baseURL = URL;
-
-// uk-UA;
 
 // Загальна інформація про фільми
 export const dataMovieList = async (page = 1) => {
@@ -106,13 +103,7 @@ export const dataTrailer = async id => {
   }
 };
 // пошук по жанру
-
-// https://api.themoviedb.org/3/discover/movie?api_key=5f2a66e63fa9a8139a0b7e8b9aba27ca&language=en-US&include_adult=false&page=1&with_genres=28
-export const dataByGenres = async (
-  genreId = 28,
-  language = 'en-US',
-  page = 1
-) => {
+export const dataByGenres = async (genreId = 28, page = 1) => {
   try {
     const server = await axios.get(
       `3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=${genreId}`

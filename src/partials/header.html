@@ -1,195 +1,140 @@
- <include src="./partials/preLoader.html"></include>
-<include src="./partials/index/search.html"></include>
-    <!-- Кнопки які доступні тільки на сторінці бібліотеки -->
-    <include src="./partials/watched/myLibrary.html"></include>
-    <!-- Зміна мови, теми, авторизація -->
-    <include src="./partials/interface.html"></include>
+<include src="./partials/preLoader.html"></include>
+
 <header class="header header-index">
   <div class="container">
-  <div class="navigation__container">
-    <a href="" class="logo">
-      <svg class="logo__svg icon-film">
-        <use href="./images/icons/sprite.svg#film"></use>
-      </svg>
-      <span class="logo__text">Filmoteka</span>
-    </a>
-    <nav class="navigation">
-      <ul class="menu__list">
-        <li class="menu__item">
-          <button class="link menu__link menu__link-library current current-home">
-          Home
-        </button></li>
-        
-        <li class="menu__item">
-          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
-            <button class="link menu__link menu__link-library menu__library">My library</button>
-        </li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="wrapper-header">
-    <form id="search-form" action="" class="search">
-       <!-- <input
-        class="search__input name-input"
-        type="text"
-        placeholder="Movie search"
-        name="query-name"
-      /> -->
-      <input
-        class="search__input"
-        type="text"
-        placeholder="Movie search"
-        name="query"
-        list="genre-input"
-      />
-<datalist id="genre-input">
-  <option value="Action"></option>
-  <option value="Adventure"></option>
-  <option value="Animation"></option>
-  <option value="Comedy"></option>
-  <option value="Crime"></option>
-  <option value="Documentary"></option>
-  <option value="Drama"></option>
-  <option value="Family"></option>
-    <option value="Fantasy"></option>
-<option value="History"></option>
-  <option value="Horror"></option>
-  <option value="Music"></option>
-  <option value="Mystery"></option>
-  <option value="Romance"></option>
-  <option value="Science Fiction"></option>
-  <option value="TV Movie"></option>
-  <option value="Thriller"></option>
-  <option value="War"></option>
-  <option value="Western"></option>
-</datalist>
-      <button class="search__button" type="submit" title="Go!">
-        <svg class="search__button-icon icon-search" width="12" height="12">
-          <use href="./images/icons/sprite.svg#search"></use>
+    <div class="navigation__container">
+      <a href="" class="logo">
+        <svg class="logo__svg icon-film">
+          <use href="./images/icons/sprite.svg#film"></use>
         </svg>
-      </button>
-    </form>
-    <div class="search-choice">
-      <span class="chose-type">Search by:</span>
-      <button class="search-choice-btn name">name</button>
-      <button class="search-choice-btn genre">genre</button>
+        <span class="logo__text">Filmoteka</span>
+      </a>
+      <nav class="navigation">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <button
+              class="link menu__link menu__link-library current current-home"
+            >
+              Home
+            </button>
+          </li>
+
+          <li class="menu__item">
+            <button class="link menu__link menu__link-library menu__library">
+              My library
+            </button>
+          </li>
+        </ul>
+      </nav>
     </div>
-  </div>
 
- 
-
-  <!-- Уведомление об ошибке -->
-  <p class="warning-notification">
-    Search result not successful. Enter the correct movie name and try again,
-    please
-  </p>
-
-   <!-- Разметка переключателя темы -->
-  <!-- <div class="toolbar">
-   
-    <div class="theme-switch">
-      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-        <use href="./images/icons/sprite.svg#sun"></use>
-      </svg>
-
-      <div class="theme-switch__control">
+    <div class="wrapper-header">
+      <form id="search-form" action="" class="search">
         <input
-          class="theme-switch__toggle"
-          type="checkbox"
-          name="theme"
-          id="theme-switch-toggle"
-          aria-label="Switch between dark and light themes"
+          class="search__input"
+          type="text"
+          placeholder="Movie search"
+          name="query"
+          list="genre-input"
         />
-        <label
-          aria-hidden="true"
-          class="theme-switch__track"
-          for="theme-switch-toggle"
-        >
-        </label>
-        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
+        <datalist id="genre-input">
+          <option value="Action"></option>
+          <option value="Adventure"></option>
+          <option value="Animation"></option>
+          <option value="Comedy"></option>
+          <option value="Crime"></option>
+          <option value="Documentary"></option>
+          <option value="Drama"></option>
+          <option value="Family"></option>
+          <option value="Fantasy"></option>
+          <option value="History"></option>
+          <option value="Horror"></option>
+          <option value="Music"></option>
+          <option value="Mystery"></option>
+          <option value="Romance"></option>
+          <option value="Science Fiction"></option>
+          <option value="TV Movie"></option>
+          <option value="Thriller"></option>
+          <option value="War"></option>
+          <option value="Western"></option>
+        </datalist>
+        <button class="search__button" type="submit" title="Go!">
+          <svg class="search__button-icon icon-search" width="12" height="12">
+            <use href="./images/icons/sprite.svg#search"></use>
+          </svg>
+        </button>
+      </form>
+      <div class="search-choice">
+        <span class="chose-type">Search by:</span>
+        <button class="search-choice-btn name">name</button>
+        <button class="search-choice-btn genre">genre</button>
       </div>
-
-      <svg class="theme-switch__icon" aria-label="Moon icon">
-        <use href="./images/icons/sprite.svg#moon"></use>
-      </svg>
     </div>
-  </div> -->
+
+    <!-- Уведомление об ошибке -->
+    <p class="warning-notification">
+      Search result not successful. Enter the correct movie name and try again,
+      please
+    </p>
+  </div>
 </header>
 <header class="header header__library is-hidden">
   <div class="container">
     <div class="navigation__container">
-        <a href="./" class="logo">
-            <svg class="logo__svg icon-film">
-                <use href="./images/icons/sprite.svg#film"></use>
-            </svg>
-            <span class="logo__text">Filmoteka</span>
-        </a>
-        <nav class="navigation">
-      <ul class="menu__list">
-        <li class="menu__item">
-          <button class="link menu__link menu__link-library menu__home">
-          Home
-        </button></li>
-        
-        <li class="menu__item">
-          <!-- <a href="./library.html" class="link menu__link menu__link-library" -->
-            <button class="link menu__link menu__link-library current library-current">My library</button>
-        </li>
-      </ul>
-    </nav>
-    </div>
-<form>
-    <div role="group">
-        <ul class="storage js-choice-storage">
-            <li class="storage__item">
-                <label class="storage__label">
-                    <input type="radio" name="storage-btn" value="Watched" class="storage__input visually-hidden"
-                        checked />
-                    <span class="storage__btn" id="js-WatchedButton">Watched</span>
-                </label>
-            </li>
-            <li class="storage__item">
-                <label class="storage__label">
-                    <input type="radio" name="storage-btn" value="Queue" class="storage__input visually-hidden" />
-                    <span class="storage__btn" id="js-QueueButton">Queue</span>
-                </label>
-            </li>
+      <a href="./" class="logo">
+        <svg class="logo__svg icon-film">
+          <use href="./images/icons/sprite.svg#film"></use>
+        </svg>
+        <span class="logo__text">Filmoteka</span>
+      </a>
+      <nav class="navigation">
+        <ul class="menu__list">
+          <li class="menu__item">
+            <button class="link menu__link menu__link-library menu__home">
+              Home
+            </button>
+          </li>
+
+          <li class="menu__item">
+            <button
+              class="link menu__link menu__link-library current library-current"
+            >
+              My library
+            </button>
+          </li>
         </ul>
+      </nav>
     </div>
-</form>
-
-<!-- Разметка переключателя темы -->    
-<!-- <div class="toolbar">
-    
-    <div class="theme-switch">
-      <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
-        <use href="./images/icons/sprite.svg#sun"></use>
-      </svg>
-
-      <div class="theme-switch__control">
-        <input
-          class="theme-switch__toggle"
-          type="checkbox"
-          name="theme"
-          id="theme-switch-toggle"
-          aria-label="Switch between dark and light themes"
-        />
-        <label
-          aria-hidden="true"
-          class="theme-switch__track"
-          for="theme-switch-toggle"
-        >
-        </label>
-        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
+    <form>
+      <div role="group">
+        <ul class="storage js-choice-storage">
+          <li class="storage__item">
+            <label class="storage__label">
+              <input
+                type="radio"
+                name="storage-btn"
+                value="Watched"
+                class="storage__input visually-hidden"
+                checked
+              />
+              <span class="storage__btn" id="js-WatchedButton">Watched</span>
+            </label>
+          </li>
+          <li class="storage__item">
+            <label class="storage__label">
+              <input
+                type="radio"
+                name="storage-btn"
+                value="Queue"
+                class="storage__input visually-hidden"
+              />
+              <span class="storage__btn" id="js-QueueButton">Queue</span>
+            </label>
+          </li>
+        </ul>
       </div>
-
-      <svg class="theme-switch__icon" aria-label="Moon icon">
-        <use href="./images/icons/sprite.svg#moon"></use>
-      </svg>
-    </div>
-  </div> -->
-</div>
+    </form>
+  </div>
 </header>
 
 <!--блок реєстрації користувача -->
@@ -213,7 +158,6 @@
     Log in to your account!
   </button>
   <div class="toolbar">
-    
     <div class="theme-switch">
       <svg class="theme-switch__icon" role="img" aria-label="Sun icon">
         <use href="./images/icons/sprite.svg#sun"></use>
@@ -233,19 +177,27 @@
           for="theme-switch-toggle"
         >
         </label>
-        <div aria-hidden="true" id="theme-marker" class="theme-switch__marker theme__marker"></div>
+        <div
+          aria-hidden="true"
+          id="theme-marker"
+          class="theme-switch__marker theme__marker"
+        ></div>
       </div>
 
       <svg class="theme-switch__icon" aria-label="Moon icon">
         <use href="./images/icons/sprite.svg#moon"></use>
       </svg>
     </div>
-   <select class="change-lng">
-      <option class="change-lng__item change-lng__item--en" value="en">EN</option>
-      <option class="change-lng__item change-lng__item--uk" value="uk">UA</option>
-            <option class="change-lng__item change-lng__item--uk" value="spa">ESP</option>
-
-      <!-- <option class="change-lng__item change-lng__item--ru" value="ru">RU</option> -->
+    <select class="change-lng">
+      <option class="change-lng__item change-lng__item--en" value="en">
+        EN
+      </option>
+      <option class="change-lng__item change-lng__item--uk" value="uk">
+        UA
+      </option>
+      <option class="change-lng__item change-lng__item--uk" value="spa">
+        ESP
+      </option>
     </select>
   </div>
 </div>

@@ -11,7 +11,7 @@ export const refs = {
   langs: document.querySelector('.change-lng'),
   input: document.querySelector('.search__input'),
   search: document.querySelector('.chose-type'),
-  // genreInput: document.querySelector('.genre-input'),
+  
   errorSearch: document.querySelector('.warning-notification'),
   chosenNameBtn: document.querySelector('.search-choice-btn.name'),
   chosenGenreBtn: document.querySelector('.search-choice-btn.genre'),
@@ -43,28 +43,18 @@ export const refs = {
   totalPages: 1,
   scroller: new SweetScroll({ duration: 1000 }),
   pagSerchQuery: '',
-  // GoTopBtn
+ 
   goTopBtn: document.querySelector('.button_to_top'),
-  // ModalMovie
+ 
   movieList: document.querySelector('main'),
   movieDetail: document.getElementById('modal-movie-detail'),
   movieTrailer: document.getElementById('modal-movie-trailer'),
-  watchedBtnAdd: document.getElementById('watchedAdd'),
-  watchedBtnRemove: document.getElementById('watchedRemove'),
-  queueBtnAdd: document.getElementById('queueAdd'),
-  queueBtnRemove: document.getElementById('queueRemove'),
-  // modalTeam
-  // logOutBtn: document.querySelector('.logout-btn'),
-  // singUpBtn: document.querySelector('[data-modal-open="singUp"]'),
-  // singInBtn: document.querySelector('[data-modal-open="singIn"]'),
-  // modalSingUpBtn: document.querySelector('[data-modal-open="singUp-second"]'),
-  // modalSingInBtn: document.querySelector('[data-modal-open="singIn-second"]'),
-  // formSingUpInputEmail: document.querySelector('.reg-modal-email'),
-  // formSingUpInputPassword: document.querySelector('.reg-modal-password'),
-  // formSingInInputEmail: document.querySelector('.singIn-modal-email'),
-  // formSingInInputPassword: document.querySelector('.singIn-modal-password'),
-  // backdropSingUp: document.querySelector('.backdrop-reg-modal'),
-  // btnCloseSingUp: document.querySelector('[data-modal-close="reg"]'),
-  // backdropSingIn: document.querySelector('.backdrop-singIn-modal'),
-  // btnCloseSingIn: document.querySelector('[data-modal-close="singIn"]'),
+  modalRegTitle: document.querySelector('.reg-modal-title'),
+  
+  modalRegAlready: document.querySelector('.already'),
+  
+
+  modalLogTitle: document.querySelector('.singIn-modal-title'),
+  
+  modalLogAlready: document.querySelector('.not-already'),
 };

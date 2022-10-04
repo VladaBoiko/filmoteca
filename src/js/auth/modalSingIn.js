@@ -7,7 +7,6 @@ import {
 } from './refs.js';
 
 import { onPressEsk, onClickSingUp, resetForm } from './modalSingUp';
-console.log(btnCloseSingIn);
 export function toggleModalSingIn() {
   backdropSingIn.classList.toggle('is-hidden');
   body.classList.toggle('noscroll');
@@ -17,7 +16,7 @@ export function toggleModalSingIn() {
 singInBtn.addEventListener('click', onClickSingInBtn);
 
 function onClickBackdrop(e) {
-  if (e.target.classList.contains('backdrop')) {
+  if (e.target.classList.contains('backdrop-auth')) {
     toggleModalSingIn();
     backdropSingIn.removeEventListener('click', onClickBackdrop);
   }
