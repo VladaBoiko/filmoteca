@@ -51,7 +51,7 @@
 }
 .close-modal {
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
   font-size: 30px;
   text-decoration: none;
@@ -87,16 +87,40 @@
 }
 .modal-members__list {
   justify-content: center;
+  flex-grow: 1;
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 30px;
 }
 .modal-members__item {
-  width: 150px;
+  width: 300px;
+  height: 450px;
   border-radius: 0 0 4px 4px;
-  margin-bottom: 30px;
-  margin-right: 10px;
   box-shadow: 0 1px 3px #0000001f, 0 1px 1px #00000024, 0 2px 1px #0003;
-  flex-basis: 25%;
+  // flex-basis: 25%;
+}
+
+.modal-title,
+.modal-caption {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.modal-content {
+  width: 90%;
+}
+.modal-members {
+  &__img {
+    height: 75%;
+    object-fit: cover;
+    object-position: center;
+    margin-bottom: 20px;
+  }
+}
+.modal-members__item {
+  & h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
 }
