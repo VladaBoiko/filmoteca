@@ -45,38 +45,9 @@ const getVideo = trailers => {
 
 const handlePagination = (id, queryF, list) => {
   refs.pageNavDivEl.onclick = async e => {
-    if (e.target.dataset.paginationNav === 'next') {
-      refs.currentPage++;
-      loader.show();
-      const data = await queryF(id, refs.currentPage);
-      loader.hide();
-
-      if (data.total_pages > 500) {
-        data.total_pages = 500;
-      }
-
-      renderFilmCards(data.results, list);
-      refs.scroller.to('header');
-      pageNavigation(data);
-    }
-    if (e.target.dataset.paginationNav === 'prev') {
-      refs.currentPage--;
-
-      loader.show();
-      const data = await queryF(id, refs.currentPage);
-      loader.hide();
-
-      if (data.total_pages > 500) {
-        data.total_pages = 500;
-      }
-
-      renderFilmCards(data.results, list);
-      refs.scroller.to('header');
-      pageNavigation(data);
-    }
     if (isFinite(e.target.textContent)) {
       loader.show();
-      data = await queryF(id, e.target.textContent);
+      const data = await queryF(id, e.target.textContent);
       loader.hide();
 
       if (data.total_pages > 500) {
@@ -86,7 +57,24 @@ const handlePagination = (id, queryF, list) => {
       await renderFilmCards(data.results, list);
       refs.scroller.to('header');
       await pageNavigation(data);
+      return;
     }
+
+    if (e.target.dataset.paginationNav === 'next') {
+      refs.currentPage++;
+    } else if (e.target.dataset.paginationNav === 'prev') {
+      refs.currentPage--;
+    }
+
+    loader.show();
+    const data = await queryF(id, refs.currentPage);
+    loader.hide();
+    if (data.total_pages > 500) {
+      data.total_pages = 500;
+    }
+    renderFilmCards(data.results, list);
+    refs.scroller.to('header');
+    pageNavigation(data);
   };
 };
 

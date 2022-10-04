@@ -6,7 +6,7 @@ export const loader = {
     setTimeout(() => {
       this.preLoader.classList.add('is-hidden');
       this.backdrop.classList.add('is-hidden');
-    }, 800);
+    }, 500);
   },
   show() {
     this.preLoader.classList.remove('is-hidden');
