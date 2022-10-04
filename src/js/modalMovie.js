@@ -45,10 +45,10 @@ const getVideo = trailers => {
 
 const handlePagination = (id, queryF, list) => {
   refs.pageNavDivEl.onclick = async e => {
-    if (e.target.textContent === 'next') {
+    if (e.target.dataset.paginationNav === 'next') {
       refs.currentPage++;
       loader.show();
-      const data = await queryF(id, language, refs.currentPage);
+      const data = await queryF(id, refs.currentPage);
       loader.hide();
 
       if (data.total_pages > 500) {
@@ -59,11 +59,11 @@ const handlePagination = (id, queryF, list) => {
       refs.scroller.to('header');
       pageNavigation(data);
     }
-    if (e.target.textContent === 'prev') {
+    if (e.target.dataset.paginationNav === 'prev') {
       refs.currentPage--;
 
       loader.show();
-      const data = await queryF(id, language, refs.currentPage);
+      const data = await queryF(id, refs.currentPage);
       loader.hide();
 
       if (data.total_pages > 500) {
@@ -76,7 +76,7 @@ const handlePagination = (id, queryF, list) => {
     }
     if (isFinite(e.target.textContent)) {
       loader.show();
-      data = await queryF(id, language, e.target.textContent);
+      data = await queryF(id, e.target.textContent);
       loader.hide();
 
       if (data.total_pages > 500) {
@@ -129,7 +129,7 @@ movieList.addEventListener('click', async event => {
     genre.addEventListener('click', async () => {
       loader.show();
       const id = await findIdGenre(genre.dataset.genre);
-      const data = await dataByGenres(id, language, page);
+      const data = await dataByGenres(id, page);
       if (data.total_pages > 500) {
         data.total_pages = 500;
       }
