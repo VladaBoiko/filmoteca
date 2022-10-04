@@ -7,6 +7,43 @@ import {
   IMG_URL_ORIGINAL,
 } from './API/api';
 
+import { language } from './changeLangs';
+
+const textInModal = {
+  vote: {
+    en: 'Vote',
+    uk: 'Оцінка',
+    es: 'Vote',
+  },
+
+  votes: {
+    en: 'Votes',
+    uk: 'Голоси',
+    es: 'Votes',
+  },
+  popularity: {
+    en: 'Popularity',
+    uk: 'Популярність',
+    es: 'Popularity',
+  },
+  originalTitle: {
+    en: 'Original Title ',
+    uk: 'Оригінальна назва ',
+    es: 'Original Title ',
+  },
+  genre: {
+    en: 'Genre',
+    uk: 'Жанр',
+    es: 'Genre',
+  },
+
+  about: {
+    en: 'About',
+    uk: 'Опис',
+    es: 'About',
+  },
+};
+
 export const movieDataMarkup = (movie, videoName) => {
   const {
     poster_path,
@@ -42,7 +79,7 @@ export const movieDataMarkup = (movie, videoName) => {
                       loading="lazy"
                     />`;
   }
-
+  console.log('ower :>> ', overview);
   return `
       <div class="movie__tumb" data-id="${id}">
       ${poster}
@@ -52,7 +89,9 @@ export const movieDataMarkup = (movie, videoName) => {
       <h2 class="movie__title">${title}</h2>
         <ul class="movie__stats stats">
           <li class="stats__row">
-            <p class="stats__name">Vote / Votes</p>
+            <p class="stats__name">${textInModal.vote[language]} / ${
+    textInModal.votes[language]
+  }</p>
             <p class="statss__value">
               <span class="stats__vote">
                 ${Math.round(vote_average * 10) / 10}
@@ -62,19 +101,19 @@ export const movieDataMarkup = (movie, videoName) => {
             </p>
           </li>
           <li class="stats__row">
-            <p class="stats__name">Popularity</p>
+            <p class="stats__name">${textInModal.popularity[language]}</p>
             <p class="stats__value">
               ${Math.round(popularity * 10) / 10}
             </p>
           </li>
           <li class="stats__row">
-            <p class="stats__name">Original Title</p>
+            <p class="stats__name">${textInModal.originalTitle[language]}</p>
             <p class="stats__value stats__value--uppercase">
               ${original_title}
             </p>
           </li>
           <li class="stats__row">
-            <p class="stats__name">Genre</p>
+            <p class="stats__name">${textInModal.genre[language]}</p>
             <p class="stats__value genres">
               ${genres
                 .map(
@@ -84,10 +123,14 @@ export const movieDataMarkup = (movie, videoName) => {
                 .join('')}</p>
           </li>
         </ul>
-        <h3 class="movie__sub-title">About</h3>
+        ${
+          overview &&
+          `<h3 class="movie__sub-title">${textInModal.about[language]}</h3>
         <p class="movie__description">
           ${overview}
-        </p>
+        </p>`
+        }
+        
         ${
           videoName
             ? `<button class="movie__button-trailer" data-movie-tailer-id="${id}">${videoName}</button>`
