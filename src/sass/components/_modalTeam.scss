@@ -70,7 +70,7 @@
   font-size: 1.5rem;
 }
 
-.modal p + p {
+.modal-footer p + p {
   margin-top: 1rem;
 }
 
@@ -94,8 +94,8 @@
   gap: 30px;
 }
 .modal-members__item {
-  width: 300px;
-  height: 450px;
+  width: 220px;
+  height: 350px;
   border-radius: 0 0 4px 4px;
   box-shadow: 0 1px 3px #0000001f, 0 1px 1px #00000024, 0 2px 1px #0003;
   // flex-basis: 25%;
@@ -112,7 +112,7 @@
 }
 .modal-members {
   &__img {
-    height: 75%;
+    height: 63%;
     object-fit: cover;
     object-position: center;
     margin-bottom: 20px;
