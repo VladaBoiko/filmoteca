@@ -52,11 +52,11 @@ export function changeData() {
     refs.search.textContent = 'Пошук за:';
     refs.prevBtnEl.textContent = 'Назад';
     refs.nextBtnEl.textContent = 'Вперед';
-    refs.watchedListBtn.textContent = 'Черга';
+    refs.watchedListBtn.textContent = 'Переглянуте';
     refs.queueListBtn.textContent = 'Вподобайки';
-    modalBtn.addWatch = 'Додати в чергу';
+    modalBtn.addWatch = 'Додати до переглянутого';
     modalBtn.addLib = 'Вподобати';
-    modalBtn.removeWatch = 'Видалити з черги';
+    modalBtn.removeWatch = 'Видалити з переглянутого';
     modalBtn.removeLib = 'Пройшла любов';
     authModal.signIn = 'Увійти';
     authModal.signUp = 'Зареєструватися';
