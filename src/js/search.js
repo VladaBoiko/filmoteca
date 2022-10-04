@@ -115,7 +115,7 @@ async function getAllGenres() {
 
 async function paginationRequest(page) {
   if (isChosenName) {
-    data = await dataSearch(refs.searchQuery, language, page);
+    data = await dataSearch(refs.searchQuery, page);
     if (data.total_pages > 500) {
       data.total_pages = 500;
     }
@@ -124,7 +124,7 @@ async function paginationRequest(page) {
     pageNavigation(data);
   }
   if (isChosenGenre) {
-    data = await dataByGenres(refs.genre, language, page);
+    data = await dataByGenres(refs.genre, page);
     if (data.total_pages > 500) {
       data.total_pages = 500;
     }
