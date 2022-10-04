@@ -110,12 +110,12 @@ export async function pageNavigation(data) {
 }
 
 refs.pageNavDivEl.onclick = e => {
-  if (e.target.textContent === 'next') {
+  if (e.target.dataset.paginationNav === 'next') {
     refs.currentPage++;
     request(refs.currentPage);
     refs.scroller.to('header');
   }
-  if (e.target.textContent === 'prev') {
+  if (e.target.dataset.paginationNav === 'prev') {
     refs.currentPage--;
     request(refs.currentPage);
     refs.scroller.to('header');
