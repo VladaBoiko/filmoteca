@@ -103,11 +103,7 @@ export const dataTrailer = async id => {
   }
 };
 // пошук по жанру
-export const dataByGenres = async (
-  genreId = 28,
-  language = 'en-US',
-  page = 1
-) => {
+export const dataByGenres = async (genreId = 28, page = 1) => {
   try {
     const server = await axios.get(
       `3/discover/movie?api_key=${KEY}&language=${language}&page=${page}&with_genres=${genreId}`
