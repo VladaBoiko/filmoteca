@@ -41,6 +41,9 @@ async function onSearch(evt) {
     refs.errorSearch.style.display = 'none';
     if (isChosenName) {
       data = await dataSearch(searchQuery, page);
+      if (data.total_pages > 500) {
+        data.total_pages = 500;
+      }
       notification(data);
       renderFilmCards(data.results, galleryBySearch);
       pageNavigation(data, searchQuery);
@@ -62,6 +65,9 @@ async function onSearch(evt) {
       }
       if (genre) {
         refs.errorSearch.style.display = 'none';
+        if (data.total_pages > 500) {
+          data.total_pages = 500;
+        }
         data = await dataByGenres(genre.id, page);
         notification(data);
         renderFilmCards(data.results, galleryBySearch);
@@ -69,13 +75,13 @@ async function onSearch(evt) {
       }
     }
     refs.pageNavDivEl.onclick = e => {
-      if (e.target.textContent === 'next') {
+      if (e.target.dataset.paginationNav === 'next') {
         refs.currentPage++;
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
         paginationRequest(refs.currentPage, searchQuery);
       }
-      if (e.target.textContent === 'prev') {
+      if (e.target.dataset.paginationNav === 'prev') {
         refs.currentPage--;
         renderFilmCards(data.results, galleryBySearch);
         refs.scroller.to('header');
