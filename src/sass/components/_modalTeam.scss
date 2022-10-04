@@ -14,7 +14,7 @@
   cursor: pointer;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.35s ease-in;
+  transition: all var(--transition);
 }
 
 .modal-footer.is-visible {
@@ -25,6 +25,7 @@
 .modal-dialog {
   position: absolute;
   width: 80%;
+  height: 90%;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -84,17 +85,18 @@
   align-items: center;
   justify-content: center;
 }
+.modal-members__list {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+}
 .modal-members__item {
-  width: 250px;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 0px 0px 4px 4px;
+  width: 150px;
+  border-radius: 0 0 4px 4px;
   margin-bottom: 30px;
-  &:last-child {
-    margin-bottom: 30px;
-  }
   margin-right: 10px;
-  &:last-child {
-    margin-right: 0px;
-  }
+  box-shadow: 0 1px 3px #0000001f, 0 1px 1px #00000024, 0 2px 1px #0003;
+  flex-basis: 25%;
 }
