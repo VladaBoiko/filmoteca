@@ -342,6 +342,7 @@
   left: 20%;
   @include tablet {
     left: 28%;
+    top: 129px;
   }
 
   @include desktop {
@@ -398,7 +399,7 @@
   z-index: 101;
   transform: translate(50%, 50%);
   @include tablet {
-    top: 148px;
+    top: 20px;
   }
 }
 
